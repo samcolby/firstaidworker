@@ -14,8 +14,6 @@ import { COLOURS } from "../Constants";
 // DUMMY DATA FOR TESTING WITH
 // import PEOPLE from "../testdata/people";
 
-import env from "../../env.json";
-
 import { QUERY_PEOPLE_NEAR_ME } from "../GraphQLQueries";
 
 class ScreenDetails extends React.Component {
@@ -47,9 +45,6 @@ class ScreenDetails extends React.Component {
           query={gql`
             ${QUERY_PEOPLE_NEAR_ME}
           `}
-          context={{
-            headers: { "x-hasura-access-key": env.hasura_admin_secret }
-          }}
         >
           {({ loading, error, data }) => {
             if (loading) return <Text>Loading...</Text>;

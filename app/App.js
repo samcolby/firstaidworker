@@ -12,12 +12,8 @@ const AppContainer = createAppContainer(BottomNavigator);
 
 const apolloClient = new ApolloClient({
   uri: env.uri,
-  fetchOptions: {
-    context: {
-      headers: {
-        "x-hasura-access-key": env.hasura_admin_secret
-      }
-    }
+  headers: {
+    "x-hasura-access-key": env.hasura_admin_secret
   }
 });
 
