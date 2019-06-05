@@ -29,7 +29,7 @@ class PeopleMapMarkers extends PureComponent {
           latitude: person.latitude,
           longitude: person.longitude
         }}
-        key={person.guid}
+        key={person.id}
       >
         <Callout>
           <ListItem

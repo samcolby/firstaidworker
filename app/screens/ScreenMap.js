@@ -1,15 +1,37 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
 import MapView from "react-native-maps";
+
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 
 import { PeopleMapMarkers } from "../components";
 
 import { COLOURS } from "../Constants";
 
 // DUMMY DATA FOR TESTING WITH
-import PEOPLE from "../testdata/people";
+// import PEOPLE from "../testdata/people";
+
+import env from "../../env.json";
+
+const queryPeopleNearMe = gql`
+  {
+    profile {
+      id
+      name
+      job_title
+      is_active
+      picture
+      company
+      email
+      phone
+      latitude
+      longitude
+    }
+  }
+`;
 
 class ScreenDetails extends React.Component {
   static propTypes = {
@@ -36,13 +58,27 @@ class ScreenDetails extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
-        <MapView
-          style={styles.map}
-          region={this.state.region}
-          onRegionChange={this.onRegionChange}
+        <Query
+          query={queryPeopleNearMe}
+          context={{
+            headers: { "x-hasura-access-key": env.hasura_admin_secret }
+          }}
         >
-          <PeopleMapMarkers people={PEOPLE} />
-        </MapView>
+          {({ loading, error, data }) => {
+            if (loading) return <Text>Loading...</Text>;
+            if (error) return <Text>Error :(</Text>;
+
+            return (
+              <MapView
+                style={styles.map}
+                region={this.state.region}
+                onRegionChange={this.onRegionChange}
+              >
+                <PeopleMapMarkers people={data.profile} />
+              </MapView>
+            );
+          }}
+        </Query>
       </SafeAreaView>
     );
   }

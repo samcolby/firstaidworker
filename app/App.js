@@ -1,9 +1,14 @@
 import React from "react";
 import { createAppContainer, createBottomTabNavigator } from "react-navigation";
 
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Foundationicons from "react-native-vector-icons/Foundation";
 import FontAwesomeicons from "react-native-vector-icons/FontAwesome5";
+
+import env from "../env.json";
 
 import {
   StackPeopleNearMe,
@@ -48,4 +53,27 @@ const BottomNavigator = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(BottomNavigator);
+const AppContainer = createAppContainer(BottomNavigator);
+
+const apolloClient = new ApolloClient({
+  uri: env.uri,
+  fetchOptions: {
+    context: {
+      headers: {
+        "x-hasura-access-key": env.hasura_admin_secret
+      }
+    }
+  }
+});
+
+class App extends React.Component {
+  render() {
+    return (
+      <ApolloProvider client={apolloClient}>
+        <AppContainer />
+      </ApolloProvider>
+    );
+  }
+}
+
+export default App;
