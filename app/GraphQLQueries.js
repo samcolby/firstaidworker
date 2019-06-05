@@ -1,6 +1,4 @@
-import gql from "apollo-boost";
-
-const queryPeopleNearMe = gql`
+const QUERY_PEOPLE_NEAR_ME = `
   {
     profile {
       id
@@ -17,4 +15,4 @@ const queryPeopleNearMe = gql`
   }
 `;
 
-export { queryPeopleNearMe };
+export { QUERY_PEOPLE_NEAR_ME };

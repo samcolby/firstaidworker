@@ -16,22 +16,7 @@ import { COLOURS } from "../Constants";
 
 import env from "../../env.json";
 
-const queryPeopleNearMe = gql`
-  {
-    profile {
-      id
-      name
-      job_title
-      is_active
-      picture
-      company
-      email
-      phone
-      latitude
-      longitude
-    }
-  }
-`;
+import { QUERY_PEOPLE_NEAR_ME } from "../GraphQLQueries";
 
 class ScreenDetails extends React.Component {
   static propTypes = {
@@ -59,7 +44,9 @@ class ScreenDetails extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
         <Query
-          query={queryPeopleNearMe}
+          query={gql`
+            ${QUERY_PEOPLE_NEAR_ME}
+          `}
           context={{
             headers: { "x-hasura-access-key": env.hasura_admin_secret }
           }}
