@@ -35,16 +35,6 @@ class Search extends PureComponent {
   }
 }
 
-// <SearchBar
-// containerStyle={styles.containerStyle}
-// inputStyle={styles.inputStyle}
-// lightTheme
-// onChangeText={this.props.onChangeText}
-// onClear={this.props.onClear}
-// placeholder="Search..."
-// showLoading
-// />
-
 const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: COLOURS.BACKGROUND
