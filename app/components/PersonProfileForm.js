@@ -1,0 +1,135 @@
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+
+import { Alert, Button, View } from "react-native";
+
+import { Formik } from "formik";
+import { FormSwitch, FormTextField } from ".";
+
+/**
+ * React Pure Component to display
+ * The form used to edit a person's profile data.
+ *
+ * Edits the relevant data for the passed in person.
+ *
+ * @class PersonProfileForm
+ * @extends {PureComponent}
+ */
+class PersonProfileForm extends PureComponent {
+  static propTypes = {
+    person: PropTypes.object.isRequired
+  };
+
+  constructor(props) {
+    super(props);
+  }
+
+  handleSubmit = values => {
+    Alert.alert("Thevalues", JSON.stringify(values));
+  };
+
+  render() {
+    const {
+      company,
+      email,
+      is_active,
+      job_title,
+      name,
+      phone
+    } = this.props.person;
+
+    return (
+      <Formik
+        initialValues={{
+          name: name,
+          is_active,
+          job_title: job_title,
+          company: company,
+          email: email,
+          phone: phone
+        }}
+        onSubmit={this.handleSubmit}
+      >
+        {props => (
+          <View>
+            <FormSwitch
+              fieldName="is_active"
+              formikProps={props}
+              label="Available"
+            />
+            <FormTextField
+              fieldName="name"
+              formikProps={props}
+              label="Name"
+              autoCapitalize="words"
+              autoComplete="name"
+              keyboardType="default"
+              textContentType="name"
+            />
+            <FormTextField
+              fieldName="job_title"
+              formikProps={props}
+              label="Job title"
+              keyboardType="default"
+              textContentType="jobTitle"
+            />
+            <FormTextField
+              fieldName="company"
+              formikProps={props}
+              label="Company"
+              autoCapitalize="words"
+              keyboardType="default"
+              textContentType="organizationName"
+            />
+            <FormTextField
+              fieldName="email"
+              formikProps={props}
+              label="Email"
+              autoCapitalize="none"
+              autoComplete="email"
+              keyboardType="email-address"
+              textContentType="emailAddress"
+            />
+            <FormTextField
+              fieldName="phone"
+              formikProps={props}
+              label="Phone"
+              autoComplete="tel"
+              keyboardType="number-pad"
+              textContentType="telephoneNumber"
+            />
+            <Button onPress={props.handleSubmit} title="Submit" />
+          </View>
+        )}
+      </Formik>
+    );
+  }
+}
+
+// const styles = StyleSheet.create({
+//   containerStyle: {
+//     borderWidth: 0,
+//     padding: 0,
+//     paddingVertical: 15,
+//     margin: 0
+//   },
+//   headerContainer: {
+//     flexDirection: "row",
+//     justifyContent: "flex-start",
+//     alignItems: "center",
+//     paddingLeft: 20
+//   },
+//   headerTextContainer: {
+//     fontSize: 20,
+//     marginLeft: 20,
+//     flex: 1,
+//     flexDirection: "column"
+//   },
+//   headerTextCompany: { fontSize: 20 },
+//   headerTextJobDescription: {
+//     fontSize: 16,
+//     color: "grey"
+//   }
+// });
+
+export default PersonProfileForm;
