@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import { Alert, Button, View } from "react-native";
 
 import { Formik } from "formik";
-import { FormSwitch, FormTextField } from ".";
+import FormSwitch from "./FormSwitch";
+import FormTextField from "./FormTextField";
 
 /**
  * React Pure Component to display
