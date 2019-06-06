@@ -18,7 +18,7 @@ const testData = {
   longitude: -4.1474755
 };
 
-describe("PersonListItem Component", () => {
+describe("<PersonListItem /> component", () => {
   it("renders correctly", () => {
     const component = shallow(<PersonListItem person={testData} />);
 
