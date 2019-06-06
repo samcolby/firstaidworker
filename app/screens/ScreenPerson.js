@@ -1,12 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, Text } from "react-native";
 import { ListItem } from "react-native-elements";
+
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 
 import { PersonHeaderCard } from "../components";
 
 import { COLOURS, NAVIGATOR_PARAMS } from "../Constants";
+
+import { QUERY_PERSON } from "../GraphQLQueries";
 
 class ScreenPerson extends React.Component {
   static propTypes = {
@@ -19,20 +24,32 @@ class ScreenPerson extends React.Component {
 
   render() {
     const person = this.props.navigation.getParam(NAVIGATOR_PARAMS.PERSON);
-    const {
-      email,
-      // latitude,
-      // longitude,
-      phone
-    } = person;
+    const { id } = person;
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <PersonHeaderCard person={person} />
-          <ListItem hideChevron title={email} />
-          <ListItem hideChevron title={phone} />
-        </ScrollView>
+        <Query
+          query={gql`
+            ${QUERY_PERSON}
+          `}
+          variables={{ id }}
+        >
+          {({ loading, error, data }) => {
+            if (loading) return <Text>Loading...</Text>;
+            if (error) return <Text>Error :(</Text>;
+
+            const person = data.profile[0];
+            const { email, phone } = person;
+
+            return (
+              <ScrollView contentInsetAdjustmentBehavior="automatic">
+                <PersonHeaderCard person={person} />
+                <ListItem hideChevron title={email} />
+                <ListItem hideChevron title={phone} />
+              </ScrollView>
+            );
+          }}
+        </Query>
       </SafeAreaView>
     );
   }

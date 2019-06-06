@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { FlatList, SafeAreaView, Text } from "react-native";
 
-import { Query, refetch } from "react-apollo";
+import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
 import { PersonListItem, Search } from "../components";

@@ -14,7 +14,7 @@ import { COLOURS } from "../Constants";
 // DUMMY DATA FOR TESTING WITH
 // import PEOPLE from "../testdata/people";
 
-import { QUERY_PEOPLE_NEAR_ME } from "../GraphQLQueries";
+import { QUERY_PEOPLE_FOR_MAP } from "../GraphQLQueries";
 
 class ScreenDetails extends React.Component {
   static propTypes = {
@@ -43,7 +43,7 @@ class ScreenDetails extends React.Component {
       <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
         <Query
           query={gql`
-            ${QUERY_PEOPLE_NEAR_ME}
+            ${QUERY_PEOPLE_FOR_MAP}
           `}
         >
           {({ loading, error, data }) => {
