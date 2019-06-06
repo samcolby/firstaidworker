@@ -1,3 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PersonListItem Component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`PersonListItem Component handles onPress 1`] = `
+<Themed.ListItem
+  leftAvatar={
+    Object {
+      "rounded": true,
+      "source": Object {
+        "uri": "https://randomuser.me/api/portraits/women/12.jpg",
+      },
+    }
+  }
+  onPress={[Function]}
+  subtitle="Flouncer"
+  title="Maryellen Baxter"
+/>
+`;
+
+exports[`PersonListItem Component renders correctly 1`] = `
+<Themed.ListItem
+  leftAvatar={
+    Object {
+      "rounded": true,
+      "source": Object {
+        "uri": "https://randomuser.me/api/portraits/women/12.jpg",
+      },
+    }
+  }
+  onPress={[Function]}
+  subtitle="Flouncer"
+  title="Maryellen Baxter"
+/>
+`;

@@ -2,6 +2,7 @@
 import React from "react";
 
 import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
 
 import PersonListItem from "../../app/components/PersonListItem";
 
@@ -19,8 +20,31 @@ const testData = {
 };
 
 describe("PersonListItem Component", () => {
-  test("renders correctly", () => {
-    const tree = shallow(<PersonListItem person={testData} />);
-    expect(tree).toMatchSnapshot();
+  it("renders correctly", () => {
+    const component = shallow(<PersonListItem person={testData} />);
+
+    expect(component.length).toBe(1);
+    expect(component).toMatchSnapshot();
+  });
+
+  test("displays the person's name correctly", () => {
+    const component = shallow(<PersonListItem person={testData} />);
+    expect(component.prop("title")).toEqual(testData.name);
+  });
+
+  test("displays the person's picture", () => {
+    const component = shallow(<PersonListItem person={testData} />);
+    expect(component.prop("leftAvatar").source.uri).toEqual(testData.picture);
+  });
+
+  it("handles onPress", () => {
+    const onPress = jest.fn();
+    const component = shallow(
+      <PersonListItem person={testData} onPress={onPress} />
+    );
+
+    component.simulate("press");
+    expect(onPress).toHaveBeenCalled();
+    expect(component).toMatchSnapshot();
   });
 });
