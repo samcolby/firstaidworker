@@ -1,7 +1,7 @@
 // __tests__/Intro-test.js
 import React from "react";
 
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
 
 import PersonListItem from "../../app/components/PersonListItem";
 
@@ -19,8 +19,8 @@ const testData = {
 };
 
 describe("PersonListItem Component", () => {
-  test("it renders correctly", () => {
-    const tree = renderer.create(<PersonListItem person={testData} />).toJSON();
+  test("renders correctly", () => {
+    const tree = shallow(<PersonListItem person={testData} />);
     expect(tree).toMatchSnapshot();
   });
 });
