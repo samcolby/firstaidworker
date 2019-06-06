@@ -7,7 +7,6 @@ else
 fi
 
 # Generate env.json using App Center Environment variables
-echo "$APPCENTER_SOURCE_DIRECTORY/env.json"
-echo $DEV_ENV_JSON > $APPCENTER_SOURCE_DIRECTORY/env.json
+echo "{\"uri\":\"$DEV_ENV_GRAPHQL_URI\",\"hasura_access_key\":\"$DEV_ENV_ACCESS_SECRET\"}" > $APPCENTER_SOURCE_DIRECTORY/env.json
 
 cat $APPCENTER_SOURCE_DIRECTORY/env.json
