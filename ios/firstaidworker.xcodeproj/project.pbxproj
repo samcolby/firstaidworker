@@ -659,7 +659,7 @@
 				22363B3F22A5983C000C7934 /* MaterialIcons.ttf */,
 			);
 			name = Fonts;
-			path = "../../firstaidworker__/node_modules/react-native-vector-icons/Fonts";
+			path = "../../firstaidworker/node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
 		};
 		22363B5C22A59D5F000C7934 /* Recovered References */ = {
