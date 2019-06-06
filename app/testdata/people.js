@@ -1,6 +1,6 @@
 const PEOPLE = [
   {
-    guid: "1b773d36-b5c4-4ea9-982a-5ba319dc7bb7",
+    id: "1b773d36-b5c4-4ea9-982a-5ba319dc7bb7",
     name: "Fry Newton",
     job_title: "Michael Jackson Impersonator",
     isActive: false,
@@ -12,7 +12,7 @@ const PEOPLE = [
     longitude: -4.1174755
   },
   {
-    guid: "54f58dfd-3f17-427c-b1d1-74c26a77f700",
+    id: "54f58dfd-3f17-427c-b1d1-74c26a77f700",
     name: "Key Whitley",
     job_title: "Michael Jackson Impersonator",
     is_active: false,
@@ -24,7 +24,7 @@ const PEOPLE = [
     longitude: -4.0674755
   },
   {
-    guid: "0b8a6373-4530-41d7-87a9-435552dfa334",
+    id: "0b8a6373-4530-41d7-87a9-435552dfa334",
     name: "Sargent Bush",
     job_title: "Sales",
     isActive: true,
@@ -36,7 +36,7 @@ const PEOPLE = [
     longitude: -4.1144755
   },
   {
-    guid: "a62c93f9-e333-4c98-a6b7-a2e5a9789362",
+    id: "a62c93f9-e333-4c98-a6b7-a2e5a9789362",
     name: "Paige Oliver",
     job_title: "Flouncer",
     isActive: false,
@@ -48,7 +48,7 @@ const PEOPLE = [
     longitude: -4.1024755
   },
   {
-    guid: "228ce656-08ad-46cc-97f8-b4abe71b7b67",
+    id: "228ce656-08ad-46cc-97f8-b4abe71b7b67",
     name: "Lily Watson",
     job_title: "Sales",
     isActive: true,
@@ -60,7 +60,7 @@ const PEOPLE = [
     longitude: -4.1074755
   },
   {
-    guid: "c4ab9532-198e-4891-8719-8167005e9fa9",
+    id: "c4ab9532-198e-4891-8719-8167005e9fa9",
     name: "Maryellen Baxter",
     job_title: "Flouncer",
     isActive: true,
@@ -72,7 +72,7 @@ const PEOPLE = [
     longitude: -4.1474755
   },
   {
-    guid: "9f47bfa4-892e-4abd-8a18-0576f8759051",
+    id: "9f47bfa4-892e-4abd-8a18-0576f8759051",
     name: "Kaitlin Burnett",
     job_title: "Marketing",
     isActive: true,
