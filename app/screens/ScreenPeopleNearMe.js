@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { FlatList, SafeAreaView, Text } from "react-native";
 
-import { Query } from "react-apollo";
+import { Query, refetch } from "react-apollo";
 import { gql } from "apollo-boost";
 
 import { PersonListItem, Search } from "../components";
@@ -50,7 +50,7 @@ class ScreenPeopleNearMe extends React.Component {
             ${QUERY_PEOPLE_NEAR_ME}
           `}
         >
-          {({ loading, error, data }) => {
+          {({ loading, error, data, refetch }) => {
             if (loading) return <Text>Loading...</Text>;
             if (error) return <Text>Error :(</Text>;
 
@@ -58,9 +58,10 @@ class ScreenPeopleNearMe extends React.Component {
               <FlatList
                 data={data.profile}
                 getItemLayout={this.getItemLayout}
-                initialScrollIndex={0.33}
                 keyExtractor={this.keyExtractor}
                 ListHeaderComponent={<Search />}
+                onRefresh={() => refetch()}
+                refreshing={data.networkStatus === 4}
                 renderItem={this.renderItem}
               />
             );
