@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PersonListItem Component handles onPress 1`] = `
+exports[`<PersonListItem /> component handles onPress 1`] = `
 <Themed.ListItem
   leftAvatar={
     Object {
@@ -16,7 +16,7 @@ exports[`PersonListItem Component handles onPress 1`] = `
 />
 `;
 
-exports[`PersonListItem Component renders correctly 1`] = `
+exports[`<PersonListItem /> component renders correctly 1`] = `
 <Themed.ListItem
   leftAvatar={
     Object {
