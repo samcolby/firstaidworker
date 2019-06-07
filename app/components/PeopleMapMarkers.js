@@ -33,10 +33,10 @@ class PeopleMapMarkers extends PureComponent {
       >
         <Callout>
           <ListItem
-            roundAvatar
+            leftAvatar={{ rounded: true, source: { uri: person.picture } }}
             hideChevron
-            avatar={person.picture && { uri: person.picture }}
             title={person.name}
+            subtitle={person.job_title}
             containerStyle={{ borderBottomWidth: 0 }}
           />
         </Callout>
