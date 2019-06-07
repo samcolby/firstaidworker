@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { SearchBar } from "react-native-elements";
 
 import { COLOURS } from "../Constants";
@@ -29,7 +29,7 @@ class Search extends PureComponent {
         onChangeText={this.props.onChangeText}
         onClear={this.props.onClear}
         placeholder="Search..."
-        platform="ios"
+        platform={Platform.OS}
       />
     );
   }
