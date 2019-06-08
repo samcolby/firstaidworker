@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> component handles onCancel 1`] = `
+<ForwardRef(Themed.SearchBar)
+  containerStyle={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+  onCancel={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="Search..."
+  platform="ios"
+/>
+`;
+
+exports[`<Search /> component handles onChangeText 1`] = `
+<ForwardRef(Themed.SearchBar)
+  containerStyle={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+  onChangeText={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="Search..."
+  platform="ios"
+/>
+`;
+
+exports[`<Search /> component handles onClear 1`] = `
+<ForwardRef(Themed.SearchBar)
+  containerStyle={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+  onClear={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="Search..."
+  platform="ios"
+/>
+`;
+
+exports[`<Search /> component renders correctly 1`] = `
+<ForwardRef(Themed.SearchBar)
+  containerStyle={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+  placeholder="Search..."
+  platform="ios"
+/>
+`;

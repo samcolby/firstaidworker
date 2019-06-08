@@ -14,6 +14,7 @@ import { COLOURS } from "../Constants";
  */
 class Search extends PureComponent {
   static propTypes = {
+    onCancel: PropTypes.func,
     onChangeText: PropTypes.func,
     onClear: PropTypes.func
   };
@@ -28,6 +29,7 @@ class Search extends PureComponent {
         containerStyle={styles.containerStyle}
         onChangeText={this.props.onChangeText}
         onClear={this.props.onClear}
+        onCancel={this.props.onCancel}
         placeholder="Search..."
         platform={Platform.OS}
       />
