@@ -29,7 +29,12 @@ class PersonHeaderCard extends PureComponent {
     return (
       <Card containerStyle={styles.containerStyle}>
         <View style={styles.headerContainer}>
-          <Avatar activeOpacity={0.7} large rounded source={{ uri: picture }} />
+          <Avatar
+            activeOpacity={0.7}
+            rounded
+            size="large"
+            source={{ uri: picture }}
+          />
           <View style={styles.headerTextContainer}>
             <Text style={styles.headerTextCompany}>{company}</Text>
             <Text style={styles.headerTextJobDescription}>{job_title}</Text>
