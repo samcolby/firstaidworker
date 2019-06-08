@@ -23,7 +23,7 @@ class FormSwitch extends PureComponent {
   render() {
     const { label } = this.props;
 
-    return <ListItem hideChevron switch={{ value: true }} title={label} />;
+    return <ListItem switch={{ value: true }} title={label} />;
   }
 }
 

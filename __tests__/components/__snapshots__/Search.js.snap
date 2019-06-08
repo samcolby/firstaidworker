@@ -65,7 +65,7 @@ exports[`<Search /> component handles onClear 1`] = `
 />
 `;
 
-exports[`<Search /> component handles the values prop 1`] = `
+exports[`<Search /> component handles the value prop 1`] = `
 <ForwardRef(Themed.SearchBar)
   containerStyle={
     Object {

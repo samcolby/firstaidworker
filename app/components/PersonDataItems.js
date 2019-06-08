@@ -17,12 +17,7 @@ class PeopleDataItems extends PureComponent {
     const { name, picture } = this.props.person;
 
     return (
-      <ListItem
-        roundAvatar
-        hideChevron
-        avatar={picture && { uri: picture }}
-        title={name}
-      />
+      <ListItem roundAvatar avatar={picture && { uri: picture }} title={name} />
     );
   }
 }

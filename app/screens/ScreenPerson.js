@@ -44,8 +44,8 @@ class ScreenPerson extends React.Component {
             return (
               <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <PersonHeaderCard person={person} />
-                <ListItem hideChevron title={email} />
-                <ListItem hideChevron title={phone} />
+                <ListItem title={email} />
+                <ListItem title={phone} />
               </ScrollView>
             );
           }}
