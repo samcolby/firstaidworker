@@ -16,12 +16,13 @@ class Search extends PureComponent {
   static propTypes = {
     onCancel: PropTypes.func,
     onChangeText: PropTypes.func,
-    onClear: PropTypes.func
+    onClear: PropTypes.func,
+    value: PropTypes.string
   };
 
   constructor(props) {
     super(props);
-    this.state = { query: "" };
+    this.state = { query: props.value };
   }
 
   onChangeText = query => {

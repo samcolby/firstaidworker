@@ -13,6 +13,14 @@ describe("<Search /> component", () => {
     expect(component).toMatchSnapshot();
   });
 
+  it("handles the value prop", () => {
+    const testQuery = "Default query";
+    const component = shallow(<Search value={testQuery} />);
+
+    expect(component.prop("value")).toEqual(testQuery);
+    expect(component).toMatchSnapshot();
+  });
+
   it("handles onChangeText", () => {
     const onChangeText = jest.fn();
     const component = shallow(<Search onChangeText={onChangeText} />);

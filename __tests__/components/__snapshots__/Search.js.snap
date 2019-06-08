@@ -23,7 +23,6 @@ exports[`<Search /> component handles onCancel 1`] = `
   onChangeText={[Function]}
   placeholder="Search..."
   platform="ios"
-  value=""
 />
 `;
 
@@ -63,7 +62,20 @@ exports[`<Search /> component handles onClear 1`] = `
   }
   placeholder="Search..."
   platform="ios"
-  value=""
+/>
+`;
+
+exports[`<Search /> component handles the values prop 1`] = `
+<ForwardRef(Themed.SearchBar)
+  containerStyle={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+  onChangeText={[Function]}
+  placeholder="Search..."
+  platform="ios"
+  value="Default query"
 />
 `;
 
@@ -77,7 +89,6 @@ exports[`<Search /> component renders correctly 1`] = `
   onChangeText={[Function]}
   placeholder="Search..."
   platform="ios"
-  value=""
 />
 `;
 
