@@ -21,17 +21,26 @@ class Search extends PureComponent {
 
   constructor(props) {
     super(props);
+    this.state = { query: "" };
   }
+
+  onChangeText = query => {
+    this.setState({ query });
+    if (typeof this.props.onChangeText === "function") {
+      this.props.onChangeText(query);
+    }
+  };
 
   render() {
     return (
       <SearchBar
         containerStyle={styles.containerStyle}
-        onChangeText={this.props.onChangeText}
+        onChangeText={this.onChangeText}
         onClear={this.props.onClear}
         onCancel={this.props.onCancel}
         placeholder="Search..."
         platform={Platform.OS}
+        value={this.state.query}
       />
     );
   }

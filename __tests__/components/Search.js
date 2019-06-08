@@ -22,6 +22,18 @@ describe("<Search /> component", () => {
     expect(component).toMatchSnapshot();
   });
 
+  it("returns the correct onChangeText value", () => {
+    const onChangeText = jest.fn();
+    const testQuery = "My Query Is";
+
+    const component = shallow(<Search onChangeText={onChangeText} />);
+
+    component.simulate("changeText", testQuery);
+
+    expect(onChangeText).toHaveBeenCalledWith(testQuery);
+    expect(component).toMatchSnapshot();
+  });
+
   it("handles onClear", () => {
     const onClear = jest.fn();
     const component = shallow(<Search onClear={onClear} />);

@@ -20,8 +20,10 @@ exports[`<Search /> component handles onCancel 1`] = `
       ],
     }
   }
+  onChangeText={[Function]}
   placeholder="Search..."
   platform="ios"
+  value=""
 />
 `;
 
@@ -32,19 +34,7 @@ exports[`<Search /> component handles onChangeText 1`] = `
       "backgroundColor": "#fff",
     }
   }
-  onChangeText={
-    [MockFunction] {
-      "calls": Array [
-        Array [],
-      ],
-      "results": Array [
-        Object {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  onChangeText={[Function]}
   placeholder="Search..."
   platform="ios"
 />
@@ -57,6 +47,7 @@ exports[`<Search /> component handles onClear 1`] = `
       "backgroundColor": "#fff",
     }
   }
+  onChangeText={[Function]}
   onClear={
     [MockFunction] {
       "calls": Array [
@@ -72,6 +63,7 @@ exports[`<Search /> component handles onClear 1`] = `
   }
   placeholder="Search..."
   platform="ios"
+  value=""
 />
 `;
 
@@ -82,7 +74,23 @@ exports[`<Search /> component renders correctly 1`] = `
       "backgroundColor": "#fff",
     }
   }
+  onChangeText={[Function]}
   placeholder="Search..."
   platform="ios"
+  value=""
+/>
+`;
+
+exports[`<Search /> component returns the correct onChangeText value 1`] = `
+<ForwardRef(Themed.SearchBar)
+  containerStyle={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+  onChangeText={[Function]}
+  placeholder="Search..."
+  platform="ios"
+  value="My Query Is"
 />
 `;
