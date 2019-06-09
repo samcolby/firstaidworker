@@ -26,12 +26,12 @@ describe("<PersonListItem /> component", () => {
     expect(component).toMatchSnapshot();
   });
 
-  test("displays the person's name correctly", () => {
+  it("displays the person's name correctly", () => {
     const component = shallow(<PersonListItem person={testData} />);
     expect(component.prop("title")).toEqual(testData.name);
   });
 
-  test("displays the person's picture", () => {
+  it("displays the person's picture", () => {
     const component = shallow(<PersonListItem person={testData} />);
     expect(component.prop("leftAvatar").source.uri).toEqual(testData.picture);
   });
