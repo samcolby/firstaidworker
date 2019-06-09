@@ -11,9 +11,9 @@ import { BottomNavigator } from "./navigators";
 const AppContainer = createAppContainer(BottomNavigator);
 
 const apolloClient = new ApolloClient({
-  uri: env.uri,
+  uri: env.api_uri,
   headers: {
-    "x-hasura-access-key": env.hasura_access_key
+    [env.api_access_key_header]: env.api_access_key
   }
 });
 

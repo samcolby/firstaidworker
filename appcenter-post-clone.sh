@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # Generate env.json using App Center Environment variables
-echo "{\"uri\":\"$DEV_ENV_GRAPHQL_URI\",\"hasura_access_key\":\"$DEV_ENV_ACCESS_SECRET\"}" > $APPCENTER_SOURCE_DIRECTORY/env.json
+echo "{\"api_uri\":\"$DEV_API_URI\",\api_access_key_header\":\"$DEV_API_ACCESS_KEY_HEADER\",\api_access_key\":\"$DEV_API_ACCESS_KEY\"}" > $APPCENTER_SOURCE_DIRECTORY/env.json
