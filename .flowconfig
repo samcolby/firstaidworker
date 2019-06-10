@@ -19,6 +19,8 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+; stop all the annoying errors in the problems view
+.*/node_modules/.*
 [include]
 
 [libs]
