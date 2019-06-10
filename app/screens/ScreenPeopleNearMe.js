@@ -6,7 +6,7 @@ import { FlatList, SafeAreaView, Text } from "react-native";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import { PersonListItem, Search } from "../components";
+import { LoadingScreen, PersonListItem, Search } from "../components";
 
 import { COLOURS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
@@ -51,7 +51,7 @@ class ScreenPeopleNearMe extends React.Component {
           `}
         >
           {({ loading, error, data, refetch }) => {
-            if (loading) return <Text>Loading...</Text>;
+            if (loading) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
 
             return (

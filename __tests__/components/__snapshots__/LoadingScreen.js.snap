@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingScreen Component should render without issues 1`] = `
+<View>
+  <StatusBar
+    animated={false}
+    networkActivityIndicatorVisible={true}
+    showHideTransition="fade"
+  />
+  <ActivityIndicator
+    animating={true}
+    color="red"
+    hidesWhenStopped={true}
+    size="large"
+    style={
+      Object {
+        "marginTop": 20,
+      }
+    }
+  />
+</View>
+`;

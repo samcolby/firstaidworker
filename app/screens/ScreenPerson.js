@@ -7,7 +7,7 @@ import { ListItem } from "react-native-elements";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import { PersonHeaderCard } from "../components";
+import { LoadingScreen, PersonHeaderCard } from "../components";
 
 import { COLOURS, NAVIGATOR_PARAMS } from "../Constants";
 
@@ -35,7 +35,7 @@ class ScreenPerson extends React.Component {
           variables={{ id }}
         >
           {({ loading, error, data }) => {
-            if (loading) return <Text>Loading...</Text>;
+            if (loading) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
 
             const person = data.profile[0];
