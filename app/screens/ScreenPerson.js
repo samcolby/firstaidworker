@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, ScrollView, Text } from "react-native";
+import { SafeAreaView, Text } from "react-native";
+import { ScrollView } from "react-navigation";
 import { ListItem } from "react-native-elements";
 
 import { Query } from "react-apollo";

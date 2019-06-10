@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { FlatList, SafeAreaView, Text } from "react-native";
-
+import { SafeAreaView, Text } from "react-native";
+import { FlatList } from "react-navigation";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
