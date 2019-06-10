@@ -8,7 +8,7 @@ import { gql } from "apollo-boost";
 
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
-import { COLOURS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
+import { COLORS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
 // DUMMY DATA FOR TESTING WITH
 // import PEOPLE from "../testdata/people";
@@ -44,7 +44,7 @@ class ScreenPeopleNearMe extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <Query
           query={gql`
             ${QUERY_PEOPLE_NEAR_ME}

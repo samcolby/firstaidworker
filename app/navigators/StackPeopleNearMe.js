@@ -2,7 +2,7 @@ import { createStackNavigator } from "react-navigation";
 
 import { ScreenPeopleNearMe, ScreenPerson } from "../screens";
 
-import { COLOURS, ROUTES } from "../Constants";
+import { COLORS, ROUTES } from "../Constants";
 
 const StackPeopleNearMe = createStackNavigator(
   {
@@ -12,7 +12,7 @@ const StackPeopleNearMe = createStackNavigator(
   {
     initialRouteName: ROUTES.SCREEN.PEOPLE_NEAR_ME,
     navigationOptions: {
-      headerTintColor: COLOURS.NAV_HINTS
+      headerTintColor: COLORS.NAV_HINTS
     }
   }
 );

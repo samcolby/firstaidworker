@@ -18,10 +18,10 @@ const NAVIGATOR_PARAMS = {
   PERSON: "person"
 };
 
-const COLOURS = {
+const COLORS = {
   BACKGROUND: "#fff",
   TAB_HINTS: "red",
   NAV_HINTS: "#ff5454"
 };
 
-export { COLOURS, NAVIGATOR_PARAMS, ROUTES };
+export { COLORS, NAVIGATOR_PARAMS, ROUTES };

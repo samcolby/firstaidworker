@@ -9,7 +9,7 @@ import { gql } from "apollo-boost";
 
 import { PeopleMapMarkers } from "../components";
 
-import { COLOURS } from "../Constants";
+import { COLORS } from "../Constants";
 
 // DUMMY DATA FOR TESTING WITH
 // import PEOPLE from "../testdata/people";
@@ -40,7 +40,7 @@ class ScreenDetails extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <Query
           query={gql`
             ${QUERY_PEOPLE_FOR_MAP}

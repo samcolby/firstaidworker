@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 import { PersonHeaderCard, PersonProfileForm } from "../components";
 
-import { COLOURS } from "../Constants";
+import { COLORS } from "../Constants";
 
 // DUMMY DATA FOR TESTING WITH
 import PEOPLE from "../testdata/people";
@@ -26,7 +26,7 @@ class ScreenProfile extends PureComponent {
     const person = PEOPLE[2];
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <KeyboardAwareScrollView>
           <PersonHeaderCard person={person} />
           <PersonProfileForm person={person} />

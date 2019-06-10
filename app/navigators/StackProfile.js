@@ -2,7 +2,7 @@ import { createStackNavigator } from "react-navigation";
 
 import { ScreenProfile } from "../screens";
 
-import { COLOURS, ROUTES } from "../Constants";
+import { COLORS, ROUTES } from "../Constants";
 
 const StackProfile = createStackNavigator(
   {
@@ -11,7 +11,7 @@ const StackProfile = createStackNavigator(
   {
     initialRouteName: ROUTES.SCREEN.PROFILE,
     navigationOptions: {
-      headerTintColor: COLOURS.NAV_HINTS
+      headerTintColor: COLORS.NAV_HINTS
     }
   }
 );

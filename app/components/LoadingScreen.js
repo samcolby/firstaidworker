@@ -1,7 +1,7 @@
 import React from "react";
 import { ActivityIndicator, StatusBar, StyleSheet, View } from "react-native";
 
-import { COLOURS } from "../Constants";
+import { COLORS } from "../Constants";
 
 function LoadingScreen() {
   return (
@@ -10,7 +10,7 @@ function LoadingScreen() {
       <ActivityIndicator
         style={styles.activityIndicator}
         size="large"
-        color={COLOURS.TAB_HINTS}
+        color={COLORS.TAB_HINTS}
       />
     </View>
   );

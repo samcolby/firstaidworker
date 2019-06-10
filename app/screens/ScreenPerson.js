@@ -9,7 +9,7 @@ import { gql } from "apollo-boost";
 
 import { LoadingScreen, PersonHeaderCard } from "../components";
 
-import { COLOURS, NAVIGATOR_PARAMS } from "../Constants";
+import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
 
 import { QUERY_PERSON } from "../GraphQLQueries";
 
@@ -27,7 +27,7 @@ class ScreenPerson extends React.Component {
     const { id } = person;
 
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <Query
           query={gql`
             ${QUERY_PERSON}

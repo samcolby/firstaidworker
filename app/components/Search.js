@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Platform, StyleSheet } from "react-native";
 import { SearchBar } from "react-native-elements";
 
-import { COLOURS } from "../Constants";
+import { COLORS } from "../Constants";
 
 /**
  * React Pure Component for a search input control
@@ -49,7 +49,7 @@ class Search extends PureComponent {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    backgroundColor: COLOURS.BACKGROUND
+    backgroundColor: COLORS.BACKGROUND
   },
   inputStyle: {
     backgroundColor: "#eee"

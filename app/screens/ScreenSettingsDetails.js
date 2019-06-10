@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { SafeAreaView, Text, View } from "react-native";
 
-import { COLOURS } from "../Constants";
+import { COLORS } from "../Constants";
 
 class ScreenSettingsDetails extends React.Component {
   static propTypes = {
@@ -12,7 +12,7 @@ class ScreenSettingsDetails extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >

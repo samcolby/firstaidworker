@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, SafeAreaView, Text, View } from "react-native";
 
-import { COLOURS, ROUTES } from "../Constants";
+import { COLORS, ROUTES } from "../Constants";
 
 class SettingsScreen extends React.Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class SettingsScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLOURS.BACKGROUND }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >

@@ -8,7 +8,7 @@ import FontAwesomeicons from "react-native-vector-icons/FontAwesome5";
 
 import { ScreenMap } from "../screens";
 
-import { COLOURS, ROUTES } from "../Constants";
+import { COLORS, ROUTES } from "../Constants";
 
 import StackPeopleNearMe from "./StackPeopleNearMe";
 import StackProfile from "./StackProfile";
@@ -39,10 +39,10 @@ const BottomNavigator = createBottomTabNavigator(
         const { routeName } = navigation.state;
         return getTabIcon(routeName, focused, tintColor);
       },
-      headerTintColor: COLOURS.NAV_HINTS
+      headerTintColor: COLORS.NAV_HINTS
     }),
     tabBarOptions: {
-      activeTintColor: COLOURS.TAB_HINTS
+      activeTintColor: COLORS.TAB_HINTS
     }
   }
 );
