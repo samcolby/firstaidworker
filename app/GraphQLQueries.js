@@ -1,6 +1,8 @@
 const QUERY_PEOPLE_NEAR_ME = `
-  {
+  query Profile ($limit: Int, $offset: Int ) {
     profile (
+      limit: $limit,
+      offset: $offset,
       where: {
         is_active: {_eq: true}
       }

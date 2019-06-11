@@ -38,6 +38,23 @@ class ScreenPeopleNearMe extends React.Component {
     });
   };
 
+  handleOnEndReached = (fetchMore, data) => {
+    fetchMore({
+      variables: {
+        offset: data.profile.length
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult || fetchMoreResult.profile.length === 0) {
+          return prev;
+        }
+        return {
+          // Concatenate the new feed results after the old ones
+          profile: prev.profile.concat(fetchMoreResult.profile)
+        };
+      }
+    });
+  };
+
   renderItem = ({ item }) => (
     <PersonListItem person={item} onPress={this.onItemPress} />
   );
@@ -46,20 +63,24 @@ class ScreenPeopleNearMe extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <Query
+          fetchPolicy="cache-and-network"
           query={gql`
             ${QUERY_PEOPLE_NEAR_ME}
           `}
+          variables={{ limit: 200, offset: 0 }}
         >
-          {({ loading, error, data, refetch }) => {
-            if (loading) return <LoadingScreen />;
+          {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
+            if (loading && networkStatus < 3) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
 
             return (
               <FlatList
                 data={data.profile}
-                getItemLayout={this.getItemLayout}
                 keyExtractor={this.keyExtractor}
                 ListHeaderComponent={<Search />}
+                onEndReached={() => {
+                  this.handleOnEndReached(fetchMore, data);
+                }}
                 onRefresh={() => refetch()}
                 refreshing={data.networkStatus === 4}
                 renderItem={this.renderItem}
