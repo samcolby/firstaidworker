@@ -63,18 +63,18 @@ class ScreenPeopleNearMe extends React.Component {
       variables: {
         offset: data[this.state.gqlDataName].length
       },
-      updateQuery: (prev, { fetchMoreResult }) => {
+      updateQuery: (previousResult, { fetchMoreResult }) => {
         if (
           !fetchMoreResult ||
           fetchMoreResult[this.state.gqlDataName].length === 0
         ) {
-          return prev;
+          return previousResult;
         }
         return {
           // Concatenate the new feed results after the old ones
-          [this.state.gqlDataName]: prev[this.state.gqlDataName].concat(
-            fetchMoreResult[this.state.gqlDataName]
-          )
+          [this.state.gqlDataName]: previousResult[
+            this.state.gqlDataName
+          ].concat(fetchMoreResult[this.state.gqlDataName])
         };
       }
     });
