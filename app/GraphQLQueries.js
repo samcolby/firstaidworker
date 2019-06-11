@@ -16,8 +16,9 @@ const QUERY_PEOPLE_NEAR_ME = `
 `;
 
 const QUERY_PEOPLE_FOR_MAP = `
-  {
+query Profile ($limit: Int ) {
     profile (
+      limit: $limit,
       where: {
         is_active: {_eq: true}
       }

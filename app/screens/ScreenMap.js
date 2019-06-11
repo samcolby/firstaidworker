@@ -45,6 +45,7 @@ class ScreenDetails extends React.Component {
           query={gql`
             ${QUERY_PEOPLE_FOR_MAP}
           `}
+          variables={{ limit: 50 }}
         >
           {({ loading, error, data }) => {
             if (loading) return <Text>Loading...</Text>;
