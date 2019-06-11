@@ -23,6 +23,12 @@ const DEFAULT_QUERY_STATE = {
   gqlDataName: "profile"
 };
 
+const DEFAULT_SEARCH_STATE = {
+  isSearch: true,
+  gqlQuery: SEARCH_PEOPLE,
+  gqlDataName: "search_profile"
+};
+
 class ScreenPeopleNearMe extends React.Component {
   static propTypes = {
     navigation: PropTypes.object
@@ -87,11 +93,9 @@ class ScreenPeopleNearMe extends React.Component {
       this.setState(DEFAULT_QUERY_STATE);
     } else if (searchQuery.length > 2) {
       this.setState({
-        isSearch: true,
+        ...DEFAULT_SEARCH_STATE,
         searchQuery: searchQuery,
-        gqlQuery: SEARCH_PEOPLE,
-        gqlVariables: { searchquery: searchQuery },
-        gqlDataName: "search_profile"
+        gqlVariables: { searchquery: searchQuery }
       });
     }
   };
