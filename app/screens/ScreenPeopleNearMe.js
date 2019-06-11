@@ -6,14 +6,22 @@ import { FlatList } from "react-navigation";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import { LoadingScreen, PersonListItem, Search } from "../components";
+import { PersonListItem, Search } from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
 // DUMMY DATA FOR TESTING WITH
 // import PEOPLE from "../testdata/people";
 
-import { QUERY_PEOPLE_NEAR_ME } from "../GraphQLQueries";
+import { QUERY_PEOPLE_NEAR_ME, SEARCH_PEOPLE } from "../GraphQLQueries";
+
+const DEFAULT_QUERY_STATE = {
+  isSearch: false,
+  searchQuery: "",
+  gqlQuery: QUERY_PEOPLE_NEAR_ME,
+  gqlVariables: { limit: 200, offset: 0 },
+  gqlDataName: "profile"
+};
 
 class ScreenPeopleNearMe extends React.Component {
   static propTypes = {
@@ -23,6 +31,11 @@ class ScreenPeopleNearMe extends React.Component {
   static navigationOptions = {
     title: "Near me"
   };
+
+  constructor(props) {
+    super(props);
+    this.state = DEFAULT_QUERY_STATE;
+  }
 
   getItemLayout = (data, index) => ({
     length: 150,
@@ -39,24 +52,61 @@ class ScreenPeopleNearMe extends React.Component {
   };
 
   handleOnEndReached = (fetchMore, data) => {
+    if (this.state.isSearch) return;
     fetchMore({
       variables: {
-        offset: data.profile.length
+        offset: data[this.state.gqlDataName].length
       },
       updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult || fetchMoreResult.profile.length === 0) {
+        if (
+          !fetchMoreResult ||
+          fetchMoreResult[this.state.gqlDataName].length === 0
+        ) {
           return prev;
         }
         return {
           // Concatenate the new feed results after the old ones
-          profile: prev.profile.concat(fetchMoreResult.profile)
+          [this.state.gqlDataName]: prev[this.state.gqlDataName].concat(
+            fetchMoreResult[this.state.gqlDataName]
+          )
         };
       }
     });
   };
 
+  onClearSearch = () => {
+    this.setState(DEFAULT_QUERY_STATE);
+  };
+
+  onCancelSearch = () => {
+    this.setState(DEFAULT_QUERY_STATE);
+  };
+
+  onChangeSearchText = searchQuery => {
+    if (searchQuery.length === 0) {
+      this.setState(DEFAULT_QUERY_STATE);
+    } else if (searchQuery.length > 2) {
+      this.setState({
+        isSearch: true,
+        searchQuery: searchQuery,
+        gqlQuery: SEARCH_PEOPLE,
+        gqlVariables: { searchquery: searchQuery },
+        gqlDataName: "search_profile"
+      });
+    }
+  };
+
   renderItem = ({ item }) => (
     <PersonListItem person={item} onPress={this.onItemPress} />
+  );
+
+  renderHeader = () => (
+    <Search
+      onCancel={this.onCancelSearch}
+      onChangeText={this.onChangeSearchText}
+      onClear={this.onClearSearch}
+      value={this.state.searchQuery}
+    />
   );
 
   render() {
@@ -65,19 +115,27 @@ class ScreenPeopleNearMe extends React.Component {
         <Query
           fetchPolicy="cache-and-network"
           query={gql`
-            ${QUERY_PEOPLE_NEAR_ME}
+            ${this.state.gqlQuery}
           `}
-          variables={{ limit: 200, offset: 0 }}
+          variables={this.state.gqlVariables}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
-            if (loading && networkStatus < 3) return <LoadingScreen />;
+            // if (loading && networkStatus < 3) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
 
             return (
               <FlatList
-                data={data.profile}
+                data={data[this.state.gqlDataName]}
+                keyboardShouldPersistTaps="handled"
                 keyExtractor={this.keyExtractor}
-                ListHeaderComponent={<Search />}
+                ListHeaderComponent={
+                  <Search
+                    onCancel={this.onCancelSearch}
+                    onChangeText={this.onChangeSearchText}
+                    onClear={this.onClearSearch}
+                    value={this.state.searchQuery}
+                  />
+                }
                 onEndReached={() => {
                   this.handleOnEndReached(fetchMore, data);
                 }}

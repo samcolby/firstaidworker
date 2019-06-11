@@ -1,5 +1,5 @@
 const QUERY_PEOPLE_NEAR_ME = `
-  query Profile ($limit: Int, $offset: Int ) {
+  query Profile ($limit: Int, $offset: Int) {
     profile (
       limit: $limit,
       offset: $offset,
@@ -54,4 +54,22 @@ const QUERY_PERSON = `
     }
   }
 `;
-export { QUERY_PEOPLE_NEAR_ME, QUERY_PEOPLE_FOR_MAP, QUERY_PERSON };
+
+const SEARCH_PEOPLE = `
+  query ($searchquery: String!) {
+    search_profile(
+      args: {search: $searchquery}
+    ){
+      id
+      name
+      job_title
+      picture
+    }
+  }
+`;
+export {
+  QUERY_PEOPLE_NEAR_ME,
+  QUERY_PEOPLE_FOR_MAP,
+  QUERY_PERSON,
+  SEARCH_PEOPLE
+};

@@ -36,9 +36,9 @@ class Search extends PureComponent {
     return (
       <SearchBar
         containerStyle={styles.containerStyle}
+        onCancel={this.props.onCancel}
         onChangeText={this.onChangeText}
         onClear={this.props.onClear}
-        onCancel={this.props.onCancel}
         placeholder="Search..."
         platform={Platform.OS}
         value={this.state.query}
