@@ -128,14 +128,7 @@ class ScreenPeopleNearMe extends React.Component {
                 data={data[this.state.gqlDataName]}
                 keyboardShouldPersistTaps="handled"
                 keyExtractor={this.keyExtractor}
-                ListHeaderComponent={
-                  <Search
-                    onCancel={this.onCancelSearch}
-                    onChangeText={this.onChangeSearchText}
-                    onClear={this.onClearSearch}
-                    value={this.state.searchQuery}
-                  />
-                }
+                ListHeaderComponent={this.renderHeader}
                 onEndReached={() => {
                   this.handleOnEndReached(fetchMore, data);
                 }}
