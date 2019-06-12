@@ -57,26 +57,28 @@ class ScreenPeopleNearMe extends React.Component {
     });
   };
 
-  handleOnEndReached = (fetchMore, data) => {
+  fetchMoreUpdateQuery = (previousResult, { fetchMoreResult }) => {
+    if (
+      !fetchMoreResult ||
+      fetchMoreResult[this.state.gqlDataName].length === 0
+    ) {
+      return previousResult;
+    }
+    return {
+      // Concatenate the new feed results after the old ones
+      [this.state.gqlDataName]: previousResult[this.state.gqlDataName].concat(
+        fetchMoreResult[this.state.gqlDataName]
+      )
+    };
+  };
+
+  onEndReached = (fetchMore, data) => {
     if (this.state.isSearch) return;
     fetchMore({
       variables: {
         offset: data[this.state.gqlDataName].length
       },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (
-          !fetchMoreResult ||
-          fetchMoreResult[this.state.gqlDataName].length === 0
-        ) {
-          return previousResult;
-        }
-        return {
-          // Concatenate the new feed results after the old ones
-          [this.state.gqlDataName]: previousResult[
-            this.state.gqlDataName
-          ].concat(fetchMoreResult[this.state.gqlDataName])
-        };
-      }
+      updateQuery: this.fetchMoreUpdateQuery
     });
   };
 
@@ -134,9 +136,9 @@ class ScreenPeopleNearMe extends React.Component {
                 keyExtractor={this.keyExtractor}
                 ListHeaderComponent={this.renderHeader}
                 onEndReached={() => {
-                  this.handleOnEndReached(fetchMore, data);
+                  this.onEndReached(fetchMore, data);
                 }}
-                onRefresh={() => refetch()}
+                onRefresh={refetch}
                 refreshing={data.networkStatus === 4}
                 renderItem={this.renderItem}
               />
