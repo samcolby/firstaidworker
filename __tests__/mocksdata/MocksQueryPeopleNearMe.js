@@ -55,6 +55,19 @@ const mocksForQueryPeopleNearMe = [
   }
 ];
 
+const mocksForQueryPeopleNearMeError = [
+  {
+    request: {
+      query: QUERY_PEOPLE_NEAR_ME,
+      variables: {
+        limit: 200,
+        offset: 0
+      }
+    },
+    error: new Error("ERROR!")
+  }
+];
+
 const mocksForSearchPeople = [
   {
     request: {
@@ -108,4 +121,21 @@ const mocksForSearchPeople = [
   }
 ];
 
-export { mocksForQueryPeopleNearMe, mocksForSearchPeople };
+const mocksForSearchPeopleError = [
+  {
+    request: {
+      query: SEARCH_PEOPLE,
+      variables: {
+        searchquery: "DummyQuery"
+      }
+    },
+    error: new Error("ERROR!")
+  }
+];
+
+export {
+  mocksForQueryPeopleNearMe,
+  mocksForQueryPeopleNearMeError,
+  mocksForSearchPeople,
+  mocksForSearchPeopleError
+};

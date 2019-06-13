@@ -13,7 +13,9 @@ import QueryPeopleNearMe, {
 
 import {
   mocksForQueryPeopleNearMe,
-  mocksForSearchPeople
+  mocksForQueryPeopleNearMeError,
+  mocksForSearchPeople,
+  mocksForSearchPeopleError
 } from "../mocksdata/MocksQueryPeopleNearMe";
 
 describe("<QueryPeopleNearMe queryType={query}/> component", () => {
@@ -81,6 +83,35 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
 
     expect(component).toMatchSnapshot();
   });
+
+  it("Throws errors", async () => {
+    const component = renderer.create(
+      <MockedProvider
+        mocks={mocksForQueryPeopleNearMeError}
+        addTypename={false}
+      >
+        <QueryPeopleNearMe
+          queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
+          searchQuery=""
+        >
+          {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
+            if (error) {
+              return <Text>ERROR!</Text>;
+            } else if (loading) {
+              return <Text>loading</Text>;
+            } else {
+              return <Text>{JSON.stringify(data.profile)}</Text>;
+            }
+          }}
+        </QueryPeopleNearMe>
+      </MockedProvider>
+    );
+
+    await wait(0); // wait for response
+
+    const p = component.root.findByType("Text");
+    expect(p.children[0]).toContain("ERROR!");
+  });
 });
 
 describe("<QueryPeopleNearMe queryType={search}/> component", () => {
@@ -147,5 +178,31 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
     expect(JSON.parse(p.children)[0].name).toEqual("Maryellen Baxter");
 
     expect(component).toMatchSnapshot();
+  });
+
+  it("Throws errors", async () => {
+    const component = renderer.create(
+      <MockedProvider mocks={mocksForSearchPeopleError} addTypename={false}>
+        <QueryPeopleNearMe
+          queryType={QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH}
+          searchQuery="DummyQuery"
+        >
+          {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
+            if (error) {
+              return <Text>ERROR!</Text>;
+            } else if (loading) {
+              return <Text>loading</Text>;
+            } else {
+              return <Text>{JSON.stringify(data.search_profile)}</Text>;
+            }
+          }}
+        </QueryPeopleNearMe>
+      </MockedProvider>
+    );
+
+    await wait(0);
+
+    const p = component.root.findByType("Text");
+    expect(p.children[0]).toContain("ERROR!");
   });
 });
