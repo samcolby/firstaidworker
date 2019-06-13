@@ -5,8 +5,6 @@ import renderer from "react-test-renderer";
 
 import { MockedProvider } from "react-apollo/test-utils";
 
-import { gql } from "apollo-boost";
-
 import wait from "waait";
 
 import QueryPeopleNearMe, {
@@ -16,17 +14,10 @@ import QueryPeopleNearMe, {
 // Generate the GQL queries used in this component
 import { QUERY_PEOPLE_NEAR_ME, SEARCH_PEOPLE } from "../../app/GraphQLQueries";
 
-const GQL_QUERY = gql`
-  ${QUERY_PEOPLE_NEAR_ME}
-`;
-const GQL_SEARCH = gql`
-  ${SEARCH_PEOPLE}
-`;
-
 const mocks_for_query = [
   {
     request: {
-      query: GQL_QUERY,
+      query: QUERY_PEOPLE_NEAR_ME,
       variables: {
         limit: 200,
         offset: 0

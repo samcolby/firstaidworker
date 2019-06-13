@@ -1,11 +1,11 @@
-const QUERY_PEOPLE_NEAR_ME = `
-  query Profile ($limit: Int, $offset: Int) {
-    profile (
-      limit: $limit,
-      offset: $offset,
-      where: {
-        is_active: {_eq: true}
-      }
+import { gql } from "apollo-boost";
+
+const QUERY_PEOPLE_NEAR_ME = gql`
+  query Profile($limit: Int, $offset: Int) {
+    profile(
+      limit: $limit
+      offset: $offset
+      where: { is_active: { _eq: true } }
     ) {
       id
       name
@@ -15,14 +15,9 @@ const QUERY_PEOPLE_NEAR_ME = `
   }
 `;
 
-const QUERY_PEOPLE_FOR_MAP = `
-query Profile ($limit: Int ) {
-    profile (
-      limit: $limit,
-      where: {
-        is_active: {_eq: true}
-      }
-    ) {
+const QUERY_PEOPLE_FOR_MAP = gql`
+  query Profile($limit: Int) {
+    profile(limit: $limit, where: { is_active: { _eq: true } }) {
       id
       name
       job_title
@@ -33,14 +28,9 @@ query Profile ($limit: Int ) {
   }
 `;
 
-const QUERY_PERSON = `
-  query ($id: uuid!) {
-    profile (
-      where: {
-        id: {_eq: $id}
-      },
-      distinct_on: id
-    ) {
+const QUERY_PERSON = gql`
+  query($id: uuid!) {
+    profile(where: { id: { _eq: $id } }, distinct_on: id) {
       id
       name
       job_title
@@ -55,11 +45,9 @@ const QUERY_PERSON = `
   }
 `;
 
-const SEARCH_PEOPLE = `
-  query ($searchquery: String!) {
-    search_profile(
-      args: {search: $searchquery}
-    ){
+const SEARCH_PEOPLE = gql`
+  query($searchquery: String!) {
+    search_profile(args: { search: $searchquery }) {
       id
       name
       job_title

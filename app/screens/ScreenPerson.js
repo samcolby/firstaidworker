@@ -6,7 +6,6 @@ import { ScrollView } from "react-navigation";
 import { ListItem } from "react-native-elements";
 
 import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
 
 import { LoadingScreen, PersonHeaderCard } from "../components";
 
@@ -29,12 +28,7 @@ class ScreenPerson extends React.Component {
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <Query
-          query={gql`
-            ${QUERY_PERSON}
-          `}
-          variables={{ id }}
-        >
+        <Query query={QUERY_PERSON} variables={{ id }}>
           {({ loading, error, data }) => {
             if (loading) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;

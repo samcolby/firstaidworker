@@ -2,17 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
 
 // Generate the GQL queries used in this component
 import { QUERY_PEOPLE_NEAR_ME, SEARCH_PEOPLE } from "../GraphQLQueries";
-
-const GQL_QUERY = gql`
-  ${QUERY_PEOPLE_NEAR_ME}
-`;
-const GQL_SEARCH = gql`
-  ${SEARCH_PEOPLE}
-`;
 
 /**
  * Object containing the different queryTypes that can be used
@@ -33,12 +25,12 @@ const QUERY_PEOPLE_NEAR_ME_TYPE = {
 function getQueryConfig(queryType, searchQuery) {
   if (queryType === QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH) {
     return {
-      gqlQuery: GQL_SEARCH,
+      gqlQuery: SEARCH_PEOPLE,
       gqlVariables: { searchquery: searchQuery }
     };
   } else {
     return {
-      gqlQuery: GQL_QUERY,
+      gqlQuery: QUERY_PEOPLE_NEAR_ME,
       gqlVariables: { limit: 200, offset: 0 }
     };
   }

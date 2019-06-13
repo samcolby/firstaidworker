@@ -5,7 +5,6 @@ import { SafeAreaView, StyleSheet, Text } from "react-native";
 import MapView from "react-native-maps";
 
 import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
 
 import { PeopleMapMarkers } from "../components";
 
@@ -41,12 +40,7 @@ class ScreenDetails extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <Query
-          query={gql`
-            ${QUERY_PEOPLE_FOR_MAP}
-          `}
-          variables={{ limit: 50 }}
-        >
+        <Query query={QUERY_PEOPLE_FOR_MAP} variables={{ limit: 50 }}>
           {({ loading, error, data }) => {
             if (loading) return <Text>Loading...</Text>;
             if (error) return <Text>Error :(</Text>;
