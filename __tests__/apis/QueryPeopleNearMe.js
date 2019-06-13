@@ -49,7 +49,7 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
     );
 
     const p = component.root.findByType("Text");
-    expect(JSON.stringify(p.children).includes("Loading")).toBe(true);
+    expect(p.children[0]).toEqual("Loading");
 
     expect(component).toMatchSnapshot();
   });
@@ -77,7 +77,7 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
     await wait(0);
 
     const p = component.root.findByType("Text");
-    expect(JSON.stringify(p.children).includes("Kaitlin Burnett")).toBe(true);
+    expect(JSON.parse(p.children)[0].name).toEqual("Kaitlin Burnett");
 
     expect(component).toMatchSnapshot();
   });
@@ -116,7 +116,7 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
     );
 
     const p = component.root.findByType("Text");
-    expect(JSON.stringify(p.children).includes("Loading")).toBe(true);
+    expect(p.children[0]).toEqual("Loading");
 
     expect(component).toMatchSnapshot();
   });
@@ -144,7 +144,7 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
     await wait(0);
 
     const p = component.root.findByType("Text");
-    expect(JSON.stringify(p.children).includes("Maryellen Baxter")).toBe(true);
+    expect(JSON.parse(p.children)[0].name).toEqual("Maryellen Baxter");
 
     expect(component).toMatchSnapshot();
   });
