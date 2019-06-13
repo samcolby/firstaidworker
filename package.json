@@ -55,7 +55,8 @@
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "<rootDir>/__tests__/setup.js"
+      "<rootDir>/__tests__/setup.js",
+      "<rootDir>/__tests__/mocksdata/*"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native)"

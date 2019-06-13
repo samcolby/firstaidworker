@@ -46,7 +46,7 @@ const QUERY_PERSON = gql`
 `;
 
 const SEARCH_PEOPLE = gql`
-  query($searchquery: String!) {
+  query Search($searchquery: String!) {
     search_profile(args: { search: $searchquery }) {
       id
       name
@@ -55,6 +55,7 @@ const SEARCH_PEOPLE = gql`
     }
   }
 `;
+
 export {
   QUERY_PEOPLE_NEAR_ME,
   QUERY_PEOPLE_FOR_MAP,
