@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet, Text } from "react-native";
 import MapView from "react-native-maps";
 
 import { Query } from "react-apollo";
@@ -40,22 +40,29 @@ class ScreenDetails extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <Query query={QUERY_PEOPLE_FOR_MAP} variables={{ limit: 50 }}>
-          {({ loading, error, data }) => {
-            if (loading) return <Text>Loading...</Text>;
-            if (error) return <Text>Error :(</Text>;
+        <MapView
+          style={styles.map}
+          region={this.state.region}
+          onRegionChange={this.onRegionChange}
+        >
+          <Query query={QUERY_PEOPLE_FOR_MAP} variables={{ limit: 50 }}>
+            {({ loading, error, data, networkStatus }) => {
+              if (loading) return null;
+              if (error) return <Text>Error :(</Text>;
 
-            return (
-              <MapView
-                style={styles.map}
-                region={this.state.region}
-                onRegionChange={this.onRegionChange}
-              >
-                <PeopleMapMarkers people={data.profile} />
-              </MapView>
-            );
-          }}
-        </Query>
+              return (
+                <>
+                  <StatusBar
+                    networkActivityIndicatorVisible={
+                      loading || networkStatus < 7
+                    }
+                  />
+                  <PeopleMapMarkers people={data.profile} />
+                </>
+              );
+            }}
+          </Query>
+        </MapView>
       </SafeAreaView>
     );
   }
