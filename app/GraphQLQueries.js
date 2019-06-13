@@ -1,5 +1,9 @@
 import { gql } from "apollo-boost";
 
+/**
+ * GraphQL query to get the list of people nearest the user
+ * Used by the QueryPeopleNearMe component
+ */
 const QUERY_PEOPLE_NEAR_ME = gql`
   query Profile($limit: Int, $offset: Int) {
     profile(
@@ -45,6 +49,10 @@ const QUERY_PERSON = gql`
   }
 `;
 
+/**
+ * GraphQL query to search for active people
+ * Used by the QueryPeopleNearMe component
+ */
 const SEARCH_PEOPLE = gql`
   query Search($searchquery: String!) {
     search_profile(args: { search: $searchquery }) {
