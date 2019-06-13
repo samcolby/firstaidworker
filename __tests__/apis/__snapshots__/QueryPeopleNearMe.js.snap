@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QueryPeopleNearMe queryType={query}/> component Renders data correctly 1`] = `
+<Text>
+  [{"id":"9f47bfa4-892e-4abd-8a18-0576f8759051","name":"Kaitlin Burnett","job_title":"Marketing","picture":"https://randomuser.me/api/portraits/women/17.jpg"},{"id":"0b8a6373-4530-41d7-87a9-435552dfa334","name":"Sargent Bush","job_title":"Sales","picture":"https://randomuser.me/api/portraits/men/32.jpg"},{"id":"54f58dfd-3f17-427c-b1d1-74c26a77f700","name":"Key Whitley","job_title":"Michael Jackson Impersonator","picture":"https://randomuser.me/api/portraits/women/45.jpg"}]
+</Text>
+`;
+
+exports[`<QueryPeopleNearMe queryType={query}/> component Renders loading correctly 1`] = `
+<Text>
+  loading
+</Text>
+`;

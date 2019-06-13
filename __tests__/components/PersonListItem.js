@@ -1,6 +1,4 @@
-// __tests__/Intro-test.js
 import React from "react";
-
 import { shallow } from "enzyme";
 
 import PersonListItem from "../../app/components/PersonListItem";
