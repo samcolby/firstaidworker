@@ -3,30 +3,19 @@ import PropTypes from "prop-types";
 
 import { SafeAreaView, StatusBar, Text } from "react-native";
 import { FlatList } from "react-navigation";
-import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
 
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
+import QueryPeopleNearMe, {
+  QUERY_PEOPLE_NEAR_ME_TYPE
+} from "../apis/QueryPeopleNearMe";
+
 import { COLORS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
-// DUMMY DATA FOR TESTING WITH
-// import PEOPLE from "../testdata/people";
-
-import { QUERY_PEOPLE_NEAR_ME, SEARCH_PEOPLE } from "../GraphQLQueries";
-
 const DEFAULT_QUERY_STATE = {
-  isSearch: false,
-  searchQuery: "",
-  gqlQuery: QUERY_PEOPLE_NEAR_ME,
-  gqlVariables: { limit: 200, offset: 0 },
-  gqlDataName: "profile"
-};
-
-const DEFAULT_SEARCH_STATE = {
-  isSearch: true,
-  gqlQuery: SEARCH_PEOPLE,
-  gqlDataName: "search_profile"
+  dataArrayName: "profile",
+  queryType: QUERY_PEOPLE_NEAR_ME_TYPE.QUERY,
+  searchQuery: ""
 };
 
 class ScreenPeopleNearMe extends React.Component {
@@ -59,28 +48,29 @@ class ScreenPeopleNearMe extends React.Component {
     });
   };
 
-  fetchMoreUpdateQuery = (previousResult, { fetchMoreResult }) => {
-    if (
-      !fetchMoreResult ||
-      fetchMoreResult[this.state.gqlDataName].length === 0
-    ) {
-      return previousResult;
-    }
-    return {
-      // Concatenate the new feed results after the old ones
-      [this.state.gqlDataName]: previousResult[this.state.gqlDataName].concat(
-        fetchMoreResult[this.state.gqlDataName]
-      )
-    };
-  };
-
   onEndReached = (fetchMore, data) => {
-    if (this.state.isSearch) return;
+    if (this.state.queryType === QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH) {
+      return;
+    }
+
     fetchMore({
       variables: {
-        offset: data[this.state.gqlDataName].length
+        offset: data[this.state.dataArrayName].length
       },
-      updateQuery: this.fetchMoreUpdateQuery
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (
+          !fetchMoreResult ||
+          fetchMoreResult[this.state.dataArrayName].length === 0
+        ) {
+          return previousResult;
+        }
+        return {
+          // Concatenate the new feed results after the old ones
+          [this.state.dataArrayName]: previousResult[
+            this.state.dataArrayName
+          ].concat(fetchMoreResult[this.state.dataArrayName])
+        };
+      }
     });
   };
 
@@ -97,9 +87,9 @@ class ScreenPeopleNearMe extends React.Component {
       this.setState(DEFAULT_QUERY_STATE);
     } else if (searchQuery.length > 2) {
       this.setState({
-        ...DEFAULT_SEARCH_STATE,
-        searchQuery: searchQuery,
-        gqlVariables: { searchquery: searchQuery }
+        dataArrayName: "search_profile",
+        queryType: QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH,
+        searchQuery: searchQuery
       });
     }
   };
@@ -120,12 +110,9 @@ class ScreenPeopleNearMe extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <Query
-          fetchPolicy="cache-and-network"
-          query={gql`
-            ${this.state.gqlQuery}
-          `}
-          variables={this.state.gqlVariables}
+        <QueryPeopleNearMe
+          queryType={this.state.queryType}
+          searchQuery={this.state.searchQuery}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (this.firstLoad && loading) {
@@ -133,6 +120,7 @@ class ScreenPeopleNearMe extends React.Component {
             } else {
               this.firstLoad = false;
             }
+
             if (error) return <Text>Error :(</Text>;
 
             return (
@@ -141,7 +129,7 @@ class ScreenPeopleNearMe extends React.Component {
                   networkActivityIndicatorVisible={loading || networkStatus < 7}
                 />
                 <FlatList
-                  data={data[this.state.gqlDataName]}
+                  data={data[this.state.dataArrayName]}
                   keyboardShouldPersistTaps="handled"
                   keyExtractor={this.keyExtractor}
                   ListHeaderComponent={this.renderHeader}
@@ -155,7 +143,7 @@ class ScreenPeopleNearMe extends React.Component {
               </>
             );
           }}
-        </Query>
+        </QueryPeopleNearMe>
       </SafeAreaView>
     );
   }
