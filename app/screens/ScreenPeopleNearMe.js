@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, StatusBar, Text } from "react-native";
 import { FlatList } from "react-navigation";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import { PersonListItem, Search } from "../components";
+import { LoadingScreen, PersonListItem, Search } from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
@@ -37,6 +37,8 @@ class ScreenPeopleNearMe extends React.Component {
   static navigationOptions = {
     title: "Near me"
   };
+
+  firstLoad = true;
 
   constructor(props) {
     super(props);
@@ -126,22 +128,31 @@ class ScreenPeopleNearMe extends React.Component {
           variables={this.state.gqlVariables}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
-            // if (loading && networkStatus < 3) return <LoadingScreen />;
+            if (this.firstLoad && loading) {
+              return <LoadingScreen />;
+            } else {
+              this.firstLoad = false;
+            }
             if (error) return <Text>Error :(</Text>;
 
             return (
-              <FlatList
-                data={data[this.state.gqlDataName]}
-                keyboardShouldPersistTaps="handled"
-                keyExtractor={this.keyExtractor}
-                ListHeaderComponent={this.renderHeader}
-                onEndReached={() => {
-                  this.onEndReached(fetchMore, data);
-                }}
-                onRefresh={refetch}
-                refreshing={data.networkStatus === 4}
-                renderItem={this.renderItem}
-              />
+              <>
+                <StatusBar
+                  networkActivityIndicatorVisible={loading || networkStatus < 7}
+                />
+                <FlatList
+                  data={data[this.state.gqlDataName]}
+                  keyboardShouldPersistTaps="handled"
+                  keyExtractor={this.keyExtractor}
+                  ListHeaderComponent={this.renderHeader}
+                  onEndReached={() => {
+                    this.onEndReached(fetchMore, data);
+                  }}
+                  onRefresh={refetch}
+                  refreshing={data.networkStatus === 4}
+                  renderItem={this.renderItem}
+                />
+              </>
             );
           }}
         </Query>
