@@ -7,23 +7,25 @@ import { MockedProvider } from "react-apollo/test-utils";
 
 import wait from "waait";
 
-import QueryPeopleForMap from "../../app/apis/QueryPeopleForMap";
+import QueryPerson from "../../app/apis/QueryPerson";
 
 import {
-  mocksForQueryPeopleForMap,
-  mocksForQueryPeopleForMapError
-} from "../mocksdata/MocksQueryPeopleForMap";
+  mocksForQueryPerson,
+  mocksForQueryPersonError
+} from "../mocksdata/MocksQueryPerson";
 
-describe("<QueryPeopleForMap /> component", () => {
+const ID = "54f58dfd-3f17-427c-b1d1-74c26a77f700";
+
+describe("<QueryPerson /> component", () => {
   it("Renders correctly", () => {
-    const component = shallow(<QueryPeopleForMap />);
+    const component = shallow(<QueryPerson />);
     expect(component.length).toBe(1);
   });
 
   it("Renders loading correctly", () => {
     const component = renderer.create(
-      <MockedProvider mocks={mocksForQueryPeopleForMap} addTypename={false}>
-        <QueryPeopleForMap>
+      <MockedProvider mocks={mocksForQueryPerson} addTypename={false}>
+        <QueryPerson id={ID}>
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
               return <Text>error</Text>;
@@ -33,7 +35,7 @@ describe("<QueryPeopleForMap /> component", () => {
               return <Text>{JSON.stringify(data.profile)}</Text>;
             }
           }}
-        </QueryPeopleForMap>
+        </QueryPerson>
       </MockedProvider>
     );
 
@@ -44,8 +46,8 @@ describe("<QueryPeopleForMap /> component", () => {
 
   it("Renders data correctly", async () => {
     const component = renderer.create(
-      <MockedProvider mocks={mocksForQueryPeopleForMap} addTypename={false}>
-        <QueryPeopleForMap>
+      <MockedProvider mocks={mocksForQueryPerson} addTypename={false}>
+        <QueryPerson id={ID}>
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
               return <Text>Error: {JSON.stringify(error)}</Text>;
@@ -55,27 +57,22 @@ describe("<QueryPeopleForMap /> component", () => {
               return <Text>{JSON.stringify(data.profile)}</Text>;
             }
           }}
-        </QueryPeopleForMap>
+        </QueryPerson>
       </MockedProvider>
     );
 
     await wait(0);
 
     const textComponent = component.root.findByType("Text");
-    expect(JSON.parse(textComponent.children)[0].name).toEqual(
-      "Kaitlin Burnett"
-    );
+    expect(JSON.parse(textComponent.children)[0].name).toEqual("Key Whitley");
 
     expect(component).toMatchSnapshot();
   });
 
   it("Throws errors", async () => {
     const component = renderer.create(
-      <MockedProvider
-        mocks={mocksForQueryPeopleForMapError}
-        addTypename={false}
-      >
-        <QueryPeopleForMap>
+      <MockedProvider mocks={mocksForQueryPersonError} addTypename={false}>
+        <QueryPerson id={ID}>
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
               return <Text>ERROR!</Text>;
@@ -85,7 +82,7 @@ describe("<QueryPeopleForMap /> component", () => {
               return <Text>{JSON.stringify(data.profile)}</Text>;
             }
           }}
-        </QueryPeopleForMap>
+        </QueryPerson>
       </MockedProvider>
     );
 

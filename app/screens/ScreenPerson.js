@@ -5,13 +5,11 @@ import { SafeAreaView, Text } from "react-native";
 import { ScrollView } from "react-navigation";
 import { ListItem } from "react-native-elements";
 
-import { Query } from "react-apollo";
+import QueryPerson from "../apis/QueryPerson";
 
 import { LoadingScreen, PersonHeaderCard } from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
-
-import { QUERY_PERSON } from "../GraphQLQueries";
 
 class ScreenPerson extends React.Component {
   static propTypes = {
@@ -28,7 +26,7 @@ class ScreenPerson extends React.Component {
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <Query query={QUERY_PERSON} variables={{ id }}>
+        <QueryPerson id={id}>
           {({ loading, error, data }) => {
             if (loading) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
@@ -44,7 +42,7 @@ class ScreenPerson extends React.Component {
               </ScrollView>
             );
           }}
-        </Query>
+        </QueryPerson>
       </SafeAreaView>
     );
   }
