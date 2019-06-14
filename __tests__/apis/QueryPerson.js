@@ -18,7 +18,7 @@ const ID = "54f58dfd-3f17-427c-b1d1-74c26a77f700";
 
 describe("<QueryPerson /> component", () => {
   it("Renders correctly", () => {
-    const component = shallow(<QueryPerson />);
+    const component = shallow(<QueryPerson id={ID} />);
     expect(component.length).toBe(1);
   });
 
