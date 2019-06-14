@@ -65,7 +65,7 @@ function QueryPeopleNearMe({ children, queryType, searchQuery }) {
 }
 
 QueryPeopleNearMe.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.func,
   queryType: PropTypes.number.isRequired,
   searchQuery: PropTypes.string.isRequired
 };

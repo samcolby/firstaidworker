@@ -22,7 +22,7 @@ function QueryPerson({ children, id }) {
 }
 
 QueryPerson.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.func,
   id: PropTypes.string.isRequired
 };
 

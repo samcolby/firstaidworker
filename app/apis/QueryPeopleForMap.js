@@ -22,7 +22,7 @@ function QueryPeopleForMap({ children }) {
 }
 
 QueryPeopleForMap.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.func
 };
 
 export default QueryPeopleForMap;
