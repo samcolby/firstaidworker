@@ -57,9 +57,7 @@ function QueryPeopleNearMe({ children, queryType, searchQuery }) {
       query={config.gqlQuery}
       variables={config.gqlVariables}
     >
-      {props => {
-        return children(props);
-      }}
+      {props => children(props)}
     </Query>
   );
 }

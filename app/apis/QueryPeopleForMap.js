@@ -14,9 +14,7 @@ import { QUERY_PEOPLE_FOR_MAP } from "../GraphQLQueries";
 function QueryPeopleForMap({ children }) {
   return (
     <Query query={QUERY_PEOPLE_FOR_MAP} variables={{ limit: 50 }}>
-      {props => {
-        return children(props);
-      }}
+      {props => children(props)}
     </Query>
   );
 }

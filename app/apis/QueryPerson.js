@@ -14,9 +14,7 @@ import { QUERY_PERSON } from "../GraphQLQueries";
 function QueryPerson({ children, id }) {
   return (
     <Query query={QUERY_PERSON} variables={{ id }}>
-      {props => {
-        return children(props);
-      }}
+      {props => children(props)}
     </Query>
   );
 }
