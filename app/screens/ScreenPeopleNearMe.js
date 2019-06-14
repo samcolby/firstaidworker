@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { RefreshControl, SafeAreaView, StatusBar, Text } from "react-native";
 import { FlatList } from "react-navigation";
 
+import _ from "lodash";
+
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
 import QueryPeopleNearMe, {
@@ -64,11 +66,16 @@ class ScreenPeopleNearMe extends React.Component {
         ) {
           return previousResult;
         }
+        // Concatenate the new feed results after the old ones
+        let updatedData = previousResult[this.state.dataArrayName].concat(
+          fetchMoreResult[this.state.dataArrayName]
+        );
+
+        // As this comes via pagination, we need to remove any
+        // duplicates that may occur
+        updatedData = _.uniqBy(updatedData, "id");
         return {
-          // Concatenate the new feed results after the old ones
-          [this.state.dataArrayName]: previousResult[
-            this.state.dataArrayName
-          ].concat(fetchMoreResult[this.state.dataArrayName])
+          [this.state.dataArrayName]: updatedData
         };
       }
     });
