@@ -20,7 +20,10 @@ class ScreenProfile extends PureComponent {
     super(props);
   }
 
-  static navigationOptions = { title: "My Profile" };
+  static navigationOptions = {
+    title: "My Profile",
+    headerTintColor: COLORS.NAV_HINTS
+  };
 
   render() {
     const person = PEOPLE[2];

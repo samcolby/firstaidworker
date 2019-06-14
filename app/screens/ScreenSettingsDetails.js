@@ -11,6 +11,11 @@ class ScreenSettingsDetails extends React.Component {
     navigation: PropTypes.object
   };
 
+  static navigationOptions = {
+    title: "Settings2",
+    headerTintColor: COLORS.NAV_HINTS
+  };
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>

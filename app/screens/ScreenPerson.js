@@ -17,7 +17,10 @@ class ScreenPerson extends React.Component {
   };
 
   static navigationOptions = ({ navigation }) => {
-    return { title: navigation.getParam(NAVIGATOR_PARAMS.PERSON).name };
+    return {
+      title: navigation.getParam(NAVIGATOR_PARAMS.PERSON).name,
+      headerTintColor: COLORS.NAV_HINTS
+    };
   };
 
   render() {
