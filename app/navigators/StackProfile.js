@@ -10,7 +10,7 @@ const StackProfile = createStackNavigator(
   },
   {
     initialRouteName: ROUTES.SCREEN.PROFILE,
-    navigationOptions: {
+    defaultNavigationOptions: {
       headerTintColor: COLORS.NAV_HINTS
     }
   }

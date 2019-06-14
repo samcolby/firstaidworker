@@ -11,7 +11,7 @@ const StackPeopleNearMe = createStackNavigator(
   },
   {
     initialRouteName: ROUTES.SCREEN.PEOPLE_NEAR_ME,
-    navigationOptions: {
+    defaultNavigationOptions: {
       headerTintColor: COLORS.NAV_HINTS
     }
   }

@@ -24,8 +24,7 @@ class ScreenPeopleNearMe extends React.Component {
   };
 
   static navigationOptions = {
-    title: "Near me",
-    headerTintColor: COLORS.NAV_HINTS
+    title: "Near me"
   };
 
   firstLoad = true;

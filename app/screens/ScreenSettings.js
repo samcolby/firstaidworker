@@ -11,8 +11,7 @@ class SettingsScreen extends React.Component {
   };
 
   static navigationOptions = {
-    title: "Settings",
-    headerTintColor: COLORS.NAV_HINTS
+    title: "Settings"
   };
 
   render() {

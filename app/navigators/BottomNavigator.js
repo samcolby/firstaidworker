@@ -38,8 +38,7 @@ const BottomNavigator = createBottomTabNavigator(
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         return getTabIcon(routeName, focused, tintColor);
-      },
-      headerTintColor: COLORS.NAV_HINTS
+      }
     }),
     tabBarOptions: {
       activeTintColor: COLORS.TAB_HINTS

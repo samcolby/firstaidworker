@@ -21,8 +21,7 @@ class ScreenProfile extends PureComponent {
   }
 
   static navigationOptions = {
-    title: "My Profile",
-    headerTintColor: COLORS.NAV_HINTS
+    title: "My Profile"
   };
 
   render() {

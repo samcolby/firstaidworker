@@ -11,7 +11,7 @@ const StackSettings = createStackNavigator(
   },
   {
     initialRouteName: ROUTES.SCREEN.SETTINGS,
-    navigationOptions: {
+    defaultNavigationOptions: {
       headerTintColor: COLORS.NAV_HINTS
     }
   }
