@@ -4,16 +4,10 @@ import PropTypes from "prop-types";
 import { SafeAreaView, StatusBar, StyleSheet, Text } from "react-native";
 import MapView from "react-native-maps";
 
-import { Query } from "react-apollo";
-
+import QueryPeopleForMap from "../apis/QueryPeopleForMap";
 import { PeopleMapMarkers } from "../components";
 
 import { COLORS } from "../Constants";
-
-// DUMMY DATA FOR TESTING WITH
-// import PEOPLE from "../testdata/people";
-
-import { QUERY_PEOPLE_FOR_MAP } from "../GraphQLQueries";
 
 class ScreenDetails extends React.Component {
   static propTypes = {
@@ -45,7 +39,7 @@ class ScreenDetails extends React.Component {
           region={this.state.region}
           onRegionChange={this.onRegionChange}
         >
-          <Query query={QUERY_PEOPLE_FOR_MAP} variables={{ limit: 50 }}>
+          <QueryPeopleForMap>
             {({ loading, error, data, networkStatus }) => {
               if (loading) return null;
               if (error) return <Text>Error :(</Text>;
@@ -61,7 +55,7 @@ class ScreenDetails extends React.Component {
                 </>
               );
             }}
-          </Query>
+          </QueryPeopleForMap>
         </MapView>
       </SafeAreaView>
     );

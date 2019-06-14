@@ -37,6 +37,9 @@ function getQueryConfig(queryType, searchQuery) {
 }
 
 /**
+ * Apollo query component to return a list of people to display in a FlatList
+ * This component can execute either a standard query of a search query
+ * depending on the queryType value passed in as a prop
  *
  * @param {Object} props - Standard react prop
  * @param {function} children - Standard react prop, doesn't need to be included

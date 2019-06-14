@@ -50,8 +50,8 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
       </MockedProvider>
     );
 
-    const p = component.root.findByType("Text");
-    expect(p.children[0]).toEqual("Loading");
+    const textComponent = component.root.findByType("Text");
+    expect(textComponent.children[0]).toEqual("Loading");
 
     expect(component).toMatchSnapshot();
   });
@@ -78,8 +78,10 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
 
     await wait(0);
 
-    const p = component.root.findByType("Text");
-    expect(JSON.parse(p.children)[0].name).toEqual("Kaitlin Burnett");
+    const textComponent = component.root.findByType("Text");
+    expect(JSON.parse(textComponent.children)[0].name).toEqual(
+      "Kaitlin Burnett"
+    );
 
     expect(component).toMatchSnapshot();
   });
@@ -109,8 +111,8 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
 
     await wait(0); // wait for response
 
-    const p = component.root.findByType("Text");
-    expect(p.children[0]).toContain("ERROR!");
+    const textComponent = component.root.findByType("Text");
+    expect(textComponent.children[0]).toContain("ERROR!");
   });
 });
 
@@ -146,8 +148,8 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
       </MockedProvider>
     );
 
-    const p = component.root.findByType("Text");
-    expect(p.children[0]).toEqual("Loading");
+    const textComponent = component.root.findByType("Text");
+    expect(textComponent.children[0]).toEqual("Loading");
 
     expect(component).toMatchSnapshot();
   });
@@ -174,8 +176,10 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
 
     await wait(0);
 
-    const p = component.root.findByType("Text");
-    expect(JSON.parse(p.children)[0].name).toEqual("Maryellen Baxter");
+    const textComponent = component.root.findByType("Text");
+    expect(JSON.parse(textComponent.children)[0].name).toEqual(
+      "Maryellen Baxter"
+    );
 
     expect(component).toMatchSnapshot();
   });
@@ -202,7 +206,7 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
 
     await wait(0);
 
-    const p = component.root.findByType("Text");
-    expect(p.children[0]).toContain("ERROR!");
+    const textComponent = component.root.findByType("Text");
+    expect(textComponent.children[0]).toContain("ERROR!");
   });
 });
