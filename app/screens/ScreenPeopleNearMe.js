@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, StatusBar, Text } from "react-native";
+import { RefreshControl, SafeAreaView, StatusBar, Text } from "react-native";
 import { FlatList } from "react-navigation";
 
 import { LoadingScreen, PersonListItem, Search } from "../components";
@@ -136,8 +136,13 @@ class ScreenPeopleNearMe extends React.Component {
                   onEndReached={() => {
                     this.onEndReached(fetchMore, data);
                   }}
-                  onRefresh={refetch}
-                  refreshing={data.networkStatus === 4}
+                  refreshControl={
+                    <RefreshControl
+                      tintColor={COLORS.TAB_HINTS}
+                      onRefresh={refetch}
+                      refreshing={data.networkStatus === 4}
+                    />
+                  }
                   renderItem={this.renderItem}
                 />
               </>
