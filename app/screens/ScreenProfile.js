@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
-import { SafeAreaView } from "react-native";
 import PropTypes from "prop-types";
 
+import { SafeAreaView } from "react-navigation";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import { PersonHeaderCard, PersonProfileForm } from "../components";

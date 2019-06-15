@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { RefreshControl, SafeAreaView, StatusBar, Text } from "react-native";
-import { FlatList } from "react-navigation";
+import { RefreshControl, StatusBar, Text } from "react-native";
+import { FlatList, SafeAreaView } from "react-navigation";
 
 import _uniqBy from "lodash/uniqBy";
 

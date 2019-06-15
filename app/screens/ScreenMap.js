@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView, StatusBar, StyleSheet, Text } from "react-native";
+import { StatusBar, StyleSheet, Text } from "react-native";
+import { SafeAreaView } from "react-navigation";
 import MapView from "react-native-maps";
 
 import QueryPeopleForMap from "../apis/QueryPeopleForMap";

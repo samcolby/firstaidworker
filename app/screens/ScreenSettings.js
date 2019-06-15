@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, SafeAreaView, Text, View } from "react-native";
-import { ScrollView } from "react-navigation";
+import { Button, Text, View } from "react-native";
+import { SafeAreaView, ScrollView } from "react-navigation";
 
 import { COLORS, ROUTES } from "../Constants";
 
