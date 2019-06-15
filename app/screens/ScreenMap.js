@@ -52,7 +52,6 @@ class ScreenDetails extends React.Component {
         >
           <QueryPeopleForMap>
             {({ loading, error, data, networkStatus }) => {
-              if (loading) return null;
               if (error) return <Text>Error :(</Text>;
 
               return (
@@ -62,7 +61,9 @@ class ScreenDetails extends React.Component {
                       loading || networkStatus < 7
                     }
                   />
-                  <PeopleMapMarkers people={data.profile} />
+                  {data && data.profile && (
+                    <PeopleMapMarkers people={data.profile} />
+                  )}
                 </>
               );
             }}
