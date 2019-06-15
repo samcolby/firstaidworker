@@ -23,7 +23,8 @@ class ScreenDetails extends React.Component {
         longitude: -4.1074755,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
-      }
+      },
+      width: 200
     };
   }
 
@@ -33,11 +34,20 @@ class ScreenDetails extends React.Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: COLORS.BACKGROUND
+        }}
+      >
         <MapView
-          style={styles.map}
-          region={this.state.region}
           onRegionChange={this.onRegionChange}
+          region={this.state.region}
+          showsBuildings={true}
+          showsMyLocationButton={true}
+          showsUserLocation={true}
+          style={styles.map}
+          userLocationAnnotationTitle="My location"
         >
           <QueryPeopleForMap>
             {({ loading, error, data, networkStatus }) => {
@@ -64,7 +74,8 @@ class ScreenDetails extends React.Component {
 
 const styles = StyleSheet.create({
   map: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
+    zIndex: -1
   }
 });
 
