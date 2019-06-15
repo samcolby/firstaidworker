@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { RefreshControl, SafeAreaView, StatusBar, Text } from "react-native";
 import { FlatList } from "react-navigation";
 
-import _ from "lodash";
+import _uniqBy from "lodash/uniqBy";
 
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
@@ -73,9 +73,8 @@ class ScreenPeopleNearMe extends React.Component {
 
         // As this comes via pagination, we need to remove any
         // duplicates that may occur
-        updatedData = _.uniqBy(updatedData, "id");
         return {
-          [this.state.dataArrayName]: updatedData
+          [this.state.dataArrayName]: _uniqBy(updatedData, "id")
         };
       }
     });
@@ -133,7 +132,7 @@ class ScreenPeopleNearMe extends React.Component {
             return (
               <>
                 <StatusBar
-                  networkActivityIndicatorVisible={loading || networkStatus < 7}
+                  networkActivityIndicatorVisible={networkStatus < 7}
                 />
                 <FlatList
                   data={data[this.state.dataArrayName]}
