@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { ListItem } from "react-native-elements";
 import { Marker, Callout } from "react-native-maps";
+import FastImage from "react-native-fast-image";
 
 /**
  * Given an array of person objects (People)
@@ -33,7 +34,12 @@ class PeopleMapMarkers extends PureComponent {
       >
         <Callout>
           <ListItem
-            leftAvatar={{ rounded: true, source: { uri: person.picture } }}
+            leftAvatar={{
+              rounded: true,
+              source: { uri: person.picture },
+              title: person.name[0],
+              ImageComponent: FastImage
+            }}
             title={person.name}
             subtitle={person.job_title}
             containerStyle={{ borderBottomWidth: 0 }}
