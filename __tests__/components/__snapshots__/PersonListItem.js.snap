@@ -4,10 +4,12 @@ exports[`<PersonListItem /> component handles onPress 1`] = `
 <Themed.ListItem
   leftAvatar={
     Object {
+      "ImageComponent": undefined,
       "rounded": true,
       "source": Object {
         "uri": "https://randomuser.me/api/portraits/women/12.jpg",
       },
+      "title": "M",
     }
   }
   onPress={[Function]}
@@ -20,10 +22,12 @@ exports[`<PersonListItem /> component renders correctly 1`] = `
 <Themed.ListItem
   leftAvatar={
     Object {
+      "ImageComponent": undefined,
       "rounded": true,
       "source": Object {
         "uri": "https://randomuser.me/api/portraits/women/12.jpg",
       },
+      "title": "M",
     }
   }
   onPress={[Function]}
