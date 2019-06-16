@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { StatusBar, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-navigation";
+
 import MapView from "react-native-maps";
 
 import QueryPeopleForMap from "../apis/QueryPeopleForMap";
@@ -52,18 +53,20 @@ class ScreenDetails extends React.Component {
         >
           <QueryPeopleForMap>
             {({ loading, error, data, networkStatus }) => {
+              if (loading)
+                return (
+                  <StatusBar
+                    networkActivityIndicatorVisible={networkStatus < 7}
+                  />
+                );
               if (error) return <Text>Error :(</Text>;
 
               return (
                 <>
                   <StatusBar
-                    networkActivityIndicatorVisible={
-                      loading || networkStatus < 7
-                    }
+                    networkActivityIndicatorVisible={networkStatus < 7}
                   />
-                  {data && data.profile && (
-                    <PeopleMapMarkers people={data.profile} />
-                  )}
+                  <PeopleMapMarkers people={data.profile} />
                 </>
               );
             }}
