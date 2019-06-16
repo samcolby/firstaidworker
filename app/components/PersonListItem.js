@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
 import { ListItem } from "react-native-elements";
+import { FastImage } from "react-native-fast-image";
 
 /**
  * React Pure component used to display a person's
@@ -29,7 +30,12 @@ class PersonListItem extends PureComponent {
 
     return (
       <ListItem
-        leftAvatar={{ rounded: true, source: { uri: picture } }}
+        leftAvatar={{
+          rounded: true,
+          source: { uri: picture },
+          title: name[0],
+          ImageComponent: FastImage
+        }}
         onPress={this.onPress}
         subtitle={job_title}
         title={name}
