@@ -21,9 +21,12 @@ class PersonListItem extends PureComponent {
 
   constructor(props) {
     super(props);
+    this.onPress = this.onPress.bind(this);
   }
 
-  onPress = () => this.props.onPress(this.props.person);
+  onPress() {
+    this.props.onPress(this.props.person);
+  }
 
   render() {
     const { name, job_title, picture } = this.props.person;
