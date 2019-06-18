@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PersonHeaderCard /> component renders correctly 1`] = `
+<Themed.Card
+  containerStyle={
+    Object {
+      "borderWidth": 0,
+      "margin": 0,
+      "padding": 0,
+      "paddingVertical": 15,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "paddingLeft": 20,
+      }
+    }
+  >
+    <Themed.Avatar
+      activeOpacity={0.7}
+      rounded={true}
+      size="large"
+      source={
+        Object {
+          "uri": "https://randomuser.me/api/portraits/women/12.jpg",
+        }
+      }
+      title="M"
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "column",
+          "fontSize": 20,
+          "marginLeft": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+          }
+        }
+      >
+        PANZENT
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "grey",
+            "fontSize": 16,
+          }
+        }
+      >
+        Flouncer
+      </Text>
+    </View>
+  </View>
+</Themed.Card>
+`;
