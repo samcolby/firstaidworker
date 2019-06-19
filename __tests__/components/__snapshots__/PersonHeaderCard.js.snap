@@ -27,7 +27,7 @@ exports[`<PersonHeaderCard /> component renders correctly 1`] = `
       size="large"
       source={
         Object {
-          "uri": "https://randomuser.me/api/portraits/women/12.jpg",
+          "uri": undefined,
         }
       }
       title="M"

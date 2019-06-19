@@ -66,7 +66,7 @@ class ScreenDetails extends React.Component {
                   <StatusBar
                     networkActivityIndicatorVisible={networkStatus < 7}
                   />
-                  <PeopleMapMarkers people={data.profile} />
+                  <PeopleMapMarkers people={data.workers} />
                 </>
               );
             }}

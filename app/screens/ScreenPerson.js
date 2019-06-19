@@ -33,7 +33,7 @@ class ScreenPerson extends React.Component {
             if (loading) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
 
-            const person = data.profile[0];
+            const person = data.workers[0];
             const { email, phone } = person;
 
             return (

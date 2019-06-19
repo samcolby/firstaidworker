@@ -2,7 +2,7 @@
 
 exports[`<QueryPeopleForMap /> component Renders data correctly 1`] = `
 <Text>
-  [{"id":"9f47bfa4-892e-4abd-8a18-0576f8759051","name":"Kaitlin Burnett","job_title":"Marketing","picture":"https://randomuser.me/api/portraits/women/17.jpg","latitude":51.1910548,"longitude":-4.1274755},{"id":"0b8a6373-4530-41d7-87a9-435552dfa334","name":"Sargent Bush","job_title":"Sales","picture":"https://randomuser.me/api/portraits/men/32.jpg","latitude":51.2096548,"longitude":-4.1144755},{"id":"54f58dfd-3f17-427c-b1d1-74c26a77f700","name":"Key Whitley","job_title":"Michael Jackson Impersonator","picture":"https://randomuser.me/api/portraits/women/45.jpg","latitude":51.1826548,"longitude":-4.0674755}]
+  [{"id":"9f47bfa4-892e-4abd-8a18-0576f8759051","name":"Kaitlin Burnett","job_title":"Marketing","avatar_uri":"https://randomuser.me/api/portraits/women/17.jpg","location":{"coordinates":[51.1910548,-4.1274755]}},{"id":"0b8a6373-4530-41d7-87a9-435552dfa334","name":"Sargent Bush","job_title":"Sales","avatar_uri":"https://randomuser.me/api/portraits/men/32.jpg","location":{"coordinates":[51.2096548,-4.1144755]}},{"id":"54f58dfd-3f17-427c-b1d1-74c26a77f700","name":"Key Whitley","job_title":"Michael Jackson Impersonator","avatar_uri":"https://randomuser.me/api/portraits/women/45.jpg","location":{"coordinates":[51.1826548,-4.0674755]}}]
 </Text>
 `;
 

@@ -27,8 +27,8 @@ class PeopleMapMarkers extends PureComponent {
     return this.props.people.map((person, i) => (
       <Marker
         coordinate={{
-          latitude: person.latitude,
-          longitude: person.longitude
+          latitude: person.location.coordinates[0],
+          longitude: person.location.coordinates[1]
         }}
         key={person.id}
       >
@@ -36,7 +36,7 @@ class PeopleMapMarkers extends PureComponent {
           <ListItem
             leftAvatar={{
               rounded: true,
-              source: { uri: person.picture },
+              source: { uri: person.avatar_uri },
               title: person.name[0],
               ImageComponent: FastImage
             }}

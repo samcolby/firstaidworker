@@ -5,8 +5,8 @@ import { gql } from "apollo-boost";
  * Used by the QueryPeopleNearMe component
  */
 const QUERY_PEOPLE_NEAR_ME = gql`
-  query Profile($limit: Int, $offset: Int) {
-    profile(
+  query Workers($limit: Int, $offset: Int) {
+    workers(
       limit: $limit
       offset: $offset
       where: { is_active: { _eq: true } }
@@ -14,37 +14,37 @@ const QUERY_PEOPLE_NEAR_ME = gql`
       id
       name
       job_title
-      picture
+      avatar_uri
     }
   }
 `;
 
 const QUERY_PEOPLE_FOR_MAP = gql`
-  query Profile($limit: Int) {
-    profile(limit: $limit, where: { is_active: { _eq: true } }) {
+  query WorkersForMap($limit: Int) {
+    workers(limit: $limit, where: { is_active: { _eq: true } }) {
       id
       name
       job_title
-      picture
-      latitude
-      longitude
+      avatar_uri
+      location
     }
   }
 `;
 
 const QUERY_PERSON = gql`
   query($id: uuid!) {
-    profile(where: { id: { _eq: $id } }, distinct_on: id) {
+    workers(where: { id: { _eq: $id } }, distinct_on: id) {
       id
       name
       job_title
       is_active
-      picture
-      company
+      avatar_uri
+      company {
+        name
+      }
       email
       phone
-      latitude
-      longitude
+      location
     }
   }
 `;
@@ -54,12 +54,12 @@ const QUERY_PERSON = gql`
  * Used by the QueryPeopleNearMe component
  */
 const SEARCH_PEOPLE = gql`
-  query Search($searchquery: String!) {
-    search_profile(args: { search: $searchquery }) {
+  query($searchquery: String!) {
+    search_workers(args: { search: $searchquery }) {
       id
       name
       job_title
-      picture
+      avatar_uri
     }
   }
 `;

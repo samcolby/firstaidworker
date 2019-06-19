@@ -31,7 +31,9 @@ describe("<PersonListItem /> component", () => {
 
   it("displays the person's picture", () => {
     const component = shallow(<PersonListItem person={testData} />);
-    expect(component.prop("leftAvatar").source.uri).toEqual(testData.picture);
+    expect(component.prop("leftAvatar").source.uri).toEqual(
+      testData.avatar_uri
+    );
   });
 
   it("handles onPress", () => {

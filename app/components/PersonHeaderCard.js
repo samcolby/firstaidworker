@@ -24,7 +24,7 @@ class PersonHeaderCard extends PureComponent {
   }
 
   render() {
-    const { name, company, job_title, picture } = this.props.person;
+    const { name, company, job_title, avatar_uri } = this.props.person;
 
     return (
       <Card containerStyle={styles.containerStyle}>
@@ -33,11 +33,11 @@ class PersonHeaderCard extends PureComponent {
             activeOpacity={0.7}
             rounded
             size="large"
-            source={{ uri: picture }}
+            source={{ uri: avatar_uri }}
             title={name[0]}
           />
           <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTextCompany}>{company}</Text>
+            <Text style={styles.headerTextCompany}>{company.name}</Text>
             <Text style={styles.headerTextJobDescription}>{job_title}</Text>
           </View>
         </View>

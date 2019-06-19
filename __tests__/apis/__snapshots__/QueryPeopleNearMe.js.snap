@@ -2,7 +2,7 @@
 
 exports[`<QueryPeopleNearMe queryType={query}/> component Renders data correctly 1`] = `
 <Text>
-  [{"id":"9f47bfa4-892e-4abd-8a18-0576f8759051","name":"Kaitlin Burnett","job_title":"Marketing","picture":"https://randomuser.me/api/portraits/women/17.jpg"},{"id":"0b8a6373-4530-41d7-87a9-435552dfa334","name":"Sargent Bush","job_title":"Sales","picture":"https://randomuser.me/api/portraits/men/32.jpg"},{"id":"54f58dfd-3f17-427c-b1d1-74c26a77f700","name":"Key Whitley","job_title":"Michael Jackson Impersonator","picture":"https://randomuser.me/api/portraits/women/45.jpg"}]
+  [{"id":"9f47bfa4-892e-4abd-8a18-0576f8759051","name":"Kaitlin Burnett","job_title":"Marketing","avatar_uri":"https://randomuser.me/api/portraits/women/17.jpg"},{"id":"0b8a6373-4530-41d7-87a9-435552dfa334","name":"Sargent Bush","job_title":"Sales","avatar_uri":"https://randomuser.me/api/portraits/men/32.jpg"},{"id":"54f58dfd-3f17-427c-b1d1-74c26a77f700","name":"Key Whitley","job_title":"Michael Jackson Impersonator","avatar_uri":"https://randomuser.me/api/portraits/women/45.jpg"}]
 </Text>
 `;
 
@@ -14,7 +14,7 @@ exports[`<QueryPeopleNearMe queryType={query}/> component Renders loading correc
 
 exports[`<QueryPeopleNearMe queryType={search}/> component Renders data correctly 1`] = `
 <Text>
-  [{"id":"c4ab9532-198e-4891-8719-8167005e9fa9","name":"Maryellen Baxter","job_title":"Flouncer","picture":"https://randomuser.me/api/portraits/women/12.jpg"},{"id":"1b773d36-b5c4-4ea9-982a-5ba319dc7bb7","name":"Fry Newton","job_title":"Michael Jackson Impersonator","picture":"https://randomuser.me/api/portraits/men/65.jpg"},{"id":"228ce656-08ad-46cc-97f8-b4abe71b7b67","name":"Lily Watson","job_title":"Sales","picture":"https://randomuser.me/api/portraits/women/32.jpg"}]
+  [{"id":"c4ab9532-198e-4891-8719-8167005e9fa9","name":"Maryellen Baxter","job_title":"Flouncer","avatar_uri":"https://randomuser.me/api/portraits/women/12.jpg"},{"id":"1b773d36-b5c4-4ea9-982a-5ba319dc7bb7","name":"Fry Newton","job_title":"Michael Jackson Impersonator","avatar_uri":"https://randomuser.me/api/portraits/men/65.jpg"},{"id":"228ce656-08ad-46cc-97f8-b4abe71b7b67","name":"Lily Watson","job_title":"Sales","avatar_uri":"https://randomuser.me/api/portraits/women/32.jpg"}]
 </Text>
 `;
 

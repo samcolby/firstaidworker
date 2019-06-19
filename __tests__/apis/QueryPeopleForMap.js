@@ -30,7 +30,7 @@ describe("<QueryPeopleForMap /> component", () => {
             } else if (loading) {
               return <Text>Loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.profile)}</Text>;
+              return <Text>{JSON.stringify(data.workers)}</Text>;
             }
           }}
         </QueryPeopleForMap>
@@ -52,7 +52,7 @@ describe("<QueryPeopleForMap /> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.profile)}</Text>;
+              return <Text>{JSON.stringify(data.workers)}</Text>;
             }
           }}
         </QueryPeopleForMap>
@@ -82,7 +82,7 @@ describe("<QueryPeopleForMap /> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.profile)}</Text>;
+              return <Text>{JSON.stringify(data.workers)}</Text>;
             }
           }}
         </QueryPeopleForMap>

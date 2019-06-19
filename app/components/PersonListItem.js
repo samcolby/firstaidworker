@@ -29,13 +29,13 @@ class PersonListItem extends PureComponent {
   }
 
   render() {
-    const { name, job_title, picture } = this.props.person;
+    const { name, job_title, avatar_uri } = this.props.person;
 
     return (
       <ListItem
         leftAvatar={{
           rounded: true,
-          source: { uri: picture },
+          source: { uri: avatar_uri },
           title: name[0],
           ImageComponent: FastImage
         }}

@@ -12,11 +12,9 @@ const testData = {
   job_title: "Flouncer",
   isActive: true,
   picture: "https://randomuser.me/api/portraits/women/12.jpg",
-  company: "PANZENT",
+  company: { name: "PANZENT" },
   email: "maryellenbaxter@panzent.com",
-  phone: "+1 (848) 545-3302",
-  latitude: 51.2000548,
-  longitude: -4.1474755
+  phone: "+1 (848) 545-3302"
 };
 
 describe("<PersonHeaderCard /> component", () => {
@@ -32,7 +30,7 @@ describe("<PersonHeaderCard /> component", () => {
 
     const avatarComponent = component.find(Avatar);
 
-    expect(avatarComponent.prop("source").uri).toEqual(testData.picture);
+    expect(avatarComponent.prop("source").uri).toEqual(testData.avatar_uri);
   });
 
   it("displays the person's company", () => {
@@ -43,7 +41,7 @@ describe("<PersonHeaderCard /> component", () => {
     // expect(textComponent.props().children).toEqual(testData.company);
 
     expect(
-      component.containsMatchingElement(<Text>{testData.company}</Text>)
+      component.containsMatchingElement(<Text>{testData.company.name}</Text>)
     ).toBe(true);
   });
 
