@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormSwitch /> component renders correctly 1`] = `
+<Themed.ListItem
+  switch={
+    Object {
+      "onValueChange": [Function],
+      "value": false,
+    }
+  }
+  title="My field label"
+/>
+`;
