@@ -9,13 +9,15 @@ import _uniqBy from "lodash/uniqBy";
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
 import QueryPeopleNearMe, {
-  QUERY_PEOPLE_NEAR_ME_TYPE
+  QUERY_PEOPLE_NEAR_ME_TYPE,
+  QUERY_PEOPLE_NEAR_ME_DATA,
+  SEARCH_PEOPLE_DATA
 } from "../apis/QueryPeopleNearMe";
 
 import { COLORS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
 const DEFAULT_QUERY_STATE = {
-  dataArrayName: "workers",
+  dataArrayName: QUERY_PEOPLE_NEAR_ME_DATA,
   queryType: QUERY_PEOPLE_NEAR_ME_TYPE.QUERY,
   searchQuery: ""
 };
@@ -93,7 +95,7 @@ class ScreenPeopleNearMe extends React.Component {
       this.setState(DEFAULT_QUERY_STATE);
     } else if (searchQuery.length > 2) {
       this.setState({
-        dataArrayName: "search_workers",
+        dataArrayName: SEARCH_PEOPLE_DATA,
         queryType: QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH,
         searchQuery: searchQuery
       });

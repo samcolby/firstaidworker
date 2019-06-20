@@ -8,7 +8,9 @@ import { MockedProvider } from "react-apollo/test-utils";
 import wait from "waait";
 
 import QueryPeopleNearMe, {
-  QUERY_PEOPLE_NEAR_ME_TYPE
+  QUERY_PEOPLE_NEAR_ME_TYPE,
+  QUERY_PEOPLE_NEAR_ME_DATA,
+  SEARCH_PEOPLE_DATA
 } from "../../app/apis/QueryPeopleNearMe";
 
 import {
@@ -43,7 +45,9 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
             } else if (loading) {
               return <Text>Loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return (
+                <Text>{JSON.stringify(data[QUERY_PEOPLE_NEAR_ME_DATA])}</Text>
+              );
             }
           }}
         </QueryPeopleNearMe>
@@ -69,7 +73,9 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return (
+                <Text>{JSON.stringify(data[QUERY_PEOPLE_NEAR_ME_DATA])}</Text>
+              );
             }
           }}
         </QueryPeopleNearMe>
@@ -102,7 +108,9 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return (
+                <Text>{JSON.stringify(data[QUERY_PEOPLE_NEAR_ME_DATA])}</Text>
+              );
             }
           }}
         </QueryPeopleNearMe>
@@ -141,7 +149,7 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
             } else if (loading) {
               return <Text>Loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.search_workers)}</Text>;
+              return <Text>{JSON.stringify(data[SEARCH_PEOPLE_DATA])}</Text>;
             }
           }}
         </QueryPeopleNearMe>
@@ -167,7 +175,7 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.search_workers)}</Text>;
+              return <Text>{JSON.stringify(data[SEARCH_PEOPLE_DATA])}</Text>;
             }
           }}
         </QueryPeopleNearMe>
@@ -197,7 +205,7 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.search_workers)}</Text>;
+              return <Text>{JSON.stringify(data[SEARCH_PEOPLE_DATA])}</Text>;
             }
           }}
         </QueryPeopleNearMe>

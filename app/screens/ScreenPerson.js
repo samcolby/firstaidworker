@@ -5,7 +5,7 @@ import { Text } from "react-native";
 import { SafeAreaView, ScrollView } from "react-navigation";
 import { ListItem } from "react-native-elements";
 
-import QueryPerson from "../apis/QueryPerson";
+import QueryPerson, { QUERY_PERSON_DATA } from "../apis/QueryPerson";
 
 import { LoadingScreen, PersonHeaderCard } from "../components";
 
@@ -33,7 +33,7 @@ class ScreenPerson extends React.Component {
             if (loading) return <LoadingScreen />;
             if (error) return <Text>Error :(</Text>;
 
-            const person = data.workers[0];
+            const person = data[QUERY_PERSON_DATA][0];
             const { email, phone } = person;
 
             return (

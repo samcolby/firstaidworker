@@ -2,9 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 
 // Generate the GQL queries used in this component
-import { QUERY_PEOPLE_FOR_MAP } from "../GraphQLQueries";
+const QUERY_PEOPLE_FOR_MAP_DATA = "workers";
+/**
+ * Query used to get a list of workers to be displayed on the map
+ */
+const QUERY_PEOPLE_FOR_MAP = gql`
+  query WorkersForMap($limit: Int) {
+    ${QUERY_PEOPLE_FOR_MAP_DATA}(limit: $limit, where: { is_active: { _eq: true } }) {
+      id
+      name
+      job_title
+      avatar_uri
+      location
+    }
+  }
+`;
 
 /**
  * Apollo Query to return a list of people to display on a map
@@ -24,3 +39,4 @@ QueryPeopleForMap.propTypes = {
 };
 
 export default QueryPeopleForMap;
+export { QUERY_PEOPLE_FOR_MAP, QUERY_PEOPLE_FOR_MAP_DATA };

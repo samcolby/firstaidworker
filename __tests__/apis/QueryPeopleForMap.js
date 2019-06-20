@@ -7,7 +7,9 @@ import { MockedProvider } from "react-apollo/test-utils";
 
 import wait from "waait";
 
-import QueryPeopleForMap from "../../app/apis/QueryPeopleForMap";
+import QueryPeopleForMap, {
+  QUERY_PEOPLE_FOR_MAP_DATA
+} from "../../app/apis/QueryPeopleForMap";
 
 import {
   mocksForQueryPeopleForMap,
@@ -30,7 +32,9 @@ describe("<QueryPeopleForMap /> component", () => {
             } else if (loading) {
               return <Text>Loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return (
+                <Text>{JSON.stringify(data[QUERY_PEOPLE_FOR_MAP_DATA])}</Text>
+              );
             }
           }}
         </QueryPeopleForMap>
@@ -52,7 +56,9 @@ describe("<QueryPeopleForMap /> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return (
+                <Text>{JSON.stringify(data[QUERY_PEOPLE_FOR_MAP_DATA])}</Text>
+              );
             }
           }}
         </QueryPeopleForMap>
@@ -82,7 +88,9 @@ describe("<QueryPeopleForMap /> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return (
+                <Text>{JSON.stringify(data[QUERY_PEOPLE_FOR_MAP_DATA])}</Text>
+              );
             }
           }}
         </QueryPeopleForMap>

@@ -1,5 +1,8 @@
 // Generate the GQL queries used in this component
-import { QUERY_PEOPLE_FOR_MAP } from "../../app/GraphQLQueries";
+import {
+  QUERY_PEOPLE_FOR_MAP,
+  QUERY_PEOPLE_FOR_MAP_DATA
+} from "../../app/apis/QueryPeopleForMap";
 
 const mocksForQueryPeopleForMap = [
   {
@@ -11,7 +14,7 @@ const mocksForQueryPeopleForMap = [
     },
     result: {
       data: {
-        workers: [
+        [QUERY_PEOPLE_FOR_MAP_DATA]: [
           {
             id: "9f47bfa4-892e-4abd-8a18-0576f8759051",
             name: "Kaitlin Burnett",

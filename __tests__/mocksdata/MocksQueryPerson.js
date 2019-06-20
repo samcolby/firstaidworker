@@ -1,5 +1,5 @@
 // Generate the GQL queries used in this component
-import { QUERY_PERSON } from "../../app/GraphQLQueries";
+import { QUERY_PERSON, QUERY_PERSON_DATA } from "../../app/apis/QueryPerson";
 
 const mocksForQueryPerson = [
   {
@@ -11,7 +11,7 @@ const mocksForQueryPerson = [
     },
     result: {
       data: {
-        workers: [
+        [QUERY_PERSON_DATA]: [
           {
             id: "54f58dfd-3f17-427c-b1d1-74c26a77f700",
             name: "Key Whitley",

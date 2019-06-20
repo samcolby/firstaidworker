@@ -2,9 +2,43 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 
-// Generate the GQL queries used in this component
-import { QUERY_PEOPLE_NEAR_ME, SEARCH_PEOPLE } from "../GraphQLQueries";
+const QUERY_PEOPLE_NEAR_ME_DATA = "workers";
+/**
+ * GraphQL query to get the list of people nearest the user
+ * Used by the QueryPeopleNearMe component
+ */
+const QUERY_PEOPLE_NEAR_ME = gql`
+  query Workers($limit: Int, $offset: Int) {
+    ${QUERY_PEOPLE_NEAR_ME_DATA}(
+      limit: $limit
+      offset: $offset
+      where: { is_active: { _eq: true } }
+    ) {
+      id
+      name
+      job_title
+      avatar_uri
+    }
+  }
+`;
+
+const SEARCH_PEOPLE_DATA = "search_workers";
+/**
+ * GraphQL query to search for active people
+ * Used by the QueryPeopleNearMe component
+ */
+const SEARCH_PEOPLE = gql`
+  query($searchquery: String!) {
+    ${SEARCH_PEOPLE_DATA}(args: { search: $searchquery }) {
+      id
+      name
+      job_title
+      avatar_uri
+    }
+  }
+`;
 
 /**
  * Object containing the different queryTypes that can be used
@@ -69,4 +103,10 @@ QueryPeopleNearMe.propTypes = {
 };
 
 export default QueryPeopleNearMe;
-export { QUERY_PEOPLE_NEAR_ME_TYPE };
+export {
+  QUERY_PEOPLE_NEAR_ME_TYPE,
+  QUERY_PEOPLE_NEAR_ME,
+  QUERY_PEOPLE_NEAR_ME_DATA,
+  SEARCH_PEOPLE,
+  SEARCH_PEOPLE_DATA
+};

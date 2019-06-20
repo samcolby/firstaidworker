@@ -1,5 +1,10 @@
 // Generate the GQL queries used in this component
-import { QUERY_PEOPLE_NEAR_ME, SEARCH_PEOPLE } from "../../app/GraphQLQueries";
+import {
+  QUERY_PEOPLE_NEAR_ME,
+  QUERY_PEOPLE_NEAR_ME_DATA,
+  SEARCH_PEOPLE,
+  SEARCH_PEOPLE_DATA
+} from "../../app/apis/QueryPeopleNearMe";
 
 const mocksForQueryPeopleNearMe = [
   {
@@ -12,7 +17,7 @@ const mocksForQueryPeopleNearMe = [
     },
     result: {
       data: {
-        workers: [
+        [QUERY_PEOPLE_NEAR_ME_DATA]: [
           {
             id: "9f47bfa4-892e-4abd-8a18-0576f8759051",
             name: "Kaitlin Burnett",
@@ -81,7 +86,7 @@ const mocksForSearchPeople = [
     },
     result: {
       data: {
-        search_workers: [
+        [SEARCH_PEOPLE_DATA]: [
           {
             id: "c4ab9532-198e-4891-8719-8167005e9fa9",
             name: "Maryellen Baxter",
