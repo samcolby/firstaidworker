@@ -7,7 +7,7 @@ import { MockedProvider } from "react-apollo/test-utils";
 
 import wait from "waait";
 
-import QueryPerson from "../../app/apis/QueryPerson";
+import QueryPerson, { QUERY_PERSON_DATA } from "../../app/apis/QueryPerson";
 
 import {
   mocksForQueryPerson,
@@ -32,7 +32,7 @@ describe("<QueryPerson /> component", () => {
             } else if (loading) {
               return <Text>Loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return <Text>{JSON.stringify(data[QUERY_PERSON_DATA])}</Text>;
             }
           }}
         </QueryPerson>
@@ -54,7 +54,7 @@ describe("<QueryPerson /> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return <Text>{JSON.stringify(data[QUERY_PERSON_DATA])}</Text>;
             }
           }}
         </QueryPerson>
@@ -79,7 +79,7 @@ describe("<QueryPerson /> component", () => {
             } else if (loading) {
               return <Text>loading</Text>;
             } else {
-              return <Text>{JSON.stringify(data.workers)}</Text>;
+              return <Text>{JSON.stringify(data[QUERY_PERSON_DATA])}</Text>;
             }
           }}
         </QueryPerson>

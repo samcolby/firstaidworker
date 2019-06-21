@@ -6,7 +6,9 @@ import { SafeAreaView } from "react-navigation";
 
 import MapView from "react-native-maps";
 
-import QueryPeopleForMap from "../apis/QueryPeopleForMap";
+import QueryPeopleForMap, {
+  QUERY_PEOPLE_FOR_MAP_DATA
+} from "../apis/QueryPeopleForMap";
 import { PeopleMapMarkers } from "../components";
 
 import { COLORS } from "../Constants";
@@ -66,7 +68,7 @@ class ScreenDetails extends React.Component {
                   <StatusBar
                     networkActivityIndicatorVisible={networkStatus < 7}
                   />
-                  <PeopleMapMarkers people={data.workers} />
+                  <PeopleMapMarkers people={data[QUERY_PEOPLE_FOR_MAP_DATA]} />
                 </>
               );
             }}
