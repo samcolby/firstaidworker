@@ -11,8 +11,8 @@ const mocksForQueryPeopleNearMe = [
     request: {
       query: QUERY_PEOPLE_NEAR_ME,
       variables: {
-        limit: 200,
-        offset: 0
+        latitude: "51.204655",
+        longitude: "-4.124476"
       }
     },
     result: {
@@ -68,8 +68,8 @@ const mocksForQueryPeopleNearMeError = [
     request: {
       query: QUERY_PEOPLE_NEAR_ME,
       variables: {
-        limit: 200,
-        offset: 0
+        latitude: "200",
+        longitude: "0"
       }
     },
     error: new Error("ERROR!")

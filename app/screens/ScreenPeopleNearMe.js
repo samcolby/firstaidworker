@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { RefreshControl, StatusBar, Text } from "react-native";
 import { FlatList, SafeAreaView } from "react-navigation";
 
-import _uniqBy from "lodash/uniqBy";
-
 import GeolocationContext from "../contexts/GeolocationContext";
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
@@ -50,36 +48,6 @@ class ScreenPeopleNearMe extends React.Component {
   onItemPress = item => {
     this.props.navigation.navigate(ROUTES.SCREEN.PERSON, {
       [NAVIGATOR_PARAMS.PERSON]: item
-    });
-  };
-
-  onEndReached = (fetchMore, data) => {
-    if (this.state.queryType === QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH) {
-      return;
-    }
-
-    fetchMore({
-      variables: {
-        offset: data[this.state.dataArrayName].length
-      },
-      updateQuery: (previousResult, { fetchMoreResult }) => {
-        if (
-          !fetchMoreResult ||
-          fetchMoreResult[this.state.dataArrayName].length === 0
-        ) {
-          return previousResult;
-        }
-        // Concatenate the new feed results after the old ones
-        let updatedData = previousResult[this.state.dataArrayName].concat(
-          fetchMoreResult[this.state.dataArrayName]
-        );
-
-        // As this comes via pagination, we need to remove any
-        // duplicates that may occur
-        return {
-          [this.state.dataArrayName]: _uniqBy(updatedData, "id")
-        };
-      }
     });
   };
 
@@ -129,12 +97,13 @@ class ScreenPeopleNearMe extends React.Component {
               <QueryPeopleNearMe
                 queryType={this.state.queryType}
                 searchQuery={this.state.searchQuery}
+                latitude={coordinates.latitude}
+                longitude={coordinates.longitude}
               >
                 {props => {
                   const {
                     data,
                     error,
-                    fetchMore,
                     loading,
                     networkStatus,
                     refetch
@@ -158,9 +127,6 @@ class ScreenPeopleNearMe extends React.Component {
                         keyboardShouldPersistTaps="handled"
                         keyExtractor={this.keyExtractor}
                         ListHeaderComponent={this.renderHeader}
-                        onEndReached={() => {
-                          this.onEndReached(fetchMore, data);
-                        }}
                         refreshControl={
                           <RefreshControl
                             tintColor={COLORS.TAB_HINTS}

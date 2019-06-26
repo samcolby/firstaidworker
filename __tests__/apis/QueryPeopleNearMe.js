@@ -26,6 +26,8 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
       <QueryPeopleNearMe
         queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
         searchQuery=""
+        latitude={51.204655}
+        longitude={-4.124476}
       />
     );
 
@@ -38,6 +40,8 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
         <QueryPeopleNearMe
           queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
           searchQuery=""
+          latitude={51.204655}
+          longitude={-4.124476}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
@@ -66,6 +70,8 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
         <QueryPeopleNearMe
           queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
           searchQuery=""
+          latitude={51.204655}
+          longitude={-4.124476}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
@@ -101,6 +107,8 @@ describe("<QueryPeopleNearMe queryType={query}/> component", () => {
         <QueryPeopleNearMe
           queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
           searchQuery=""
+          latitude={51.204655}
+          longitude={-4.124476}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
@@ -130,6 +138,8 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
       <QueryPeopleNearMe
         queryType={QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH}
         searchQuery="This is a test string"
+        latitude={51.204655}
+        longitude={-4.124476}
       />
     );
 
@@ -142,6 +152,8 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
         <QueryPeopleNearMe
           queryType={QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH}
           searchQuery="DummyQuery"
+          latitude={51.204655}
+          longitude={-4.124476}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
@@ -168,6 +180,8 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
         <QueryPeopleNearMe
           queryType={QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH}
           searchQuery="DummyQuery"
+          latitude={51.204655}
+          longitude={-4.124476}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {
@@ -198,6 +212,8 @@ describe("<QueryPeopleNearMe queryType={search}/> component", () => {
         <QueryPeopleNearMe
           queryType={QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH}
           searchQuery="DummyQuery"
+          latitude={51.204655}
+          longitude={-4.124476}
         >
           {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
             if (error) {

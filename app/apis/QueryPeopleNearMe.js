@@ -4,22 +4,19 @@ import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-const QUERY_PEOPLE_NEAR_ME_DATA = "workers";
+const QUERY_PEOPLE_NEAR_ME_DATA = "workers_near_location";
 /**
  * GraphQL query to get the list of people nearest the user
  * Used by the QueryPeopleNearMe component
  */
 const QUERY_PEOPLE_NEAR_ME = gql`
-  query Workers($limit: Int, $offset: Int) {
-    ${QUERY_PEOPLE_NEAR_ME_DATA}(
-      limit: $limit
-      offset: $offset
-      where: { is_active: { _eq: true } }
-    ) {
+  query WorkersNearLocation($latitude: String!, $longitude: String!) {
+    ${QUERY_PEOPLE_NEAR_ME_DATA}(args: {latitude: $latitude, longitude: $longitude}) {
       id
       name
       job_title
       avatar_uri
+      location
     }
   }
 `;
@@ -56,7 +53,7 @@ const QUERY_PEOPLE_NEAR_ME_TYPE = {
  * @param {string} searchQuery
  *    The string to search for if queryType === QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH
  */
-function getQueryConfig(queryType, searchQuery) {
+function getQueryConfig(queryType, searchQuery, latitude, longitude) {
   if (queryType === QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH) {
     return {
       gqlQuery: SEARCH_PEOPLE,
@@ -65,7 +62,10 @@ function getQueryConfig(queryType, searchQuery) {
   } else {
     return {
       gqlQuery: QUERY_PEOPLE_NEAR_ME,
-      gqlVariables: { limit: 200, offset: 0 }
+      gqlVariables: {
+        latitude: latitude.toString(),
+        longitude: longitude.toString()
+      }
     };
   }
 }
@@ -82,8 +82,14 @@ function getQueryConfig(queryType, searchQuery) {
  * @param {string} searchQuery
  *    The string to search for if queryType === QUERY_PEOPLE_NEAR_ME_TYPE.SEARCH
  */
-function QueryPeopleNearMe({ children, queryType, searchQuery }) {
-  const config = getQueryConfig(queryType, searchQuery);
+function QueryPeopleNearMe({
+  children,
+  queryType,
+  searchQuery,
+  latitude,
+  longitude
+}) {
+  const config = getQueryConfig(queryType, searchQuery, latitude, longitude);
 
   return (
     <Query
@@ -99,7 +105,9 @@ function QueryPeopleNearMe({ children, queryType, searchQuery }) {
 QueryPeopleNearMe.propTypes = {
   children: PropTypes.func,
   queryType: PropTypes.number.isRequired,
-  searchQuery: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired,
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired
 };
 
 export default QueryPeopleNearMe;
