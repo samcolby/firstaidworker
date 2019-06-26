@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>firstaidworker</string>
+	<string>First Aid Workers</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,6 +24,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow First Aid Workers to use your location</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,8 +53,26 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>First Aid Workers needs access to your location to be able to find first aid workers in you area.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow First Aid Workers to access your calendar</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow First Aid Workers to use the camera</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Allow First Aid Workers experiences to access your contacts</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow First Aid Workers to use your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow First Aid Workers to use your location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow First Aid Workers to access your microphone</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow First Aid Workers to access your device's accelerometer</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Give First Aid Workers periences permission to save photos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Give First Aid Workers periences permission to access your photos</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Allow First Aid Workers to access your reminders</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

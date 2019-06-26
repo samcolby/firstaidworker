@@ -1,4 +1,7 @@
 {
   "name": "firstaidworker",
-  "displayName": "firstaidworker"
+  "displayName": "First Aid Workers",
+  "expo": {
+    "sdkVersion": "33.0.0"
+  }
 }
