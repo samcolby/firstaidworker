@@ -6,6 +6,8 @@ import { SafeAreaView } from "react-navigation";
 
 import MapView from "react-native-maps";
 
+import GeolocationContext from "../contexts/GeolocationContext";
+
 import QueryPeopleForMap, {
   QUERY_PEOPLE_FOR_MAP_DATA
 } from "../apis/QueryPeopleForMap";
@@ -20,21 +22,7 @@ class ScreenDetails extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      region: {
-        latitude: 51.1826548,
-        longitude: -4.1074755,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421
-      },
-      width: 200
-    };
   }
-
-  onRegionChange = region => {
-    this.setState({ region });
-  };
 
   render() {
     return (
@@ -44,36 +32,48 @@ class ScreenDetails extends React.Component {
           backgroundColor: COLORS.BACKGROUND
         }}
       >
-        <MapView
-          onRegionChange={this.onRegionChange}
-          region={this.state.region}
-          showsBuildings={true}
-          showsMyLocationButton={true}
-          showsUserLocation={true}
-          style={styles.map}
-          userLocationAnnotationTitle="My location"
-        >
-          <QueryPeopleForMap>
-            {({ loading, error, data, networkStatus }) => {
-              if (loading)
-                return (
-                  <StatusBar
-                    networkActivityIndicatorVisible={networkStatus < 7}
-                  />
-                );
-              if (error) return <Text>Error :(</Text>;
+        <GeolocationContext.Consumer>
+          {({ coordinates, isUpdatingCoordinates }) => {
+            return (
+              <MapView
+                initialRegion={{
+                  latitude: coordinates.latitude,
+                  longitude: coordinates.longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421
+                }}
+                showsBuildings={true}
+                showsMyLocationButton={true}
+                showsUserLocation={true}
+                style={styles.map}
+                userLocationAnnotationTitle="My location"
+              >
+                <QueryPeopleForMap>
+                  {({ loading, error, data, networkStatus }) => {
+                    if (loading)
+                      return (
+                        <StatusBar
+                          networkActivityIndicatorVisible={networkStatus < 7}
+                        />
+                      );
+                    if (error) return <Text>Error :(</Text>;
 
-              return (
-                <>
-                  <StatusBar
-                    networkActivityIndicatorVisible={networkStatus < 7}
-                  />
-                  <PeopleMapMarkers people={data[QUERY_PEOPLE_FOR_MAP_DATA]} />
-                </>
-              );
-            }}
-          </QueryPeopleForMap>
-        </MapView>
+                    return (
+                      <>
+                        <StatusBar
+                          networkActivityIndicatorVisible={networkStatus < 7}
+                        />
+                        <PeopleMapMarkers
+                          people={data[QUERY_PEOPLE_FOR_MAP_DATA]}
+                        />
+                      </>
+                    );
+                  }}
+                </QueryPeopleForMap>
+              </MapView>
+            );
+          }}
+        </GeolocationContext.Consumer>
       </SafeAreaView>
     );
   }

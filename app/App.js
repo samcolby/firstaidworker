@@ -5,6 +5,8 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 import env from "../env.json";
+import { GeolocationProvider } from "./contexts/GeolocationContext";
+
 
 import { BottomNavigator } from "./navigators";
 
@@ -21,7 +23,9 @@ class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={apolloClient}>
-        <AppContainer />
+        <GeolocationProvider>
+          <AppContainer />
+        </GeolocationProvider>
       </ApolloProvider>
     );
   }

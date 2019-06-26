@@ -6,6 +6,7 @@ import { FlatList, SafeAreaView } from "react-navigation";
 
 import _uniqBy from "lodash/uniqBy";
 
+import GeolocationContext from "../contexts/GeolocationContext";
 import { LoadingScreen, PersonListItem, Search } from "../components";
 
 import QueryPeopleNearMe, {
@@ -118,45 +119,64 @@ class ScreenPeopleNearMe extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <QueryPeopleNearMe
-          queryType={this.state.queryType}
-          searchQuery={this.state.searchQuery}
-        >
-          {({ data, error, fetchMore, loading, networkStatus, refetch }) => {
-            if (this.firstLoad && loading) {
+        <GeolocationContext.Consumer>
+          {({ coordinates, isUpdatingCoordinates }) => {
+            if (this.firstLoad && isUpdatingCoordinates) {
               return <LoadingScreen />;
-            } else {
-              this.firstLoad = false;
             }
 
-            if (error) return <Text>Error :(</Text>;
-
             return (
-              <>
-                <StatusBar
-                  networkActivityIndicatorVisible={networkStatus < 7}
-                />
-                <FlatList
-                  data={data[this.state.dataArrayName]}
-                  keyboardShouldPersistTaps="handled"
-                  keyExtractor={this.keyExtractor}
-                  ListHeaderComponent={this.renderHeader}
-                  onEndReached={() => {
-                    this.onEndReached(fetchMore, data);
-                  }}
-                  refreshControl={
-                    <RefreshControl
-                      tintColor={COLORS.TAB_HINTS}
-                      onRefresh={refetch}
-                      refreshing={data.networkStatus === 4}
-                    />
+              <QueryPeopleNearMe
+                queryType={this.state.queryType}
+                searchQuery={this.state.searchQuery}
+              >
+                {props => {
+                  const {
+                    data,
+                    error,
+                    fetchMore,
+                    loading,
+                    networkStatus,
+                    refetch
+                  } = props;
+
+                  if (this.firstLoad && loading) {
+                    return <LoadingScreen />;
+                  } else {
+                    this.firstLoad = false;
                   }
-                  renderItem={this.renderItem}
-                />
-              </>
+
+                  if (error) return <Text>Error :(</Text>;
+
+                  return (
+                    <>
+                      <StatusBar
+                        networkActivityIndicatorVisible={networkStatus < 7}
+                      />
+                      <FlatList
+                        data={data[this.state.dataArrayName]}
+                        keyboardShouldPersistTaps="handled"
+                        keyExtractor={this.keyExtractor}
+                        ListHeaderComponent={this.renderHeader}
+                        onEndReached={() => {
+                          this.onEndReached(fetchMore, data);
+                        }}
+                        refreshControl={
+                          <RefreshControl
+                            tintColor={COLORS.TAB_HINTS}
+                            onRefresh={refetch}
+                            refreshing={data.networkStatus === 4}
+                          />
+                        }
+                        renderItem={this.renderItem}
+                      />
+                    </>
+                  );
+                }}
+              </QueryPeopleNearMe>
             );
           }}
-        </QueryPeopleNearMe>
+        </GeolocationContext.Consumer>
       </SafeAreaView>
     );
   }
