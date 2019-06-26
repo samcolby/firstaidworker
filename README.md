@@ -7,7 +7,7 @@ Example React Native app supporting both iOS and Android.  Utilising, amongst ot
 * React Native Maps
 * React Native Elements
 * React Navigation
-* React Native Vector
+* React Native Vector Icons
 * Formik
 * Enzyme and jest for testing
 * Prettier / eslint
