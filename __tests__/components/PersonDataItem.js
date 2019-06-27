@@ -1,37 +1,54 @@
 import React from "react";
 
-import { ListItem } from "react-native-elements";
-
 import { shallow } from "enzyme";
 
 import PersonDataItem from "../../app/components/PersonDataItem";
 
+const ICON = "ios-business";
+const ICON_TYPE = "ionicons";
+const TITLE = "This is the title";
+const VALUE = "This is the value";
+
 describe("PersonDataItem Component", () => {
-  it("should render without issues", () => {
-    const component = shallow(
+  let component;
+
+  beforeEach(() => {
+    component = shallow(
       <PersonDataItem
-        icon="ios-business"
-        iconType="ionicons"
-        title="This is the title"
-        value="This is the value"
+        icon={ICON}
+        iconType={ICON_TYPE}
+        title={TITLE}
+        value={VALUE}
       />
     );
+  });
 
+  it("should render without issues", () => {
     expect(component.length).toBe(1);
     expect(component).toMatchSnapshot();
   });
 
-  it("displays the title", () => {
-    const component = shallow(
-      <PersonDataItem
-        icon="ios-business"
-        iconType="ionicons"
-        title="This is the title"
-        value="This is the value"
-      />
-    );
+  it("displays the value", () => {
+    expect(component.prop("title")).toEqual(VALUE);
+  });
 
-    const listItemComponent = component.find(ListItem);
-    expect(listItemComponent.prop("title")).toEqual("This is the value");
+  it("displays the leftElement in a prop", () => {
+    const leftElementComponent = component.wrap(component.prop("leftElement"));
+    expect(leftElementComponent.length).toBe(1);
+  });
+
+  it("displays the icon", () => {
+    const leftElementComponent = component.wrap(component.prop("leftElement"));
+    expect(leftElementComponent.prop("icon")).toBe(ICON);
+  });
+
+  it("displays the iconType", () => {
+    const leftElementComponent = component.wrap(component.prop("leftElement"));
+    expect(leftElementComponent.prop("iconType")).toBe(ICON_TYPE);
+  });
+
+  it("displays the title", () => {
+    const leftElementComponent = component.wrap(component.prop("leftElement"));
+    expect(leftElementComponent.prop("title")).toBe(TITLE);
   });
 });
