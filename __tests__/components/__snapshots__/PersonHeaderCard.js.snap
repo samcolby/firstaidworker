@@ -49,7 +49,7 @@ exports[`<PersonHeaderCard /> component renders correctly 1`] = `
           }
         }
       >
-        PANZENT
+        Maryellen Baxter
       </Text>
       <Text
         style={

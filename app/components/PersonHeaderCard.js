@@ -24,7 +24,7 @@ class PersonHeaderCard extends PureComponent {
   }
 
   render() {
-    const { name, company, job_title, avatar_uri } = this.props.person;
+    const { name, job_title, avatar_uri } = this.props.person;
 
     return (
       <Card containerStyle={styles.containerStyle}>
@@ -37,8 +37,8 @@ class PersonHeaderCard extends PureComponent {
             title={name[0]}
           />
           <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTextCompany}>{company.name}</Text>
-            <Text style={styles.headerTextJobDescription}>{job_title}</Text>
+            <Text style={styles.headerTextTitle}>{name}</Text>
+            <Text style={styles.headerTextSubtitle}>{job_title}</Text>
           </View>
         </View>
       </Card>
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column"
   },
-  headerTextCompany: { fontSize: 20 },
-  headerTextJobDescription: {
+  headerTextTitle: { fontSize: 20 },
+  headerTextSubtitle: {
     fontSize: 16,
     color: "grey"
   }

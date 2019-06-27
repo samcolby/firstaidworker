@@ -33,15 +33,11 @@ describe("<PersonHeaderCard /> component", () => {
     expect(avatarComponent.prop("source").uri).toEqual(testData.avatar_uri);
   });
 
-  it("displays the person's company", () => {
+  it("displays the person's name", () => {
     const component = shallow(<PersonHeaderCard person={testData} />);
 
-    // const textComponent = component.find(Text).at(0);
-
-    // expect(textComponent.props().children).toEqual(testData.company);
-
     expect(
-      component.containsMatchingElement(<Text>{testData.company.name}</Text>)
+      component.containsMatchingElement(<Text>{testData.name}</Text>)
     ).toBe(true);
   });
 
