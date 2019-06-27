@@ -8,9 +8,10 @@ import MapView from "react-native-maps";
 
 import GeolocationContext from "../contexts/GeolocationContext";
 
-import QueryPeopleForMap, {
-  QUERY_PEOPLE_FOR_MAP_DATA
-} from "../apis/QueryPeopleForMap";
+import QueryPeopleNearMe, {
+  QUERY_PEOPLE_NEAR_ME_DATA,
+  QUERY_PEOPLE_NEAR_ME_TYPE
+} from "../apis/QueryPeopleNearMe";
 import { PeopleMapMarkers } from "../components";
 
 import { COLORS } from "../Constants";
@@ -48,7 +49,12 @@ class ScreenDetails extends React.Component {
                 style={styles.map}
                 userLocationAnnotationTitle="My location"
               >
-                <QueryPeopleForMap>
+                <QueryPeopleNearMe
+                  queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
+                  searchQuery=""
+                  latitude={coordinates.latitude}
+                  longitude={coordinates.longitude}
+                >
                   {({ loading, error, data, networkStatus }) => {
                     if (loading)
                       return (
@@ -64,12 +70,12 @@ class ScreenDetails extends React.Component {
                           networkActivityIndicatorVisible={networkStatus < 7}
                         />
                         <PeopleMapMarkers
-                          people={data[QUERY_PEOPLE_FOR_MAP_DATA]}
+                          people={data[QUERY_PEOPLE_NEAR_ME_DATA]}
                         />
                       </>
                     );
                   }}
-                </QueryPeopleForMap>
+                </QueryPeopleNearMe>
               </MapView>
             );
           }}
