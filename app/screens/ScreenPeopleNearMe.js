@@ -88,7 +88,7 @@ class ScreenPeopleNearMe extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <GeolocationContext.Consumer>
-          {({ coordinates, isUpdatingCoordinates }) => {
+          {({ coordinates, getCurrentPosition, isUpdatingCoordinates }) => {
             if (this.firstLoad && isUpdatingCoordinates) {
               return <LoadingScreen />;
             }
@@ -120,7 +120,9 @@ class ScreenPeopleNearMe extends React.Component {
                   return (
                     <>
                       <StatusBar
-                        networkActivityIndicatorVisible={networkStatus < 7}
+                        networkActivityIndicatorVisible={
+                          networkStatus < 7 || isUpdatingCoordinates
+                        }
                       />
                       <FlatList
                         data={data[this.state.dataArrayName]}
@@ -130,8 +132,10 @@ class ScreenPeopleNearMe extends React.Component {
                         refreshControl={
                           <RefreshControl
                             tintColor={COLORS.TAB_HINTS}
-                            onRefresh={refetch}
-                            refreshing={data.networkStatus === 4}
+                            onRefresh={() => getCurrentPosition(refetch)}
+                            refreshing={
+                              data.networkStatus === 4 || isUpdatingCoordinates
+                            }
                           />
                         }
                         renderItem={this.renderItem}

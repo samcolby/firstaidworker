@@ -8,29 +8,27 @@ class GeolocationProvider extends Component {
     children: PropTypes.object
   };
 
-  state = {
-    coordinates: {
-      latitude: 0,
-      longitude: 0
-    },
-    isUpdatingCoordinates: true,
-    getCurrentPosition: this.getCurrentPosition
-  };
-
   constructor(props) {
     super(props);
     this.getCurrentPosition = this.getCurrentPosition.bind(this);
+
+    this.state = {
+      coordinates: {
+        latitude: 0,
+        longitude: 0
+      },
+      isUpdatingCoordinates: true,
+      getCurrentPosition: this.getCurrentPosition
+    };
   }
 
   componentDidMount() {
     this.getCurrentPosition();
   }
 
-  getCurrentPosition() {
+  getCurrentPosition(fnCallback) {
     this.setState(() => {
-      return {
-        isUpdatingCoordinates: true
-      };
+      return { isUpdatingCoordinates: true };
     });
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -43,6 +41,7 @@ class GeolocationProvider extends Component {
             isUpdatingCoordinates: false
           };
         });
+        if (fnCallback) fnCallback();
       },
       error => {
         throw error;
