@@ -13,3 +13,30 @@ exports[`PersonDataItem Component should render without issues 1`] = `
   title="This is the value"
 />
 `;
+
+exports[`PersonDataItem Component with action should render without issues 1`] = `
+<Themed.ListItem
+  leftElement={
+    <Memo(PersonDataItemLeftElement)
+      icon="ios-business"
+      iconType="ionicons"
+      onPress={[MockFunction]}
+      title="This is the title"
+      value="This is the value"
+    />
+  }
+  title="This is the value"
+  titleProps={
+    Object {
+      "onPress": [MockFunction],
+    }
+  }
+  titleStyle={
+    Object {
+      "color": "#ff5454",
+      "opacity": 0.9,
+      "textDecorationLine": "underline",
+    }
+  }
+/>
+`;

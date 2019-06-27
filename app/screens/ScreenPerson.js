@@ -6,6 +6,8 @@ import { SafeAreaView, ScrollView } from "react-navigation";
 
 import QueryPerson, { QUERY_PERSON_DATA } from "../apis/QueryPerson";
 
+import URLActions from "../helpers/URLActions";
+
 import { LoadingScreen, PersonHeaderCard, PersonDataItem } from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
@@ -50,6 +52,7 @@ class ScreenPerson extends React.Component {
                   <PersonDataItem
                     icon="ios-mail"
                     iconType="ionicon"
+                    onPress={() => URLActions.sendEmail(email)}
                     title="Email"
                     value={email}
                   />
@@ -58,6 +61,7 @@ class ScreenPerson extends React.Component {
                   <PersonDataItem
                     icon="ios-phone-portrait"
                     iconType="ionicon"
+                    onPress={() => URLActions.makeCall(phone)}
                     title="Phone"
                     value={phone}
                   />
