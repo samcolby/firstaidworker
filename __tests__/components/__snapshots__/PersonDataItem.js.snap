@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonDataItem Component should render without issues 1`] = `
+<Themed.ListItem
+  leftElement={
+    <Memo(PersonDataItemLeftElement)
+      icon="ios-business"
+      iconType="ionicons"
+      title="This is the title"
+      value="This is the value"
+    />
+  }
+  title="This is the value"
+/>
+`;

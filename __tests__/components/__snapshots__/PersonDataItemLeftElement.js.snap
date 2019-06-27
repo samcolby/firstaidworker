@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonDataItemLeftElement Component should render without issues 1`] = `
+<Fragment>
+  <Themed.Icon
+    color="#ff5454"
+    containerStyle={
+      Object {
+        "justifyContent": "center",
+        "width": 18,
+      }
+    }
+    iconStyle={
+      Object {
+        "opacity": 0.9,
+      }
+    }
+    name="ios-business"
+    size={24}
+    type="ionicons"
+  />
+  <Text
+    style={
+      Object {
+        "color": "#ff5454",
+        "fontSize": 14,
+        "marginLeft": 6,
+        "opacity": 0.9,
+        "width": 64,
+      }
+    }
+  >
+    This is the title
+  </Text>
+</Fragment>
+`;

@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 
 import { Text } from "react-native";
 import { SafeAreaView, ScrollView } from "react-navigation";
-import { ListItem } from "react-native-elements";
 
 import QueryPerson, { QUERY_PERSON_DATA } from "../apis/QueryPerson";
 
-import { LoadingScreen, PersonHeaderCard } from "../components";
+import { LoadingScreen, PersonHeaderCard, PersonDataItem } from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
 
@@ -34,13 +33,35 @@ class ScreenPerson extends React.Component {
             if (error) return <Text>Error :(</Text>;
 
             const person = data[QUERY_PERSON_DATA][0];
-            const { email, phone } = person;
+            const { company, email, phone } = person;
 
             return (
-              <ScrollView contentInsetAdjustmentBehavior="automatic">
+              <ScrollView>
                 <PersonHeaderCard person={person} />
-                <ListItem title={email} />
-                <ListItem title={phone} />
+                {company.name && (
+                  <PersonDataItem
+                    icon="ios-business"
+                    iconType="ionicon"
+                    title="Company"
+                    value={company.name}
+                  />
+                )}
+                {email && (
+                  <PersonDataItem
+                    icon="ios-mail"
+                    iconType="ionicon"
+                    title="Email"
+                    value={email}
+                  />
+                )}
+                {phone && (
+                  <PersonDataItem
+                    icon="ios-phone-portrait"
+                    iconType="ionicon"
+                    title="Phone"
+                    value={phone}
+                  />
+                )}
               </ScrollView>
             );
           }}
