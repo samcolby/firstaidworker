@@ -18,6 +18,7 @@ const QUERY_PERSON = gql`
       company {
         name
       }
+      department
       email
       phone
       location

@@ -6,12 +6,20 @@ import { Icon } from "react-native-elements";
 
 import { COLORS } from "../Constants";
 
+function getIconSize(icon, iconType) {
+  if (iconType === "ionicons") {
+    return 24;
+  } else {
+    return 18;
+  }
+}
+
 function PersonDataItemLeftElement({ icon, iconType, title }) {
   return (
     <>
       <Icon
         name={icon}
-        size={24}
+        size={getIconSize(icon, iconType)}
         type={iconType}
         color={COLORS.NAV_HINTS}
         containerStyle={styles.iconContainer}

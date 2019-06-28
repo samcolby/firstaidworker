@@ -35,7 +35,7 @@ class ScreenPerson extends React.Component {
             if (error) return <Text>Error :(</Text>;
 
             const person = data[QUERY_PERSON_DATA][0];
-            const { company, email, phone } = person;
+            const { company, department, email, phone } = person;
 
             return (
               <ScrollView>
@@ -46,6 +46,14 @@ class ScreenPerson extends React.Component {
                     iconType="ionicon"
                     title="Company"
                     value={company.name}
+                  />
+                )}
+                {department && (
+                  <PersonDataItem
+                    icon="sitemap"
+                    iconType="font-awesome"
+                    title="Dept"
+                    value={department}
                   />
                 )}
                 {email && (
