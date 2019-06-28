@@ -90,7 +90,7 @@ class ScreenPeopleNearMe extends React.Component {
         <GeolocationContext.Consumer>
           {({ coordinates, getCurrentPosition, isUpdatingCoordinates }) => {
             if (this.firstLoad && isUpdatingCoordinates) {
-              return <LoadingScreen />;
+              return null;
             }
 
             return (
