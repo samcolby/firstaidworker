@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { View } from "react-native";
 import { Input } from "react-native-elements";
 
+import _get from "lodash/get";
+
 const getErrorMessage = (fieldName, arrErrors, touched) => {
   if (arrErrors[fieldName] && touched[fieldName]) {
     return arrErrors[fieldName];
@@ -29,7 +31,7 @@ const FormTextField = props => {
         label={label}
         onChangeText={handleChange(fieldName)}
         onBlur={handleBlur(fieldName)}
-        value={values[fieldName]}
+        value={_get(values, fieldName)}
         {...passthruProps}
       />
     </View>
