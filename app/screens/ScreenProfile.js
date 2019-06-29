@@ -2,15 +2,10 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
 import { SafeAreaView, Text } from "react-navigation";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import QueryPerson, { QUERY_PERSON_DATA } from "../apis/QueryPerson";
 
-import {
-  LoadingScreen,
-  PersonHeaderCard,
-  PersonProfileForm
-} from "../components";
+import { LoadingScreen, PersonProfile } from "../components";
 
 import { COLORS } from "../Constants";
 
@@ -38,12 +33,7 @@ class ScreenProfile extends PureComponent {
             if (error) return <Text>Error :(</Text>;
 
             const person = data[QUERY_PERSON_DATA][0];
-            return (
-              <KeyboardAwareScrollView>
-                <PersonHeaderCard person={person} />
-                <PersonProfileForm person={person} />
-              </KeyboardAwareScrollView>
-            );
+            return <PersonProfile person={person} />;
           }}
         </QueryPerson>
       </SafeAreaView>

@@ -18,7 +18,8 @@ import FormTextField from "./FormTextField";
  */
 class PersonProfileForm extends PureComponent {
   static propTypes = {
-    person: PropTypes.object.isRequired
+    person: PropTypes.object.isRequired,
+    updateWorker: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -26,12 +27,17 @@ class PersonProfileForm extends PureComponent {
   }
 
   handleSubmit = values => {
-    Alert.alert("Thevalues", JSON.stringify(values));
+    this.props.updateWorker({
+      variables: {
+        id: this.props.person.id,
+        changes: values
+      }
+    });
   };
 
   render() {
     const {
-      company: { name: companyName },
+      // company: { name: companyName },
       department,
       email,
       is_active,
@@ -43,7 +49,7 @@ class PersonProfileForm extends PureComponent {
     return (
       <Formik
         initialValues={{
-          company: companyName,
+          // company: { name: companyName },
           department,
           email,
           name,
@@ -70,19 +76,26 @@ class PersonProfileForm extends PureComponent {
               textContentType="name"
             />
             <FormTextField
-              fieldName="job_title"
-              formikProps={props}
-              label="Job title"
-              keyboardType="default"
-              textContentType="jobTitle"
-            />
-            <FormTextField
-              fieldName="company"
+              fieldName="company.name"
               formikProps={props}
               label="Company"
               autoCapitalize="words"
               keyboardType="default"
               textContentType="organizationName"
+            />
+            <FormTextField
+              fieldName="department"
+              formikProps={props}
+              label="Department"
+              autoCapitalize="words"
+              keyboardType="default"
+            />
+            <FormTextField
+              fieldName="job_title"
+              formikProps={props}
+              label="Job title"
+              keyboardType="default"
+              textContentType="jobTitle"
             />
             <FormTextField
               fieldName="email"
