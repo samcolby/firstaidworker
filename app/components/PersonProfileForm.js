@@ -31,7 +31,8 @@ class PersonProfileForm extends PureComponent {
 
   render() {
     const {
-      company,
+      company: { name: companyName },
+      department,
       email,
       is_active,
       job_title,
@@ -42,12 +43,13 @@ class PersonProfileForm extends PureComponent {
     return (
       <Formik
         initialValues={{
-          name: name,
+          company: companyName,
+          department,
+          email,
+          name,
           is_active,
-          job_title: job_title,
-          company: company,
-          email: email,
-          phone: phone
+          job_title,
+          phone
         }}
         onSubmit={this.handleSubmit}
       >
@@ -96,7 +98,7 @@ class PersonProfileForm extends PureComponent {
               formikProps={props}
               label="Phone"
               autoComplete="tel"
-              keyboardType="number-pad"
+              keyboardType="phone-pad"
               textContentType="telephoneNumber"
             />
             <Button onPress={props.handleSubmit} title="Submit" />

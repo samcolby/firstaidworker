@@ -1,15 +1,18 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-import { SafeAreaView } from "react-navigation";
+import { SafeAreaView, Text } from "react-navigation";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import { PersonHeaderCard, PersonProfileForm } from "../components";
+import QueryPerson, { QUERY_PERSON_DATA } from "../apis/QueryPerson";
+
+import {
+  LoadingScreen,
+  PersonHeaderCard,
+  PersonProfileForm
+} from "../components";
 
 import { COLORS } from "../Constants";
-
-// DUMMY DATA FOR TESTING WITH
-import PEOPLE from "../testdata/people";
 
 class ScreenProfile extends PureComponent {
   static propTypes = {
@@ -25,14 +28,24 @@ class ScreenProfile extends PureComponent {
   };
 
   render() {
-    const person = PEOPLE[2];
+    const id = "bdad2759-3276-4855-99bf-ae31f60bfa09";
 
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
-        <KeyboardAwareScrollView>
-          <PersonHeaderCard person={person} />
-          <PersonProfileForm person={person} />
-        </KeyboardAwareScrollView>
+        <QueryPerson id={id}>
+          {({ loading, error, data }) => {
+            if (loading) return <LoadingScreen />;
+            if (error) return <Text>Error :(</Text>;
+
+            const person = data[QUERY_PERSON_DATA][0];
+            return (
+              <KeyboardAwareScrollView>
+                <PersonHeaderCard person={person} />
+                <PersonProfileForm person={person} />
+              </KeyboardAwareScrollView>
+            );
+          }}
+        </QueryPerson>
       </SafeAreaView>
     );
   }
