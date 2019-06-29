@@ -21,10 +21,8 @@ describe("<FormSwitch /> component", () => {
     expect(component).toMatchSnapshot();
   });
 
-  it("displays the correct initialValue", () => {
-    const component = shallow(
-      <FormSwitch initialValue={true} {...testProps} />
-    );
+  it("displays the correct value", () => {
+    const component = shallow(<FormSwitch value={true} {...testProps} />);
     expect(component.prop("switch").value).toEqual(true);
   });
 

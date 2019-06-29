@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import { Button, View } from "react-native";
 
+import _ from "lodash";
+
 import { Formik } from "formik";
 import * as Yup from "yup";
 import FormSwitch from "./FormSwitch";
@@ -72,64 +74,70 @@ function PersonProfileForm(props) {
       onSubmit={onSubmit}
       validationSchema={UpdateWorkerSchema}
     >
-      {props => (
-        <View>
-          <FormSwitch
-            fieldName="is_active"
-            formikProps={props}
-            label="Available"
-          />
-          <FormTextField
-            fieldName="name"
-            formikProps={props}
-            label="Name"
-            autoCapitalize="words"
-            autoComplete="name"
-            keyboardType="default"
-            textContentType="name"
-          />
-          <FormTextField
-            fieldName="company.name"
-            formikProps={props}
-            label="Company"
-            autoCapitalize="words"
-            keyboardType="default"
-            textContentType="organizationName"
-          />
-          <FormTextField
-            fieldName="department"
-            formikProps={props}
-            label="Department"
-            autoCapitalize="words"
-            keyboardType="default"
-          />
-          <FormTextField
-            fieldName="job_title"
-            formikProps={props}
-            label="Job title"
-            keyboardType="default"
-            textContentType="jobTitle"
-          />
-          <FormTextField
-            fieldName="email"
-            formikProps={props}
-            label="Email"
-            autoCapitalize="none"
-            autoComplete="email"
-            keyboardType="email-address"
-            textContentType="emailAddress"
-          />
-          <FormTextField
-            fieldName="phone"
-            formikProps={props}
-            label="Phone"
-            autoComplete="tel"
-            keyboardType="phone-pad"
-            textContentType="telephoneNumber"
-          />
-          <Button onPress={props.handleSubmit} title="Submit" />
-        </View>
-      )}
+      {props => {
+        // eslint-disable-next-line react/prop-types
+        const { handleSubmit, setFieldValue, values } = props;
+
+        return (
+          <View>
+            <FormSwitch
+              fieldName="is_active"
+              label="Available"
+              onValueChange={_.partial(setFieldValue, "is_active")}
+              value={_.get(values, "is_active")}
+            />
+            <FormTextField
+              fieldName="name"
+              formikProps={props}
+              label="Name"
+              autoCapitalize="words"
+              autoComplete="name"
+              keyboardType="default"
+              textContentType="name"
+            />
+            <FormTextField
+              fieldName="company.name"
+              formikProps={props}
+              label="Company"
+              autoCapitalize="words"
+              keyboardType="default"
+              textContentType="organizationName"
+            />
+            <FormTextField
+              fieldName="department"
+              formikProps={props}
+              label="Department"
+              autoCapitalize="words"
+              keyboardType="default"
+            />
+            <FormTextField
+              fieldName="job_title"
+              formikProps={props}
+              label="Job title"
+              keyboardType="default"
+              textContentType="jobTitle"
+            />
+            <FormTextField
+              fieldName="email"
+              formikProps={props}
+              label="Email"
+              autoCapitalize="none"
+              autoComplete="email"
+              keyboardType="email-address"
+              textContentType="emailAddress"
+            />
+            <FormTextField
+              fieldName="phone"
+              formikProps={props}
+              label="Phone"
+              autoComplete="tel"
+              keyboardType="phone-pad"
+              textContentType="telephoneNumber"
+            />
+            <Button onPress={handleSubmit} title="Submit" />
+          </View>
+        );
+      }}
     </Formik>
   );
 }

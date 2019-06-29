@@ -17,12 +17,12 @@ import { ListItem } from "react-native-elements";
  *    Extra props to be passed to the switch component
  */
 function FormSwitch(props) {
-  const { fieldName, formikProps, label = "Field label", switchProps } = props;
-
-  const { setFieldValue, values } = formikProps;
+  const { label = "Field label", onValueChange, switchProps, value } = props;
 
   const toggle = newValue => {
-    setFieldValue(fieldName, newValue);
+    if (onValueChange && typeof onValueChange === "function") {
+      onValueChange(newValue);
+    }
     if (switchProps && typeof switchProps.onValueChange === "function") {
       switchProps.onValueChange(newValue);
     }
@@ -32,7 +32,7 @@ function FormSwitch(props) {
     <ListItem
       switch={{
         ...switchProps,
-        value: values[fieldName],
+        value: value,
         onValueChange: toggle
       }}
       title={label}
@@ -42,9 +42,10 @@ function FormSwitch(props) {
 
 FormSwitch.propTypes = {
   fieldName: PropTypes.string.isRequired,
-  formikProps: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  switchProps: PropTypes.object
+  onValueChange: PropTypes.func,
+  switchProps: PropTypes.object,
+  value: PropTypes.bool
 };
 
 export default memo(FormSwitch);
