@@ -5,7 +5,7 @@ exports[`<FormSwitch /> component renders correctly 1`] = `
   switch={
     Object {
       "onValueChange": [Function],
-      "value": false,
+      "value": true,
     }
   }
   title="My field label"

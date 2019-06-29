@@ -1,12 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import renderer from "react-test-renderer";
 import FormSwitch from "../../app/components/FormSwitch";
 
 const testProps = {
   fieldName: "MyField",
-  formikProps: { formikValue: 2 },
+  formikProps: {
+    formikValue: 2,
+    setFieldValue: jest.fn(),
+    values: { MyField: true }
+  },
   label: "My field label"
 };
 
@@ -16,11 +19,6 @@ describe("<FormSwitch /> component", () => {
 
     expect(component.length).toBe(1);
     expect(component).toMatchSnapshot();
-  });
-
-  it("defaults to value = false", () => {
-    const component = shallow(<FormSwitch {...testProps} />);
-    expect(component.prop("switch").value).toEqual(false);
   });
 
   it("displays the correct initialValue", () => {

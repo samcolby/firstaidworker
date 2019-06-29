@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 
 import { ListItem } from "react-native-elements";
@@ -7,8 +7,6 @@ import { ListItem } from "react-native-elements";
  * React Pure Component to display
  * a label, switch component and error message
  * @param {Object} props - Standard react props
- * @param {boolean} initialValue
- *    The default value for the switch, defaults to false
  * @param {string} fieldName
  *    The name of this field
  * @param {Object} formikProps
@@ -19,26 +17,30 @@ import { ListItem } from "react-native-elements";
  *    Extra props to be passed to the switch component
  */
 function FormSwitch(props) {
-  const { initialValue = false, label = "Field label", switchProps } = props;
+  const { fieldName, formikProps, label = "Field label", switchProps } = props;
 
-  const [value, toggleValue] = useState(initialValue);
+  const { setFieldValue, values } = formikProps;
+
   const toggle = newValue => {
-    toggleValue(newValue);
+    setFieldValue(fieldName, newValue);
     if (switchProps && typeof switchProps.onValueChange === "function") {
-      switchProps.onValueChange(value);
+      switchProps.onValueChange(newValue);
     }
   };
 
   return (
     <ListItem
-      switch={{ ...switchProps, value: value, onValueChange: toggle }}
+      switch={{
+        ...switchProps,
+        value: values[fieldName],
+        onValueChange: toggle
+      }}
       title={label}
     />
   );
 }
 
 FormSwitch.propTypes = {
-  initialValue: PropTypes.bool,
   fieldName: PropTypes.string.isRequired,
   formikProps: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
