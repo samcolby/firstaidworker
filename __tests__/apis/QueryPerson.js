@@ -64,6 +64,7 @@ describe("<QueryPerson /> component", () => {
     await wait(0);
 
     const textComponent = component.root.findByType("Text");
+    console.log("The data is " + textComponent.children);
     expect(JSON.parse(textComponent.children)[0].name).toEqual("Key Whitley");
 
     expect(component).toMatchSnapshot();

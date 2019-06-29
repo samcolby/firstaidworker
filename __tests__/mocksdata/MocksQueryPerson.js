@@ -16,6 +16,7 @@ const mocksForQueryPerson = [
             id: "54f58dfd-3f17-427c-b1d1-74c26a77f700",
             name: "Key Whitley",
             job_title: "Michael Jackson Impersonator",
+            department: "Information Technology",
             is_active: true,
             avatar_uri: "https://randomuser.me/api/portraits/women/45.jpg",
             company: { name: "DIGINETIC" },
