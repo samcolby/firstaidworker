@@ -39,10 +39,10 @@ const UpdateWorkerSchema = Yup.object().shape({
  *    The function used to update the person
  */
 function PersonProfileForm(props) {
-  const handleSubmit = values => {
+  const onSubmit = values => {
     props.updateWorker({
       variables: {
-        id: this.props.person.id,
+        id: props.person.id,
         changes: values
       }
     });
@@ -69,7 +69,7 @@ function PersonProfileForm(props) {
         job_title,
         phone
       }}
-      onSubmit={this.handleSubmit}
+      onSubmit={onSubmit}
       validationSchema={UpdateWorkerSchema}
     >
       {props => (
@@ -127,7 +127,7 @@ function PersonProfileForm(props) {
             keyboardType="phone-pad"
             textContentType="telephoneNumber"
           />
-          <Button onPress={handleSubmit} title="Submit" />
+          <Button onPress={props.handleSubmit} title="Submit" />
         </View>
       )}
     </Formik>
