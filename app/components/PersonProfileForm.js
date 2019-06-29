@@ -1,11 +1,31 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-import { Alert, Button, View } from "react-native";
+import { Button, View } from "react-native";
 
 import { Formik } from "formik";
+import * as Yup from "yup";
 import FormSwitch from "./FormSwitch";
 import FormTextField from "./FormTextField";
+
+const UpdateWorkerSchema = Yup.object().shape({
+  department: Yup.string()
+    .min(1, "Too Short!")
+    .max(100, "Too Long!")
+    .required("It is Required"),
+  email: Yup.string().email("Invalid email"),
+  is_active: Yup.bool().required(),
+  job_title: Yup.string()
+    .min(1, "Too Short!")
+    .max(100, "Too Long!"),
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(100, "Too Long!")
+    .required("Required"),
+  phone: Yup.string()
+    .min(6, "Too short!")
+    .max(20, "Too long!")
+});
 
 /**
  * React Pure Component to display
@@ -58,6 +78,7 @@ class PersonProfileForm extends PureComponent {
           phone
         }}
         onSubmit={this.handleSubmit}
+        validationSchema={UpdateWorkerSchema}
       >
         {props => (
           <View>
