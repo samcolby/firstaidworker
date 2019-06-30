@@ -44,9 +44,10 @@ class ScreenDetails extends React.Component {
                   longitudeDelta: 0.0421
                 }}
                 provider={PROVIDER_GOOGLE}
-                showsBuildings={true}
-                showsMyLocationButton={true}
-                showsUserLocation={true}
+                showsBuildings
+                showsCompass
+                showsMyLocationButton
+                showsUserLocation
                 style={styles.map}
                 userLocationAnnotationTitle="My location"
               >
