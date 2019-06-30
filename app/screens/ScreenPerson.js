@@ -15,7 +15,7 @@ import {
   StaticMap
 } from "../components";
 
-import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
+import { COLORS, NAVIGATOR_PARAMS, ROUTES } from "../Constants";
 
 class ScreenPerson extends React.Component {
   static propTypes = {
@@ -28,10 +28,24 @@ class ScreenPerson extends React.Component {
     };
   };
 
-  render() {
-    const person = this.props.navigation.getParam(NAVIGATOR_PARAMS.PERSON);
-    const { id } = person;
+  constructor(props) {
+    super(props);
+    this.onStaticMapPress = this.onStaticMapPress.bind(this);
+  }
 
+  onStaticMapPress() {
+    this.props.navigation.navigate(ROUTES.TAB.MAP, {
+      [NAVIGATOR_PARAMS.PERSON_ID]: this.getPersonId()
+    });
+  }
+
+  getPersonId() {
+    const person = this.props.navigation.getParam(NAVIGATOR_PARAMS.PERSON);
+    return person.id;
+  }
+
+  render() {
+    const id = this.getPersonId();
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.BACKGROUND }}>
         <QueryPerson id={id}>
@@ -83,6 +97,7 @@ class ScreenPerson extends React.Component {
                   <StaticMap
                     latitude={location.coordinates[0]}
                     longitude={location.coordinates[1]}
+                    onPress={this.onStaticMapPress}
                   />
                 )}
               </ScrollView>

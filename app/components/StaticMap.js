@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 
-import { ActivityIndicator, Dimensions } from "react-native";
+import { ActivityIndicator, Dimensions, TouchableOpacity } from "react-native";
 
 import { Image } from "react-native-elements";
 
@@ -19,7 +19,7 @@ const API_KEY = env.static_maps_key;
  * @param {number} longitude
  *    The longitude of the center of the map
  */
-function StaticMap({ latitude, longitude }) {
+function StaticMap({ latitude, longitude, onPress }) {
   const { width } = Dimensions.get("window");
 
   const url = [
@@ -33,17 +33,20 @@ function StaticMap({ latitude, longitude }) {
   ].join("");
 
   return (
-    <Image
-      source={{ uri: url }}
-      style={{ width: width, height: width, marginTop: 20 }}
-      PlaceholderContent={<ActivityIndicator />}
-    />
+    <TouchableOpacity onPress={onPress}>
+      <Image
+        source={{ uri: url }}
+        style={{ width: width, height: width, marginTop: 20 }}
+        PlaceholderContent={<ActivityIndicator />}
+      />
+    </TouchableOpacity>
   );
 }
 
 StaticMap.propTypes = {
   latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired
+  longitude: PropTypes.number.isRequired,
+  onPress: PropTypes.func
 };
 
 export default memo(StaticMap);
