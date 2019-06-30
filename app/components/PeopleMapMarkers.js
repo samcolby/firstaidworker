@@ -9,7 +9,7 @@ import { FastImage } from "react-native-fast-image";
  * Given an array of person objects (People)
  * this React Pure Component will return a number of
  * React Native Maps map markers, one for each person
- * with a custom Callout displaying there details.
+ * with a custom Callout displaying their details.
  *
  * @class PeopleMapMarkers
  * @extends {PureComponent}
