@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { StatusBar, StyleSheet, Text } from "react-native";
 import { SafeAreaView } from "react-navigation";
 
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 
 import GeolocationContext from "../contexts/GeolocationContext";
 
@@ -43,6 +43,7 @@ class ScreenDetails extends React.Component {
                   latitudeDelta: 0.0922,
                   longitudeDelta: 0.0421
                 }}
+                provider={PROVIDER_GOOGLE}
                 showsBuildings={true}
                 showsMyLocationButton={true}
                 showsUserLocation={true}
