@@ -14,7 +14,7 @@ import QueryPeopleNearMe, {
 } from "../apis/QueryPeopleNearMe";
 import { PeopleMapMarkers } from "../components";
 
-import { COLORS } from "../Constants";
+import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
 
 class ScreenDetails extends React.Component {
   static propTypes = {
@@ -26,6 +26,10 @@ class ScreenDetails extends React.Component {
   }
 
   render() {
+    const highlightPersonId = this.props.navigation.getParam(
+      NAVIGATOR_PARAMS.PERSON_ID
+    );
+
     return (
       <SafeAreaView
         style={{
@@ -73,6 +77,7 @@ class ScreenDetails extends React.Component {
                         />
                         <PeopleMapMarkers
                           people={data[QUERY_PEOPLE_NEAR_ME_DATA]}
+                          highlightPersonId={highlightPersonId}
                         />
                       </>
                     );

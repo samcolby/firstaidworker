@@ -35,7 +35,7 @@ function StaticMap({ latitude, longitude, onPress }) {
     "&zoom=16",
     `&size=${width}x${width}`,
     "&maptype=roadmap",
-    `&markers=color:red%7C${latitude},${longitude}`,
+    `&markers=color:green%7C${latitude},${longitude}`,
     `&key=${API_KEY}`
   ].join("");
 

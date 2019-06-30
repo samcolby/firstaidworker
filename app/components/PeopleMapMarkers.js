@@ -16,21 +16,43 @@ import { FastImage } from "react-native-fast-image";
  */
 class PeopleMapMarkers extends PureComponent {
   static propTypes = {
-    people: PropTypes.array.isRequired
+    people: PropTypes.array.isRequired,
+    highlightPersonId: PropTypes.string
   };
 
   constructor(props) {
     super(props);
   }
 
+  getMarkerProps(highlightPersonId, person) {
+    if (highlightPersonId) {
+      if (highlightPersonId === person.id) {
+        return {
+          pinColor: "green"
+        };
+      } else {
+        return {
+          opacity: 0.3
+        };
+      }
+    } else {
+      return {
+        pinColor: "red"
+      };
+    }
+  }
+
   render() {
-    return this.props.people.map((person, i) => (
+    const { highlightPersonId, people } = this.props;
+
+    return people.map((person, i) => (
       <Marker
         coordinate={{
           latitude: person.location.coordinates[0],
           longitude: person.location.coordinates[1]
         }}
         key={person.id}
+        {...this.getMarkerProps(highlightPersonId, person)}
       >
         <Callout>
           <ListItem
