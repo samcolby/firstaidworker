@@ -12,16 +12,14 @@ const API_KEY = env.static_maps_key;
 
 /**
  * React Pure Component to display
- * a label, switch component and error message
+ * a static image of the person's location
  * @param {Object} props - Standard react props
  * @param {number} latitude
  *    The latitude of the center of the map
  * @param {number} longitude
  *    The longitude of the center of the map
  */
-function StaticMap(props) {
-  const { latitude, longitude } = props;
-
+function StaticMap({ latitude, longitude }) {
   const { width } = Dimensions.get("window");
 
   const url = [
