@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 
 import { StyleSheet, Text, View } from "react-native";
@@ -10,41 +10,35 @@ import { Avatar, Card } from "react-native-elements";
  *
  * This can be used along the top of a screen
  * that shows relevant data for the passed in person.
- *
- * @class PersonHeaderCard
- * @extends {PureComponent}
+ * @param {Object} props - Standard react props
+ * @param {Object} person
+ *    The object containing the person data
  */
-class PersonHeaderCard extends PureComponent {
-  static propTypes = {
-    person: PropTypes.object.isRequired
-  };
+function PersonHeaderCard({ person }) {
+  const { name, job_title, avatar_uri } = person;
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { name, job_title, avatar_uri } = this.props.person;
-
-    return (
-      <Card containerStyle={styles.containerStyle}>
-        <View style={styles.headerContainer}>
-          <Avatar
-            activeOpacity={0.7}
-            rounded
-            size="large"
-            source={{ uri: avatar_uri }}
-            title={name[0]}
-          />
-          <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTextTitle}>{name}</Text>
-            <Text style={styles.headerTextSubtitle}>{job_title}</Text>
-          </View>
+  return (
+    <Card containerStyle={styles.containerStyle}>
+      <View style={styles.headerContainer}>
+        <Avatar
+          activeOpacity={0.7}
+          rounded
+          size="large"
+          source={{ uri: avatar_uri }}
+          title={name[0]}
+        />
+        <View style={styles.headerTextContainer}>
+          <Text style={styles.headerTextTitle}>{name}</Text>
+          <Text style={styles.headerTextSubtitle}>{job_title}</Text>
         </View>
-      </Card>
-    );
-  }
+      </View>
+    </Card>
+  );
 }
+
+PersonHeaderCard.propTypes = {
+  person: PropTypes.object.isRequired
+};
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -72,4 +66,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PersonHeaderCard;
+export default memo(PersonHeaderCard);
