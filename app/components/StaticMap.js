@@ -33,8 +33,9 @@ function StaticMap({ latitude, longitude, onPress }) {
   ].join("");
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity testID="staticMapLink" onPress={onPress}>
       <Image
+        testID="staticMapImage"
         source={{ uri: url }}
         style={{ width: width, height: width, marginTop: 20 }}
         PlaceholderContent={<ActivityIndicator />}
