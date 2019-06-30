@@ -1,9 +1,16 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 
-import { ActivityIndicator, Dimensions, TouchableOpacity } from "react-native";
+import {
+  ActivityIndicator,
+  Dimensions,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 
 import { Image } from "react-native-elements";
+
+import { COLORS } from "../Constants";
 
 import env from "../../env.json";
 
@@ -38,7 +45,10 @@ function StaticMap({ latitude, longitude, onPress }) {
         testID="staticMapImage"
         source={{ uri: url }}
         style={{ width: width, height: width, marginTop: 20 }}
-        PlaceholderContent={<ActivityIndicator />}
+        placeholderStyle={styles.placeholderStyle}
+        PlaceholderContent={
+          <ActivityIndicator size="large" color={COLORS.TAB_HINTS} />
+        }
       />
     </TouchableOpacity>
   );
@@ -49,5 +59,9 @@ StaticMap.propTypes = {
   longitude: PropTypes.number.isRequired,
   onPress: PropTypes.func
 };
+
+const styles = StyleSheet.create({
+  placeholderStyle: { backgroundColor: COLORS.BACKGROUND }
+});
 
 export default memo(StaticMap);

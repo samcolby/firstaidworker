@@ -94,7 +94,7 @@ exports[`<StaticMap /> component renders correctly 1`] = `
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#bdbdbd",
+            "backgroundColor": "#fff",
             "height": 750,
             "justifyContent": "center",
             "marginTop": 20,
@@ -105,9 +105,9 @@ exports[`<StaticMap /> component renders correctly 1`] = `
       >
         <ActivityIndicator
           animating={true}
-          color="#999999"
+          color="red"
           hidesWhenStopped={true}
-          size="small"
+          size="large"
         />
       </View>
     </View>
