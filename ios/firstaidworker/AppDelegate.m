@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // for google maps
-  [GMSServices provideAPIKey:@"AIzaSyAdlooboR4gN30DAatlAisr4E9lbRFb1io"];
+  [GMSServices provideAPIKey:@"AIzaSyB1-mApgnuitr9QiUYDUHN1ES-_o2wX_7Q"];
   
   self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
