@@ -8,6 +8,7 @@ import PersonProfileForm from "./PersonProfileForm";
 import PersonHeaderCard from "./PersonHeaderCard";
 import PersonListItem from "./PersonListItem";
 import Search from "./Search";
+import StaticMap from "./StaticMap";
 
 export {
   FormTextField,
@@ -19,5 +20,6 @@ export {
   PersonProfileForm,
   PersonHeaderCard,
   PersonListItem,
-  Search
+  Search,
+  StaticMap
 };

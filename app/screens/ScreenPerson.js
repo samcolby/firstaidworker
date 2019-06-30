@@ -8,7 +8,12 @@ import QueryPerson, { QUERY_PERSON_DATA } from "../apis/QueryPerson";
 
 import URLActions from "../helpers/URLActions";
 
-import { LoadingScreen, PersonHeaderCard, PersonDataItem } from "../components";
+import {
+  LoadingScreen,
+  PersonHeaderCard,
+  PersonDataItem,
+  StaticMap
+} from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
 
@@ -35,7 +40,7 @@ class ScreenPerson extends React.Component {
             if (error) return <Text>Error :(</Text>;
 
             const person = data[QUERY_PERSON_DATA][0];
-            const { company, department, email, phone } = person;
+            const { company, department, email, phone, location } = person;
 
             return (
               <ScrollView>
@@ -72,6 +77,12 @@ class ScreenPerson extends React.Component {
                     onPress={() => URLActions.makeCall(phone)}
                     title="Phone"
                     value={phone}
+                  />
+                )}
+                {location && (
+                  <StaticMap
+                    latitude={location.coordinates[0]}
+                    longitude={location.coordinates[1]}
                   />
                 )}
               </ScrollView>
