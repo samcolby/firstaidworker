@@ -12,7 +12,7 @@ import QueryPeopleNearMe, {
   QUERY_PEOPLE_NEAR_ME_DATA,
   QUERY_PEOPLE_NEAR_ME_TYPE
 } from "../apis/QueryPeopleNearMe";
-import { PeopleMapMarkers } from "../components";
+import { PersonMapMarker } from "../components";
 
 import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
 
@@ -75,10 +75,17 @@ class ScreenDetails extends React.Component {
                         <StatusBar
                           networkActivityIndicatorVisible={networkStatus < 7}
                         />
-                        <PeopleMapMarkers
-                          people={data[QUERY_PEOPLE_NEAR_ME_DATA]}
-                          highlightPersonId={highlightPersonId}
-                        />
+                        {data[QUERY_PEOPLE_NEAR_ME_DATA].slice(0, 20).map(
+                          (person, i) => {
+                            return (
+                              <PersonMapMarker
+                                person={person}
+                                highlightPersonId={highlightPersonId}
+                                key={person.id}
+                              />
+                            );
+                          }
+                        )}
                       </>
                     );
                   }}

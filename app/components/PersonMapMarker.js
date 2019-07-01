@@ -1,49 +1,45 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { ListItem } from "react-native-elements";
 import { Marker, Callout } from "react-native-maps";
 import { FastImage } from "react-native-fast-image";
 
-function getMarkerProps(highlightPersonId, person) {
-  if (highlightPersonId) {
-    if (highlightPersonId === person.id) {
-      return {
-        pinColor: "green"
-      };
-    } else {
-      return {
-        opacity: 0.3
-      };
-    }
-  } else {
-    return {
-      pinColor: "red"
-    };
-  }
-}
-
 /**
- * Given an array of person objects (People)
- * this React Pure Component will return a number of
- * React Native Maps map markers, one for each person
- * with a custom Callout displaying their details.
+ * Pure Component to display a
+ * React Native Maps map marker
+ * with a custom Callout displaying
+ * the passed in person's details.
  *
  * @param {Object} props - Standard react props
- * @param {array} people
- *    An array of person objects to be displayed on a map
+ * @param {Object} person
+ *    An object containgin the person to be displayed on a map
  * @param {string} highlightPersonId
  *    The id of the person to be highlighted
  */
-function PeopleMapMarkers({ highlightPersonId, people }) {
-  return people.map((person, i) => (
+function PersonMapMaker({ highlightPersonId, person }) {
+  let markerRef = React.createRef();
+
+  const showCallout = () => {
+    markerRef && markerRef.current && markerRef.current.showCallout();
+  };
+
+  useEffect(() => {
+    if (highlightPersonId === person.id) {
+      // we need to pause here whilst
+      // everyone else get's displayed
+      // FIXME
+      setTimeout(showCallout, 800);
+    }
+  });
+
+  return (
     <Marker
       coordinate={{
         latitude: person.location.coordinates[0],
         longitude: person.location.coordinates[1]
       }}
-      key={person.id}
-      {...getMarkerProps(highlightPersonId, person)}
+      ref={markerRef}
     >
       <Callout>
         <ListItem
@@ -59,12 +55,12 @@ function PeopleMapMarkers({ highlightPersonId, people }) {
         />
       </Callout>
     </Marker>
-  ));
+  );
 }
 
-PeopleMapMarkers.propTypes = {
-  people: PropTypes.array.isRequired,
+PersonMapMaker.propTypes = {
+  person: PropTypes.object.isRequired,
   highlightPersonId: PropTypes.string
 };
 
-export default memo(PeopleMapMarkers);
+export default memo(PersonMapMaker);
