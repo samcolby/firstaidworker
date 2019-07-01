@@ -31,7 +31,7 @@ function PersonMapMaker({ highlightPersonId, person }) {
       // FIXME
       setTimeout(showCallout, 800);
     }
-  });
+  }, []);
 
   return (
     <Marker
