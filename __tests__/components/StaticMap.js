@@ -11,11 +11,9 @@ const testProps = {
 
 describe("<StaticMap /> component", () => {
   it("renders correctly", () => {
-    const { getByTestId, toJSON } = render(<StaticMap {...testProps} />);
+    const { getByTestId } = render(<StaticMap {...testProps} />);
     const component = getByTestId("staticMapLink");
     expect(component).toBeTruthy();
-
-    expect(toJSON()).toMatchSnapshot();
   });
 
   it("displays the image centred on the correct latitude and longitude", () => {
