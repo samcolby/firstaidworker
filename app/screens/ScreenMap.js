@@ -23,11 +23,30 @@ class ScreenDetails extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.mapRef = React.createRef();
+  }
+
+  getRegion(person) {
+    if (!person) {
+      return null;
+    }
+
+    if (person) {
+      return {
+        region: {
+          latitude: person.location.coordinates[0],
+          longitude: person.location.coordinates[1],
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421
+        }
+      };
+    }
   }
 
   render() {
-    const highlightPersonId = this.props.navigation.getParam(
-      NAVIGATOR_PARAMS.PERSON_ID
+    const highlightPerson = this.props.navigation.getParam(
+      NAVIGATOR_PARAMS.PERSON
     );
 
     return (
@@ -48,12 +67,14 @@ class ScreenDetails extends React.Component {
                   longitudeDelta: 0.0421
                 }}
                 provider={PROVIDER_GOOGLE}
+                ref={this.mapRef}
                 showsBuildings
                 showsCompass
                 showsMyLocationButton
                 showsUserLocation
                 style={styles.map}
                 userLocationAnnotationTitle="My location"
+                {...this.getRegion(highlightPerson)}
               >
                 <QueryPeopleNearMe
                   queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
@@ -70,14 +91,18 @@ class ScreenDetails extends React.Component {
                       );
                     if (error) return <Text>Error :(</Text>;
 
+                    const people = data[QUERY_PEOPLE_NEAR_ME_DATA];
+
                     return (
                       <>
                         <StatusBar
                           networkActivityIndicatorVisible={networkStatus < 7}
                         />
                         <PeopleMapMarkers
-                          people={data[QUERY_PEOPLE_NEAR_ME_DATA]}
-                          highlightPersonId={highlightPersonId}
+                          people={people}
+                          highlightPersonId={
+                            highlightPerson && highlightPerson.id
+                          }
                         />
                       </>
                     );

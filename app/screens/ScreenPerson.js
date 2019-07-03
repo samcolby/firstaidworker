@@ -33,9 +33,9 @@ class ScreenPerson extends React.Component {
     this.onStaticMapPress = this.onStaticMapPress.bind(this);
   }
 
-  onStaticMapPress() {
+  onStaticMapPress(person) {
     this.props.navigation.navigate(ROUTES.TAB.MAP, {
-      [NAVIGATOR_PARAMS.PERSON_ID]: this.getPersonId()
+      [NAVIGATOR_PARAMS.PERSON]: person
     });
   }
 
@@ -97,7 +97,7 @@ class ScreenPerson extends React.Component {
                   <StaticMap
                     latitude={location.coordinates[0]}
                     longitude={location.coordinates[1]}
-                    onPress={this.onStaticMapPress}
+                    onPress={() => this.onStaticMapPress(person)}
                   />
                 )}
               </ScrollView>

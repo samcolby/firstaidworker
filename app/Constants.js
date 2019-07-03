@@ -15,8 +15,7 @@ const ROUTES = {
 };
 
 const NAVIGATOR_PARAMS = {
-  PERSON: "person",
-  PERSON_ID: "personId"
+  PERSON: "person"
 };
 
 const COLORS = {
