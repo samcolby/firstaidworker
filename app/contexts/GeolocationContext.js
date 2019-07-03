@@ -59,5 +59,15 @@ class GeolocationProvider extends Component {
   }
 }
 
-export default GeolocationContext;
+function withGeolocation(Component) {
+  return function GeolocationComponent(props) {
+    return (
+      <GeolocationContext.Consumer>
+        {contexts => <Component {...props} {...contexts} />}
+      </GeolocationContext.Consumer>
+    );
+  };
+}
+
+export default withGeolocation;
 export { GeolocationProvider };
