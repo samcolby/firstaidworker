@@ -26,10 +26,10 @@ function PersonMapMaker({ highlightPersonId, person }) {
 
   useEffect(() => {
     if (highlightPersonId === person.id) {
-      // we need to pause here whilst
-      // everyone else get's displayed
+      // we need to pause here otherwise corruptions
+      // in the callout can occur
       // FIXME
-      setTimeout(showCallout, 800);
+      setTimeout(showCallout, 600);
     }
   }, []);
 
