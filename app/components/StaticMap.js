@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 import { Image } from "react-native-elements";
+import { FastImage } from "react-native-fast-image";
 
 import { COLORS } from "../Constants";
 
@@ -43,6 +44,7 @@ function StaticMap({ latitude, longitude, onPress }) {
     <TouchableOpacity testID="staticMapLink" onPress={onPress}>
       <Image
         testID="staticMapImage"
+        ImageComponent={FastImage}
         source={{ uri: url }}
         style={{ width: width, height: width, marginTop: 20 }}
         placeholderStyle={styles.placeholderStyle}
