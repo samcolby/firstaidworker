@@ -29,10 +29,6 @@ class ScreenPeopleNearMe extends React.Component {
     getCurrentPosition: PropTypes.func.isRequired
   };
 
-  static navigationOptions = {
-    title: "Near me"
-  };
-
   firstLoad = true;
 
   constructor(props) {
@@ -149,4 +145,10 @@ class ScreenPeopleNearMe extends React.Component {
   }
 }
 
-export default withGeolocation(ScreenPeopleNearMe);
+const WrappedComponent = withGeolocation(ScreenPeopleNearMe);
+
+WrappedComponent.navigationOptions = {
+  title: "Near me"
+};
+
+export default WrappedComponent;
