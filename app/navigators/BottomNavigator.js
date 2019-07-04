@@ -41,7 +41,8 @@ const BottomNavigator = createBottomTabNavigator(
       }
     }),
     tabBarOptions: {
-      activeTintColor: COLORS.TAB_HINTS
+      activeTintColor: COLORS.TAB_HINTS,
+      keyboardHidesTabBar: true
     }
   }
 );
