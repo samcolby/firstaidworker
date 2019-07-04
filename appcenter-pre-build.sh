@@ -4,4 +4,6 @@
 
 gem install cocoapods-keys
 
-cd ios && pod install
+cd ios && pod keys generate
+
+echo "The react native package is $APPCENTER_REACTNATIVE_PACKAGE"
