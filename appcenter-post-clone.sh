@@ -10,3 +10,4 @@ json="$json\"android_maps_key\":\"$DEV_ANDROID_MAPS_KEY\"}"
 
 echo $json > $APPCENTER_SOURCE_DIRECTORY/env.json
 
+echo "GoogleMapsiOSKey=$GoogleMapsiOSKey" > $APPCENTER_SOURCE_DIRECTORY/ios/.env
