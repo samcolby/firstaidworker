@@ -60,3 +60,10 @@ target 'firstaidworker' do
     inherit! :search_paths
   end
 end
+
+
+plugin 'cocoapods-keys', {
+  :project => "firstaidworker",
+  :keys => [
+    "GoogleMapsiOSKey"
+  ]}

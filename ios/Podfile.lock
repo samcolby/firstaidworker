@@ -37,6 +37,7 @@ PODS:
   - GoogleMaps/Base (2.5.0)
   - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
+  - Keys (1.0.1)
   - React (0.59.8):
     - React/Core (= 0.59.8)
   - react-native-fast-image (6.0.3):
@@ -135,6 +136,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - Google-Maps-iOS-Utils
   - GoogleMaps
+  - Keys (from `Pods/CocoaPodsKeys`)
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -194,6 +196,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  Keys:
+    :path: Pods/CocoaPodsKeys
   React:
     :path: "../node_modules/react-native"
   react-native-fast-image:
@@ -256,6 +260,7 @@ SPEC CHECKSUMS:
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   React: 76e6aa2b87d05eb6cccb6926d72685c9a07df152
   react-native-fast-image: 3390cc968d598f0c6b5c710df138f4b653a87231
   react-native-google-maps: 568cb03d0eae7fef93626f65d05be55642404ed4
@@ -277,6 +282,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 296793ab2a7e181fe5ebe2ba9b40ae208ab4b8fa
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: 96869b5f2d47c797134abed7a39969b44f8ba19d
+PODFILE CHECKSUM: f9766b26e8e5dab2de9d779d3c0d77578d0ee2f8
 
 COCOAPODS: 1.7.2

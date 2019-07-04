@@ -14,6 +14,9 @@
 #import <UMReactNativeAdapter/UMNativeModulesProxy.h>
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 
+
+#import <Keys/FirstaidworkerKeys.h>
+
 #import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
@@ -22,8 +25,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  FirstaidworkerKeys *keys = [[FirstaidworkerKeys alloc] init];
   // for google maps
-  [GMSServices provideAPIKey:@"AIzaSyB1-mApgnuitr9QiUYDUHN1ES-_o2wX_7Q"];
+  [GMSServices provideAPIKey: keys.googleMapsiOSKey];
   
   self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
