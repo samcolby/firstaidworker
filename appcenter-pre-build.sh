@@ -2,4 +2,6 @@
 
 # echo "GoogleMapsiOSKey=$GoogleMapsiOSKey" > $APPCENTER_SOURCE_DIRECTORY/ios/.env
 
-pod install
+gem install cocoapods-keys
+
+cd ios && pod install
