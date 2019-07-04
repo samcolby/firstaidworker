@@ -30,11 +30,13 @@ const API_KEY = env.static_maps_key;
 function StaticMap({ latitude, longitude, onPress }) {
   const { width } = Dimensions.get("window");
 
+  const flooredWidth = Math.floor(width);
+
   const url = [
     STATIC_MAP_URL,
     `?center=${latitude},${longitude}`,
     "&zoom=16",
-    `&size=${width}x${width}`,
+    `&size=${flooredWidth}x${flooredWidth}`,
     "&maptype=roadmap",
     `&markers=color:red%7C${latitude},${longitude}`,
     `&key=${API_KEY}`
@@ -46,7 +48,7 @@ function StaticMap({ latitude, longitude, onPress }) {
         testID="staticMapImage"
         ImageComponent={FastImage}
         source={{ uri: url }}
-        style={{ width: width, height: width, marginTop: 20 }}
+        style={{ width: flooredWidth, height: flooredWidth, marginTop: 20 }}
         placeholderStyle={styles.placeholderStyle}
         PlaceholderContent={
           <ActivityIndicator size="large" color={COLORS.TAB_HINTS} />
