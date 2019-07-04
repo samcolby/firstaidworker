@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
+import groovy.json.JsonSlurper
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -94,6 +95,19 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+/**
+ * Read config values from env.json
+ */
+def getConfig() {
+    def slurper = new JsonSlurper()
+    def config = slurper.parse(file('../../env.json'))
+
+    return config
+}
+def config = getConfig();
+
+
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -104,6 +118,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+        resValue "string", "android_maps_key", config.android_maps_key
     }
     splits {
         abi {
