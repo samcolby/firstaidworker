@@ -27,10 +27,10 @@ exports[`<PersonHeaderCard /> component renders correctly 1`] = `
       size="large"
       source={
         Object {
-          "uri": undefined,
+          "uri": "https://randomuser.me/api/portraits/women/17.jpg",
         }
       }
-      title="M"
+      title="K"
     />
     <View
       style={
@@ -49,7 +49,7 @@ exports[`<PersonHeaderCard /> component renders correctly 1`] = `
           }
         }
       >
-        Maryellen Baxter
+        Kaitlin Burnett
       </Text>
       <Text
         style={
@@ -59,7 +59,7 @@ exports[`<PersonHeaderCard /> component renders correctly 1`] = `
           }
         }
       >
-        Flouncer
+        Marketing
       </Text>
     </View>
   </View>

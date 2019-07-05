@@ -7,14 +7,14 @@ exports[`<PersonListItem /> component handles onPress 1`] = `
       "ImageComponent": undefined,
       "rounded": true,
       "source": Object {
-        "uri": undefined,
+        "uri": "https://randomuser.me/api/portraits/women/17.jpg",
       },
-      "title": "M",
+      "title": "K",
     }
   }
   onPress={[Function]}
-  subtitle="Flouncer"
-  title="Maryellen Baxter"
+  subtitle="Marketing"
+  title="Kaitlin Burnett"
 />
 `;
 
@@ -25,13 +25,13 @@ exports[`<PersonListItem /> component renders correctly 1`] = `
       "ImageComponent": undefined,
       "rounded": true,
       "source": Object {
-        "uri": undefined,
+        "uri": "https://randomuser.me/api/portraits/women/17.jpg",
       },
-      "title": "M",
+      "title": "K",
     }
   }
   onPress={[Function]}
-  subtitle="Flouncer"
-  title="Maryellen Baxter"
+  subtitle="Marketing"
+  title="Kaitlin Burnett"
 />
 `;
