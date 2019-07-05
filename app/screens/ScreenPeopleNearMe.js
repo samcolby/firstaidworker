@@ -24,9 +24,9 @@ const DEFAULT_QUERY_STATE = {
 class ScreenPeopleNearMe extends React.Component {
   static propTypes = {
     navigation: PropTypes.object,
-    coordinates: PropTypes.object.isRequired,
-    isUpdatingCoordinates: PropTypes.bool.isRequired,
-    getCurrentPosition: PropTypes.func.isRequired
+    location: PropTypes.object,
+    isUpdatingLocation: PropTypes.bool,
+    getCurrentLocation: PropTypes.func
   };
 
   firstLoad = true;
@@ -84,13 +84,9 @@ class ScreenPeopleNearMe extends React.Component {
   );
 
   render() {
-    const {
-      coordinates,
-      getCurrentPosition,
-      isUpdatingCoordinates
-    } = this.props;
+    const { location, getCurrentLocation, isUpdatingLocation } = this.props;
 
-    if (this.firstLoad && isUpdatingCoordinates) {
+    if (this.firstLoad && isUpdatingLocation) {
       return null;
     }
 
@@ -99,8 +95,8 @@ class ScreenPeopleNearMe extends React.Component {
         <QueryPeopleNearMe
           queryType={this.state.queryType}
           searchQuery={this.state.searchQuery}
-          latitude={coordinates.latitude}
-          longitude={coordinates.longitude}
+          latitude={location.latitude}
+          longitude={location.longitude}
         >
           {props => {
             const { data, error, loading, networkStatus, refetch } = props;
@@ -117,7 +113,7 @@ class ScreenPeopleNearMe extends React.Component {
               <>
                 <StatusBar
                   networkActivityIndicatorVisible={
-                    networkStatus < 7 || isUpdatingCoordinates
+                    networkStatus < 7 || isUpdatingLocation
                   }
                 />
                 <FlatList
@@ -128,9 +124,9 @@ class ScreenPeopleNearMe extends React.Component {
                   refreshControl={
                     <RefreshControl
                       tintColor={COLORS.TAB_HINTS}
-                      onRefresh={() => getCurrentPosition(refetch)}
+                      onRefresh={() => getCurrentLocation(refetch)}
                       refreshing={
-                        data.networkStatus === 4 || isUpdatingCoordinates
+                        data.networkStatus === 4 || isUpdatingLocation
                       }
                     />
                   }

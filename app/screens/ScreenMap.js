@@ -19,9 +19,9 @@ import { COLORS, NAVIGATOR_PARAMS } from "../Constants";
 class ScreenDetails extends React.Component {
   static propTypes = {
     navigation: PropTypes.object,
-    coordinates: PropTypes.object.isRequired,
-    isUpdatingCoordinates: PropTypes.bool.isRequired,
-    getCurrentPosition: PropTypes.func.isRequired
+    location: PropTypes.object,
+    isUpdatingLocation: PropTypes.bool,
+    getCurrentPosition: PropTypes.func
   };
 
   constructor(props) {
@@ -52,7 +52,7 @@ class ScreenDetails extends React.Component {
       NAVIGATOR_PARAMS.PERSON
     );
 
-    const { coordinates } = this.props;
+    const { location } = this.props;
 
     return (
       <SafeAreaView
@@ -63,8 +63,8 @@ class ScreenDetails extends React.Component {
       >
         <MapView
           initialRegion={{
-            latitude: coordinates.latitude,
-            longitude: coordinates.longitude,
+            latitude: location.latitude,
+            longitude: location.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           }}
@@ -81,8 +81,8 @@ class ScreenDetails extends React.Component {
           <QueryPeopleNearMe
             queryType={QUERY_PEOPLE_NEAR_ME_TYPE.QUERY}
             searchQuery=""
-            latitude={coordinates.latitude}
-            longitude={coordinates.longitude}
+            latitude={location.latitude}
+            longitude={location.longitude}
           >
             {({ loading, error, data, networkStatus }) => {
               if (loading)

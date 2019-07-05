@@ -8,6 +8,10 @@ PODS:
   - EXFileSystem (5.0.1):
     - UMCore
     - UMFileSystemInterface
+  - EXLocation (5.0.1):
+    - UMCore
+    - UMPermissionsInterface
+    - UMTaskManagerInterface
   - EXPermissions (5.0.1):
     - UMCore
     - UMPermissionsInterface
@@ -131,6 +135,7 @@ DEPENDENCIES:
   - EXAppLoaderProvider (from `../node_modules/expo-app-loader-provider/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
+  - EXLocation (from `../node_modules/expo-location/ios`)
   - EXPermissions (from `../node_modules/expo-permissions/ios`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -189,6 +194,9 @@ EXTERNAL SOURCES:
   EXFileSystem:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-file-system/ios"
+  EXLocation:
+    :path: !ruby/object:Pathname
+    path: "../node_modules/expo-location/ios"
   EXPermissions:
     :path: !ruby/object:Pathname
     path: "../node_modules/expo-permissions/ios"
@@ -255,6 +263,7 @@ SPEC CHECKSUMS:
   EXAppLoaderProvider: 8f2c04a0a8d9be91f7c37c2b8824077ee5d4bc01
   EXConstants: 9fe56eec8bf0a3ee9beb8f3381fa91340a5b1e57
   EXFileSystem: 96624bd4b93a0684335c421a6567a92b25bd7ddb
+  EXLocation: d9bbd9ff37ea80dcf094cacccc0134a7b512bcb3
   EXPermissions: 8e05008ed4fc8c9be6c17ea95301fc3f3f005a7b
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
