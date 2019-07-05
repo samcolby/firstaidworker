@@ -21,7 +21,10 @@ function PersonMapMaker({ highlightPersonId, person }) {
   let markerRef = React.createRef();
 
   const showCallout = () => {
-    markerRef && markerRef.current && markerRef.current.showCallout();
+    if (markerRef && markerRef.current) {
+      markerRef.current.showCallout();
+      // markerRef.current.redrawCallout();
+    }
   };
 
   useEffect(() => {
@@ -29,12 +32,13 @@ function PersonMapMaker({ highlightPersonId, person }) {
       // we need to pause here otherwise corruptions
       // in the callout can occur
       // FIXME
-      setTimeout(showCallout, 600);
+      setTimeout(showCallout, 800);
     }
   }, []);
 
   return (
     <Marker
+      testID="marker"
       coordinate={{
         latitude: person.location.coordinates[0],
         longitude: person.location.coordinates[1]
