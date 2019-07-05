@@ -15,7 +15,7 @@ import UpdatePerson from "../apis/UpdatePerson";
  * @param {function} person - The person's details object
  *
  */
-const PersonProfile = ({ person }) => {
+function PersonProfile({ person }) {
   return (
     <UpdatePerson>
       {(update_worker, { data, loading, error }) => {
@@ -30,7 +30,7 @@ const PersonProfile = ({ person }) => {
       }}
     </UpdatePerson>
   );
-};
+}
 
 PersonProfile.propTypes = {
   person: PropTypes.object.isRequired

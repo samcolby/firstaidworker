@@ -6,19 +6,19 @@ import { Input } from "react-native-elements";
 
 import _get from "lodash/get";
 
-const getErrorMessage = (fieldName, arrErrors, touched) => {
+function getErrorMessage(fieldName, arrErrors, touched) {
   if (arrErrors[fieldName] && touched[fieldName]) {
     return arrErrors[fieldName];
   } else {
     return null;
   }
-};
+}
 
 /**
  * React Pure Component to display
  * a label, text field and error message
  */
-const FormTextField = props => {
+function FormTextField(props) {
   const { fieldName, formikProps, label, ...passthruProps } = props;
   const { errors, handleBlur, handleChange, touched, values } = formikProps;
 
@@ -36,7 +36,7 @@ const FormTextField = props => {
       />
     </View>
   );
-};
+}
 
 FormTextField.propTypes = {
   fieldName: PropTypes.string.isRequired,
